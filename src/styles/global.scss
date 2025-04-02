@@ -1,0 +1,120 @@
+// src/styles/global.scss
+
+// Globale Reset-Styles und Grundeinstellungen
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  font-family: var(--font-family-primary);
+  background-color: var(--background-dark);
+  color: var(--text-light);
+  line-height: 1.6;
+  font-size: var(--font-size-base);
+}
+
+a {
+  color: var(--blue);
+  text-decoration: none;
+  transition: color var(--transition-fast) var(--cubic-bezier);
+  
+  &:hover {
+    color: var(--blue-glow);
+  }
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-family-secondary);
+  margin-bottom: 1rem;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+h1 {
+  font-size: var(--font-size-3xl);
+}
+
+h2 {
+  font-size: var(--font-size-2xl);
+}
+
+h3 {
+  font-size: var(--font-size-xl);
+}
+
+h4 {
+  font-size: var(--font-size-lg);
+}
+
+p {
+  margin-bottom: 1rem;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+// Container und Layout-Klassen
+.container {
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+// Flexbox-Helfer
+.flex {
+  display: flex;
+}
+
+.flex-col {
+  flex-direction: column;
+}
+
+.items-center {
+  align-items: center;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.justify-between {
+  justify-content: space-between;
+}
+
+// Abstände
+.mt-1 { margin-top: 0.25rem; }
+.mt-2 { margin-top: 0.5rem; }
+.mt-4 { margin-top: 1rem; }
+.mt-8 { margin-top: 2rem; }
+
+.mb-1 { margin-bottom: 0.25rem; }
+.mb-2 { margin-bottom: 0.5rem; }
+.mb-4 { margin-bottom: 1rem; }
+.mb-8 { margin-bottom: 2rem; }
+
+// Scrollbar-Styling
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--background-dark-lighter);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--background-dark-accent);
+  border-radius: 5px;
+  
+  &:hover {
+    background: var(--primary-dark);
+  }
+}
