@@ -1,8 +1,142 @@
 // src/pages/Home.tsx
 import React, { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { FaGithub, FaLinkedin, FaTwitter, FaArrowDown, FaCode, FaBriefcase, FaLaptopCode } from 'react-icons/fa';
+import { FaGithub, FaLinkedin, FaTwitter, FaArrowDown, FaCode, FaBriefcase, FaLaptopCode, FaArrowUp } from 'react-icons/fa';
+import ParticleBackground from '../components/ui/ParticleBackground';
+import { scrollToElementNew, isElementInViewportNew, setupScrollReveal } from '../components/Utils/scrollUtils';
 import './Home.scss';
+
+interface ProjectCardProps {
+  id: number;
+  title: string;
+  description: string;
+  tags: string[];
+  imageUrl: string;
+}
+
+const ProjectCard: React.FC<ProjectCardProps> = ({ id, title, description, tags, imageUrl }) => {
+  const cardRef = useRef<HTMLDivElement>(null);
+  const [rotateX, setRotateX] = useState(0);
+  const [rotateY, setRotateY] = useState(0);
+  const [scale, setScale] = useState(1);
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (!cardRef.current) return;
+
+    const card = cardRef.current;
+    const rect = card.getBoundingClientRect();
+
+    // Berechnung der Mausposition relativ zur Karte
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+
+    // Normalisieren der Position (0 bis 1)
+    const normalizedX = x / rect.width;
+    const normalizedY = y / rect.height;
+
+    // Umrechnung in Rotationswinkel (-10 bis 10 Grad)
+    const rotX = 10 - normalizedY * 20;
+    const rotY = normalizedX * 20 - 10;
+
+    // CSS-Variablen setzen
+    setRotateX(rotX);
+    setRotateY(rotY);
+    setScale(1.05);
+  };
+
+  const handleMouseLeave = () => {
+    // Zurücksetzen auf Ausgangswerte
+    setRotateX(0);
+    setRotateY(0);
+    setScale(1);
+  };
+
+  const cardStyle = {
+    transform: `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(${scale})`,
+    transition: 'transform 0.1s ease'
+  };
+
+  return (
+    <div
+      ref={cardRef}
+      className="project-card"
+      style={cardStyle}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
+    >
+      <div className="card-image">
+        <img src={imageUrl} alt={title} />
+        <div className="card-overlay">
+          <a href="#" className="view-project">Ansehen</a>
+        </div>
+      </div>
+      <div className="card-content">
+        <h3>{title}</h3>
+        <p>{description}</p>
+        <div className="card-tags">
+          {tags.map((tag, index) => (
+            <span key={index} className="tag">{tag}</span>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+};
+
+const TechSymbols: React.FC = () => {
+  return (
+    <div className="tech-symbols">
+      <div className="ts-logo">TS</div>
+      <div className="ts-logo">{'{ }'}</div>
+      <div className="ts-logo">{'<>'}</div>
+      <div className="react-logo">
+        <div className="orbit"></div>
+        <div className="orbit" style={{ transform: 'rotate(60deg)' }}></div>
+        <div className="orbit" style={{ transform: 'rotate(120deg)' }}></div>
+        <div className="core"></div>
+      </div>
+      <div className="html-logo">
+        {'</>'}
+      </div>
+      <div className="css-logo">
+        {'#{}'}
+      </div>
+    </div>
+  );
+};
+
+const ScrollToTop: React.FC = () => {
+  const [visible, setVisible] = useState(false);
+
+  useEffect(() => {
+    const toggleVisibility = () => {
+      if (window.pageYOffset > 300) {
+        setVisible(true);
+      } else {
+        setVisible(false);
+      }
+    };
+
+    window.addEventListener('scroll', toggleVisibility);
+    return () => window.removeEventListener('scroll', toggleVisibility);
+  }, []);
+
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  };
+
+  return (
+    <div
+      className={`scroll-to-top ${visible ? 'visible' : ''}`}
+      onClick={scrollToTop}
+    >
+      <FaArrowUp />
+    </div>
+  );
+};
 
 const Home: React.FC = () => {
   const navigate = useNavigate();
@@ -19,13 +153,13 @@ const Home: React.FC = () => {
       if (heroRef.current) {
         const scrollPos = window.scrollY;
         heroRef.current.style.transform = `translateY(${scrollPos * 0.4}px)`;
-        
+
         // Überprüfen, ob Elemente im Viewport sind
         const sections = document.querySelectorAll('.section-animate');
         sections.forEach(section => {
           const rect = section.getBoundingClientRect();
           const isInViewport = rect.top <= window.innerHeight * 0.8;
-          
+
           if (isInViewport) {
             const id = section.id;
             setIsVisible(prev => ({ ...prev, [id]: true }));
@@ -36,6 +170,12 @@ const Home: React.FC = () => {
 
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  // ScrollReveal einrichten
+  useEffect(() => {
+    const cleanup = setupScrollReveal();
+    return cleanup;
   }, []);
 
   // Typwriter Effekt
@@ -61,20 +201,21 @@ const Home: React.FC = () => {
     <div className="home-page">
       {/* Hero-Sektion mit Parallax-Effekt */}
       <div className="hero-section">
+        <ParticleBackground />
         <div className="hero-content" ref={heroRef}>
           <h1 className="animated-title">Willkommen auf meiner Portfolio-Seite</h1>
           <div className="typewriter-container">
             <p className="typewriter">{displayText}</p>
           </div>
           <div className="hero-cta">
-            <button 
-              className="primary-button" 
+            <button
+              className="primary-button"
               onClick={() => navigate('/projects')}
             >
               Meine Projekte
             </button>
-            <button 
-              className="secondary-button" 
+            <button
+              className="secondary-button"
               onClick={() => navigate('/contact')}
             >
               Kontakt
@@ -104,10 +245,11 @@ const Home: React.FC = () => {
 
       {/* Über Mich Sektion */}
       <div id="about" className={`about-section section-animate ${isVisible.about ? 'visible' : ''}`}>
+        <TechSymbols />
         <div className="section-container">
           <h2 className="section-title">Über Mich</h2>
           <div className="about-content">
-            <div className="about-image">
+            <div className="about-image" data-reveal="left" data-reveal-delay="200">
               <div className="image-frame">
                 <div className="image-placeholder">
                   {/* Platzhalter oder Bild einfügen */}
@@ -116,15 +258,15 @@ const Home: React.FC = () => {
                 <div className="neon-border"></div>
               </div>
             </div>
-            <div className="about-text">
-              <p>Als leidenschaftlicher Web-Entwickler verbinde ich kreatives Design mit technischer Präzision. 
-              Ich habe Erfahrung in der Entwicklung moderner, reaktionsfähiger und benutzerfreundlicher Webanwendungen.</p>
-              
-              <p>Mein Technologie-Stack umfasst <span className="highlight">React</span>, <span className="highlight">TypeScript</span>, 
-              <span className="highlight"> SCSS</span> und verschiedene moderne Frontend-Frameworks.</p>
-              
-              <button 
-                className="glow-button" 
+            <div className="about-text" data-reveal="right" data-reveal-delay="400">
+              <p>Als leidenschaftlicher Web-Entwickler verbinde ich kreatives Design mit technischer Präzision.
+                Ich habe Erfahrung in der Entwicklung moderner, reaktionsfähiger und benutzerfreundlicher Webanwendungen.</p>
+
+              <p>Mein Technologie-Stack umfasst <span className="highlight">React</span>, <span className="highlight">TypeScript</span>,
+                <span className="highlight"> SCSS</span> und verschiedene moderne Frontend-Frameworks.</p>
+
+              <button
+                className="glow-button"
                 onClick={() => navigate('/about')}
               >
                 Mehr über mich
@@ -137,61 +279,37 @@ const Home: React.FC = () => {
       {/* Projekte Vorschau */}
       <div id="projects" className={`projects-preview section-animate ${isVisible.projects ? 'visible' : ''}`}>
         <div className="section-container">
-          <h2 className="section-title">Aktuelle Projekte</h2>
+          <h2 className="section-title" data-reveal="up">Aktuelle Projekte</h2>
           <div className="project-cards">
-            <div className="project-card">
-                <div className="card-image">
-                <img src="/assets/REACTDASHBOARD.jpg" alt="Projekt 1" />
-                <div className="card-overlay">
-                  <a href="https://schubertchris.github.io/React-Abschluss/" className="view-project">Ansehen</a>
-                </div>
-                </div>
-              <div className="card-content">
-                <h3>Projekt 1</h3>
-                <p>Eine React-basierte Anwendung mit TypeScript und SCSS.</p>
-                <div className="card-tags">
-                  <span className="tag">React</span>
-                  <span className="tag">TypeScript</span>
-                  <span className="tag">SCSS</span>
-                </div>
-              </div>
-            </div>
-
-            <div className="project-card">
-              <div className="card-image">
-                <img src="/project-2.jpg" alt="Projekt 2" />
-                <div className="card-overlay">
-                  <a href="https://schubertchris.github.io/Javascript-Test-DCI/" className="view-project">Ansehen</a>
-                </div>
-              </div>
-              <div className="card-content">
-                <h3>Projekt 2</h3>
-                <p>Ein responsives Design-Projekt mit HTML, CSS und JavaScript.</p>
-                <div className="card-tags">
-                  <span className="tag">HTML</span>
-                  <span className="tag">CSS</span>
-                  <span className="tag">JavaScript</span>
-                </div>
-              </div>
-            </div>
-
-            <div className="project-card">
-              <div className="card-image">
-                <img src="/project-3.jpg" alt="Projekt 3" />
-                <div className="card-overlay">
-                  <a href="https://example.com/project-3" className="view-project">Ansehen</a>
-                </div>
-              </div>
-              <div className="card-content">
-                <h3>Projekt 3</h3>
-                <p>Eine Full-Stack-Webanwendung mit Node.js, Express und MongoDB.</p>
-                <div className="card-tags">
-                  <span className="tag">Node.js</span>
-                  <span className="tag">Express</span>
-                  <span className="tag">MongoDB</span>
-                </div>
-              </div>
-            </div>
+            <ProjectCard
+              id={1}
+              title="Portfolio Website"
+              description="Eine moderne Portfolio-Website mit React, TypeScript und SCSS."
+              tags={["React", "TypeScript", "SCSS"]}
+              imageUrl="/project-1.jpg"
+            />
+            <ProjectCard
+              id={2}
+              title="Dashboard App"
+              description="Ein interaktives Dashboard mit Datenvisualisierung und benutzerdefinierten Charts."
+              tags={["React", "D3.js", "API"]}
+              imageUrl="/project-2.jpg"
+            />
+            <ProjectCard
+              id={3}
+              title="E-Commerce Platform"
+              description="Eine vollständige E-Commerce-Lösung mit Warenkorb und Zahlungsabwicklung."
+              tags={["React", "Node.js", "MongoDB"]}
+              imageUrl="/project-3.jpg"
+            />
+          </div>
+          <div className="section-footer" data-reveal="up" data-reveal-delay="400">
+            <button
+              className="outline-button"
+              onClick={() => navigate('/projects')}
+            >
+              Alle Projekte ansehen
+            </button>
           </div>
         </div>
       </div>
@@ -199,9 +317,9 @@ const Home: React.FC = () => {
       {/* Skills Sektion */}
       <div id="skills" className={`skills-section section-animate ${isVisible.skills ? 'visible' : ''}`}>
         <div className="section-container">
-          <h2 className="section-title">Meine Fähigkeiten</h2>
+          <h2 className="section-title" data-reveal="up">Meine Fähigkeiten</h2>
           <div className="skills-container">
-            <div className="skill-category">
+            <div className="skill-category" data-reveal="left" data-reveal-delay="200">
               <div className="category-icon">
                 <FaCode />
               </div>
@@ -233,8 +351,8 @@ const Home: React.FC = () => {
                 </li>
               </ul>
             </div>
-            
-            <div className="skill-category">
+
+            <div className="skill-category" data-reveal="up" data-reveal-delay="400">
               <div className="category-icon">
                 <FaLaptopCode />
               </div>
@@ -267,7 +385,7 @@ const Home: React.FC = () => {
               </ul>
             </div>
 
-            <div className="skill-category">
+            <div className="skill-category" data-reveal="right" data-reveal-delay="600">
               <div className="category-icon">
                 <FaBriefcase />
               </div>
@@ -304,12 +422,12 @@ const Home: React.FC = () => {
       </div>
 
       {/* Kontakt CTA */}
-      <div className="contact-cta">
+      <div className="contact-cta" data-reveal="up">
         <div className="cta-content">
           <h2>Interessiert an einer Zusammenarbeit?</h2>
           <p>Lass uns gemeinsam deine Vision umsetzen!</p>
-          <button 
-            className="cta-button" 
+          <button
+            className="cta-button"
             onClick={() => navigate('/contact')}
           >
             Kontaktiere mich
@@ -319,6 +437,9 @@ const Home: React.FC = () => {
           <div className="gradient-overlay"></div>
         </div>
       </div>
+
+      {/* Scroll to Top Button */}
+      <ScrollToTop />
     </div>
   );
 };
