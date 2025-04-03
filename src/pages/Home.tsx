@@ -3,7 +3,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { FaGithub, FaLinkedin, FaTwitter, FaArrowDown, FaCode, FaBriefcase, FaLaptopCode, FaArrowUp } from 'react-icons/fa';
 import ParticleBackground from '../components/ui/ParticleBackground';
-import { scrollToElementNew, isElementInViewportNew, setupScrollReveal } from '../components/Utils/scrollUtils';
+import { setupScrollReveal } from '../components/Utils/scrollUtils.tsx';
 import './Home.scss';
 
 interface ProjectCardProps {
@@ -180,7 +180,7 @@ const Home: React.FC = () => {
 
   // Typwriter Effekt
   const [displayText, setDisplayText] = useState("");
-  const fullText = "Ich entwickle moderne Webapplikationen.";
+  const fullText = "I ch entwickle moderne Webapplikationen.";
   const typingSpeed = 100;
 
   useEffect(() => {
