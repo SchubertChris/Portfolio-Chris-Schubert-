@@ -25,3 +25,4 @@ const ContactCTA: React.FC = () => {
 };
 
 export default ContactCTA;
+// CTA (Call to Action) für die Kontaktseite

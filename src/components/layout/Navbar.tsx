@@ -25,7 +25,7 @@ const Navbar: React.FC = () => {
             <NeonButtonMitTooltip
               icon={<FaHome />}
               color="blue"
-              tooltipText="Home"
+              tooltipText="Startseite"
               tooltipPosition="bottom"
               onClick={() => handleNavigation('/')}
             />
@@ -34,7 +34,7 @@ const Navbar: React.FC = () => {
             <NeonButtonMitTooltip
               icon={<FaProjectDiagram />}
               color="green"
-              tooltipText="Projects"
+              tooltipText="Projekte"
               tooltipPosition="bottom"
               onClick={() => handleNavigation('/projects')}
             />
@@ -43,7 +43,7 @@ const Navbar: React.FC = () => {
             <NeonButtonMitTooltip
               icon={<FaUser />}
               color="purple"
-              tooltipText="About"
+              tooltipText="Über mich"
               tooltipPosition="bottom"
               onClick={() => handleNavigation('/about')}
             />
@@ -52,7 +52,7 @@ const Navbar: React.FC = () => {
             <NeonButtonMitTooltip
               icon={<FaEnvelope />}
               color="red"
-              tooltipText="Contact"
+              tooltipText="Kontakt"
               tooltipPosition="bottom"
               onClick={() => handleNavigation('/contact')}
             />
