@@ -1,6 +1,7 @@
 {
     "version": 2,
     "buildCommand": "npm run build",
+    "installCommand": "npm install",
     "outputDirectory": "dist",
     "framework": "vite",
     "routes": [
@@ -25,5 +26,10 @@
           }
         ]
       }
-    ]
-}
+    ],
+    "build": {
+      "env": {
+        "VITE_BUILD": "true"
+      }
+    }
+  }
