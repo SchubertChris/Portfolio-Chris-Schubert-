@@ -79,7 +79,7 @@ const Contact: React.FC = () => {
         }
         break;
 
-      case 'email':
+      case 'email': {
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         if (!value.trim()) {
           errorMessage = 'E-Mail ist erforderlich';
@@ -89,6 +89,7 @@ const Contact: React.FC = () => {
           isValid = false;
         }
         break;
+      }
 
       case 'subject':
         if (!value.trim()) {

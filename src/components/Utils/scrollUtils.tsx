@@ -63,6 +63,3 @@ export const setupScrollReveal = (): (() => void) => {
 // In scrollUtils.ts
 export const scrollToElementNew = scrollToElement;
 export const isElementInViewportNew = isElementInViewport;
-
-
-

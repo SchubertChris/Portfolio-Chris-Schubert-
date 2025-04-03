@@ -14,7 +14,7 @@ interface ProjectCardProps {
   imageUrl: string;
 }
 
-const ProjectCard: React.FC<ProjectCardProps> = ({ id, title, description, tags, imageUrl }) => {
+const ProjectCard: React.FC<ProjectCardProps> = ({ title, description, tags, imageUrl }) => {
   const cardRef = useRef<HTMLDivElement>(null);
   const [rotateX, setRotateX] = useState(0);
   const [rotateY, setRotateY] = useState(0);

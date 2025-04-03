@@ -26,13 +26,14 @@ const SkillBar: React.FC<SkillBarProps> = ({ name, level, color, delay = 0 }) =>
             { threshold: 0.1 }
         );
 
-        if (skillBarRef.current) {
-            observer.observe(skillBarRef.current);
+        const currentRef = skillBarRef.current;
+        if (currentRef) {
+            observer.observe(currentRef);
         }
 
         return () => {
-            if (skillBarRef.current) {
-                observer.unobserve(skillBarRef.current);
+            if (currentRef) {
+                observer.unobserve(currentRef);
             }
         };
     }, [delay]);
