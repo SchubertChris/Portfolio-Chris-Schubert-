@@ -23,7 +23,7 @@ const HeroSection: React.FC = () => {
 
     // Typwriter Effekt
     const [displayText, setDisplayText] = useState("");
-    const fullText = "Ich entwickle moderne Webapplikationen.";
+    const fullText = "I ch entwickle moderne Webapplikationen.";
     const typingSpeed = 100;
 
     useEffect(() => {
