@@ -546,7 +546,8 @@
           font-weight: 700;
           color: var(--primary);
           margin-bottom: 0.5rem;
-          text-shadow: 0 0 10px var(--primary-glow);
+          text-shadow: 0 0 10px var(--primary-glow
+          );
           min-height: 3rem; // Verhindert Springen während der Animation
           display: flex;
           justify-content: center;
@@ -712,6 +713,15 @@
       z-index: 2;
       transition: all 0.3s ease;
       will-change: transform;
+      top: 0; // Zentrieren Sie das Icon auf der Zeitlinie
+      transform: translateY(-50%); // Verschieben Sie das Icon vertikal
+
+      svg {
+        position: absolute; // Zentrieren Sie das SVG-Icon
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
 
       &::before {
         content: '';
@@ -726,7 +736,7 @@
       }
 
       &:hover {
-        transform: rotate(360deg);
+        transform: translateY(-50%) rotate(360deg);
         transition: transform 0.8s ease;
       }
 

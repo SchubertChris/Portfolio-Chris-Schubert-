@@ -19,7 +19,7 @@ const AboutSection: React.FC<AboutSectionProps> = ({ isVisible }) => {
                     <div className="about-image" data-reveal="left" data-reveal-delay="200">
                         <div className="image-frame">
                             <div className="image-placeholder">
-                                <img src="/placeholder-profile.jpg" alt="Profilbild" />
+                                <img src="/Profilbild.jpg" alt="Profilbild" />
                             </div>
                             <div className="neon-border"></div>
                         </div>

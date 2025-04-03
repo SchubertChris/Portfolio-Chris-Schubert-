@@ -18,16 +18,16 @@ const TimelineSection: React.FC<TimelineSectionProps> = ({ isVisible }) => {
           <div className="timeline-line"></div>
 
           <TimelineItem
-            year="2016"
-            title="Bachelor-Abschluss in Informatik"
-            description="Abschluss meines Studiums mit Schwerpunkt auf Softwareentwicklung und Webprogrammierung."
+            year="2012-2015"
+            title="Abschluss als Hotelfachmann"
+            description="Weitere berufliche Erfahrungen in der Gastronomie und Hotellerie. Entwicklung von Kommunikations- und Teamfähigkeiten."
             icon={<FaGraduationCap />}
             isLeft={true}
           />
 
           <TimelineItem
-            year="2017"
-            title="Junior Web Developer"
+            year="2015 -2018"
+            title="Stationskellner"
             description="Einstieg in die Berufswelt als Junior Web Developer bei einer Digitalagentur. Erste Erfahrungen mit kommerziellen Projekten und Kundenbetreuung."
             icon={<FaCode />}
             isLeft={false}
