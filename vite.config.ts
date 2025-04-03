@@ -4,9 +4,15 @@ import react from '@vitejs/plugin-react';
 export default defineConfig({
   plugins: [react()],
   base: '/',
-  resolve: {
-    alias: {
-      '@': '/src',
-    },
+  build: {
+    outDir: 'dist',
+    assetsDir: 'assets',
+    emptyOutDir: true,
+    // Sicherstellen, dass die richtigen MIME-Typen verwendet werden
+    rollupOptions: {
+      output: {
+        manualChunks: undefined
+      }
+    }
   }
 });

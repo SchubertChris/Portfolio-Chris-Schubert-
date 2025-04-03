@@ -1,24 +1,22 @@
 {
     "version": 2,
-    "buildCommand": "npm run build",
-    "installCommand": "npm install",
-    "outputDirectory": "dist",
-    "framework": "vite",
-    "headers": [
+    "routes": [
       {
-        "source": "/assets/(.*)\\.js",
-        "headers": [
-          { "key": "Content-Type", "value": "application/javascript" }
-        ]
+        "handle": "filesystem"
       },
       {
-        "source": "/assets/(.*)\\.css",
-        "headers": [
-          { "key": "Content-Type", "value": "text/css" }
-        ]
+        "src": "/assets/(.*)\\.js",
+        "headers": { "content-type": "application/javascript" },
+        "continue": true
+      },
+      {
+        "src": "/assets/(.*)\\.css",
+        "headers": { "content-type": "text/css" },
+        "continue": true
+      },
+      {
+        "src": "/(.*)",
+        "dest": "/index.html"
       }
-    ],
-    "routes": [
-      { "src": "/(.*)", "dest": "/index.html" }
     ]
   }
