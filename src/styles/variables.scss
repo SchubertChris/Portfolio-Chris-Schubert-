@@ -3,11 +3,11 @@
 
 // Analoge Farbpalette basierend auf #c8a253 (Gold)
 $primary: #c8a253;
-$primary-dark: color.adjust($primary, $lightness: -15%);  // Dunkleres Gold
-$primary-light: color.adjust($primary, $lightness: 15%);  // Helleres Gold
+$primary-dark: color.adjust($primary, $lightness: -15%); // Dunkleres Gold
+$primary-light: color.adjust($primary, $lightness: 15%); // Helleres Gold
 // Analoge Farben (30° Abstand auf dem Farbrad)
-$primary-analog1: color.adjust($primary, $hue: -30);  // Orange-Gold
-$primary-analog2: color.adjust($primary, $hue: 30);   // Gelblich-Gold
+$primary-analog1: color.adjust($primary, $hue: -30); // Orange-Gold
+$primary-analog2: color.adjust($primary, $hue: 30); // Gelblich-Gold
 // Glow-Varianten
 $primary-glow: rgba($primary, 0.8);
 $primary-dark-glow: rgba($primary-dark, 0.8);
@@ -33,14 +33,14 @@ $text-light-muted: rgba(255, 255, 255, 0.7);
 $font-family-primary: 'Roboto', sans-serif;
 $font-family-secondary: 'Montserrat', sans-serif;
 $font-family-code: 'Fira Code', monospace;
-$font-size-xs: 0.75rem;    // 12px
-$font-size-sm: 0.875rem;   // 14px
-$font-size-base: 1rem;     // 16px
-$font-size-md: 1.125rem;   // 18px
-$font-size-lg: 1.25rem;    // 20px
-$font-size-xl: 1.5rem;     // 24px
-$font-size-2xl: 1.875rem;  // 30px
-$font-size-3xl: 2.25rem;   // 36px
+$font-size-xs: 0.75rem; // 12px
+$font-size-sm: 0.875rem; // 14px
+$font-size-base: 1rem; // 16px
+$font-size-md: 1.125rem; // 18px
+$font-size-lg: 1.25rem; // 20px
+$font-size-xl: 1.5rem; // 24px
+$font-size-2xl: 1.875rem; // 30px
+$font-size-3xl: 2.25rem; // 36px
 // Komponentengrößen
 $card-width: 300px;
 $card-height: 400px;
@@ -66,14 +66,14 @@ $breakpoint-xl: 1200px;
   --primary-light: #{$primary-light};
   --primary-analog1: #{$primary-analog1};
   --primary-analog2: #{$primary-analog2};
- 
+
   // Glow-Varianten
   --primary-glow: #{$primary-glow};
   --primary-dark-glow: #{$primary-dark-glow};
   --primary-light-glow: #{$primary-light-glow};
   --primary-analog1-glow: #{$primary-analog1-glow};
   --primary-analog2-glow: #{$primary-analog2-glow};
- 
+
   --blue: #{$blue};
   --blue-glow: #{$blue-glow};
   --yellow: #{$yellow};
@@ -82,18 +82,18 @@ $breakpoint-xl: 1200px;
   --red-glow: #{$red-glow};
   --green: #{$green};
   --green-glow: #{$green-glow};
- 
+
   --background-dark: #{$background-dark};
   --background-dark-lighter: #{$background-dark-lighter};
   --background-dark-accent: #{$background-dark-accent};
   --text-light: #{$text-light};
   --text-light-muted: #{$text-light-muted};
- 
+
   // Typografie
   --font-family-primary: #{$font-family-primary};
   --font-family-secondary: #{$font-family-secondary};
   --font-family-code: #{$font-family-code};
- 
+
   // Komponenten
   --card-width: #{$card-width};
   --card-height: #{$card-height};
@@ -101,12 +101,12 @@ $breakpoint-xl: 1200px;
   --button-height: #{$button-height};
   --nav-item-width: #{$nav-item-width};
   --nav-item-height: #{$nav-item-height};
- 
+
   // Animation
   --transition-fast: #{$transition-fast};
   --transition-slow: #{$transition-slow};
   --cubic-bezier: #{$cubic-bezier};
-  
+
   // Navbar-Höhe (wird in App.scss verwendet)
   --navbar-height: 120px;
   --footer-height: 60px;

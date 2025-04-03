@@ -1,0 +1,29 @@
+// src/styles/_project-mixins.scss
+// Neue Datei für projektspezifische Mixins
+
+@mixin project-card-hover {
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+
+    .project-image {
+        .project-overlay {
+            opacity: 1;
+        }
+
+        img {
+            transform: scale(1.1);
+        }
+    }
+}
+
+@mixin tech-tag($bg-color: var(--background-dark-accent), $text-color: var(--text-light)) {
+    font-size: 0.8rem;
+    padding: 0.3rem 0.8rem;
+    background-color: $bg-color;
+    color: $text-color;
+    border-radius: 30px;
+    transition: all 0.2s ease;
+
+    &:hover {
+        background-color: rgba(200, 162, 83, 0.2);
+    }
+}
