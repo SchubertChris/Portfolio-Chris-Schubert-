@@ -6,30 +6,5 @@
     "framework": "vite",
     "routes": [
       { "src": "/(.*)", "dest": "/index.html" }
-    ],
-    "headers": [
-      {
-        "source": "/assets/(.*)",
-        "headers": [
-          {
-            "key": "Content-Type",
-            "value": "application/javascript"
-          }
-        ]
-      },
-      {
-        "source": "/assets/index-CPkJDmQH.css",
-        "headers": [
-          {
-            "key": "Content-Type", 
-            "value": "text/css"
-          }
-        ]
-      }
-    ],
-    "build": {
-      "env": {
-        "VITE_BUILD": "true"
-      }
-    }
+    ]
   }
