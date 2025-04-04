@@ -62,7 +62,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ title, description, tags, ima
             <div className="card-image">
                 <img src={imageUrl} alt={title} />
                 <div className="card-overlay">
-                    <a href="#" className="view-project">Ansehen</a>
+                    <a href="https://schubertchris.github.io/React-Abschluss/" className="view-project">Ansehen</a>
                 </div>
             </div>
             <div className="card-content">
