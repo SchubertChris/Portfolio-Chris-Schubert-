@@ -1,7 +1,7 @@
 // src/components/ui/NeonButtonMitTooltip.tsx
 
 import React, { useState, useRef } from 'react'
-import './NeonButtonMitTooltip.scss'
+import '../../styles/utilities/_NeonButtonMitTooltip.scss' // Importiere die CSS-Datei für den NeonButton mit Tooltip
 
 interface NeonButtonMitTooltipProps {
   icon: React.ReactNode

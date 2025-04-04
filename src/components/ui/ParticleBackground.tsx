@@ -1,6 +1,6 @@
 // src/components/ParticleBackground.tsx
 import React, { useEffect, useRef } from 'react';
-import './ParticleBackground.scss';
+import '../../styles/utilities/_ParticleBackground.scss'; // Importiere die CSS-Datei für den Partikel-Hintergrund
 
 interface Particle {
     x: number;

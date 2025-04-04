@@ -5,7 +5,7 @@
 @use './styles/abstracts/mixins';
 
 // Komponenten-Styles
-@use './components/ui/NeonButtonMitTooltip';
+@use './styles/utilities/NeonButtonMitTooltip.scss';
 @use './styles/layout/Navbar.scss';
 
 // App-Styles
