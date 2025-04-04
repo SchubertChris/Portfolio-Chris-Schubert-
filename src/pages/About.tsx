@@ -1,5 +1,6 @@
 // src/pages/About.tsx
 import React, { useEffect, useState } from 'react';
+import Seo from '../components/shared/Seo';  // SEO-Komponente importieren
 import AboutHero from '../components/about/AboutHero';
 import AboutDetails from '../components/about/AboutDetails';
 import TimelineSection from '../components/about/TimelineSection';
@@ -21,7 +22,6 @@ const About: React.FC = () => {
   // Überprüfen, ob Elemente im Viewport sind
   useEffect(() => {
     const handleScroll = () => {
-      // Überprüfen, ob Elemente im Viewport sind
       const sections = document.querySelectorAll('.section-animate');
       sections.forEach(section => {
         const rect = section.getBoundingClientRect();
@@ -35,9 +35,7 @@ const About: React.FC = () => {
     };
 
     window.addEventListener('scroll', handleScroll);
-    // Initiales Auslösen, um Elemente zu erkennen, die bereits sichtbar sind
-    handleScroll();
-    
+    handleScroll(); // Initiales Auslösen
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -49,6 +47,15 @@ const About: React.FC = () => {
 
   return (
     <div className="about-page">
+      {/* SEO-Komponente für die About-Seite */}
+      <Seo 
+        title="Über mich – Chris Schubert Webdesign & React Entwicklung"
+        description="Erfahren Sie mehr über Chris Schubert, einen Webdesigner und React Entwickler aus Potsdam mit einer Leidenschaft für UI Design und Frontend-Entwicklung."
+        keywords="Über mich, Chris Schubert, Webdesign, React, UI Design, Frontend, Potsdam, Entwickler"
+        image="https://deine-domain.de/assets/about-og-image.jpg"  // Beispielbild für OG-Image
+        url="https://deine-domain.de/about"
+      />
+      
       <AboutHero />
       <AboutDetails isVisible={isVisible.about} />
       <TimelineSection isVisible={isVisible.timeline} />
