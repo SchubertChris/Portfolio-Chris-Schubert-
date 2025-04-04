@@ -2,7 +2,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { FaGithub, FaLinkedin, FaTwitter, FaEnvelope, FaArrowUp } from 'react-icons/fa';
-import './Footer.scss';
+import '../../styles/layout/Footer.scss'; // Importiere die CSS-Datei für den Footer
 
 const Footer: React.FC = () => {
   const scrollToTop = () => {

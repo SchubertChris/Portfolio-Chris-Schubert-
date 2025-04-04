@@ -7,7 +7,7 @@ import SkillsSection from '../components/home/SkillsSection.tsx';
 import ContactCTA from '../components/home/ContactCTA.tsx';
 import ScrollToTop from '../components/ui/ScrollToTop.tsx';
 import { setupScrollReveal } from '../components/Utils/scrollUtils.tsx';
-import './Home.scss';
+import '../styles/pages/Home.scss'; // Importiere die CSS-Datei für die Home-Seite
 
 const Home: React.FC = () => {
   const [isVisible, setIsVisible] = useState<Record<string, boolean>>({

@@ -8,7 +8,7 @@ import ScrollToTop from '../components/ui/ScrollToTop';
 import { setupScrollReveal } from '../components/Utils/scrollUtils';
 import { PROJECTS_DATA } from '../data/projects.data';
 import { ProjectData } from '../types';
-import './Projects.scss';
+import '../styles/pages/Projects.scss'; // Importiere die CSS-Datei für die Projekte-Seite
 
 const Projects: React.FC = () => {
   const [selectedProject, setSelectedProject] = useState<ProjectData | null>(null);

@@ -2,7 +2,7 @@ import React from 'react'
 import { useNavigate, useLocation } from 'react-router-dom'
 import { FaHome, FaProjectDiagram, FaUser, FaEnvelope } from 'react-icons/fa'
 import NeonButtonMitTooltip from '../ui/NeonButtonMitTooltip'
-import './Navbar.scss'
+import '../../styles/layout/Navbar.scss' // Importiere die CSS-Datei für die Navbar
 
 const Navbar: React.FC = () => {
   const navigate = useNavigate()

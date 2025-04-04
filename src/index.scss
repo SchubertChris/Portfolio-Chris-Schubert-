@@ -1,11 +1,12 @@
 // src/index.scss
 // Grundlegende Stile und Variablen
-@use './styles/variables';
-@use './styles/global';
+@use './styles/abstracts/variables';
+@use './styles/abstracts/global';
+@use './styles/abstracts/mixins';
 
 // Komponenten-Styles
 @use './components/ui/NeonButtonMitTooltip';
-@use './components/layout/Navbar';
+@use './styles/layout/Navbar.scss';
 
 // App-Styles
 @use './App';

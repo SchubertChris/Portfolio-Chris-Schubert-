@@ -8,7 +8,7 @@ import InterestsSection from '../components/about/InterestsSection';
 import ContactCTA from '../components/shared/ContactCTA';
 import ScrollToTop from '../components/ui/ScrollToTop';
 import { setupScrollReveal } from '../components/Utils/scrollUtils';
-import './About.scss';
+import '../styles/pages/About.scss'; // Importiere die CSS-Datei für die About-Seite
 
 const About: React.FC = () => {
   const [isVisible, setIsVisible] = useState<Record<string, boolean>>({

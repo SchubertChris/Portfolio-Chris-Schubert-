@@ -5,7 +5,7 @@ import ContactInfoSection from '../components/contact/ContactInfoSection';
 import ContactForm from '../components/contact/ContactForm';
 import ScrollToTop from '../components/ui/ScrollToTop';
 import { setupScrollReveal } from '../components/Utils/scrollUtils';
-import './Contact.scss';
+import '../styles/pages/Contact.scss'; // Importiere die CSS-Datei für die Kontaktseite
 
 const Contact: React.FC = () => {
   // ScrollReveal einrichten
