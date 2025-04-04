@@ -20,7 +20,7 @@ const AboutDetails: React.FC<AboutDetailsProps> = ({ isVisible }) => {
           <div className="about-image" data-reveal="left">
             <div className="image-frame">
               <div className="image-placeholder">
-                <img src="/about-profile.jpg" alt="Profilbild" />
+                <img src="/Profilbild.jpg" alt="Profilbild" />
               </div>
               <div className="neon-border"></div>
             </div>
