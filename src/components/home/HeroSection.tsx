@@ -1,34 +1,35 @@
-// src/components/home/HeroSection.tsx
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState, useCallback, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { FaGithub, FaLinkedin, FaTwitter, FaArrowDown } from 'react-icons/fa';
 import ParticleBackground from '../ui/ParticleBackground';
-import './HeroSection.scss'; // Importiere die CSS-Datei für das Styling
+import './HeroSection.scss';
 
 const HeroSection: React.FC = () => {
     const navigate = useNavigate();
     const heroRef = useRef<HTMLDivElement>(null);
 
-    // Parallax Effekt für Hero-Sektion
-    useEffect(() => {
-        const handleScroll = () => {
-            if (heroRef.current) {
-                const scrollPos = window.scrollY;
-                heroRef.current.style.transform = `translateY(${scrollPos * 0.4}px)`;
-            }
-        };
-
-        window.addEventListener('scroll', handleScroll);
-        return () => window.removeEventListener('scroll', handleScroll);
+    // Memoize the scroll handler to prevent unnecessary re-creations
+    const handleScroll = useCallback(() => {
+        if (heroRef.current) {
+            const scrollPos = window.scrollY;
+            heroRef.current.style.transform = `translateY(${scrollPos * 0.4}px)`;
+        }
     }, []);
 
-    // Typwriter Effekt
+    // Use useEffect for scroll event with proper cleanup
+    useEffect(() => {
+        window.addEventListener('scroll', handleScroll);
+        return () => window.removeEventListener('scroll', handleScroll);
+    }, [handleScroll]);
+
+    // Optimize typewriter effect
+    const fullText = useMemo(() => "I ch entwickle moderne Webapplikationen.", []);
     const [displayText, setDisplayText] = useState("");
-    const fullText = "I ch entwickle moderne Webapplikationen.";
-    const typingSpeed = 100;
 
     useEffect(() => {
         let index = 0;
+        const typingSpeed = 100;
+        
         const typingInterval = setInterval(() => {
             if (index < fullText.length) {
                 setDisplayText(prevText => prevText + fullText.charAt(index));
@@ -39,7 +40,26 @@ const HeroSection: React.FC = () => {
         }, typingSpeed);
 
         return () => clearInterval(typingInterval);
-    }, []);
+    }, [fullText]);
+
+    // Memoize social links to prevent unnecessary re-renders
+    const socialLinks = useMemo(() => [
+        { 
+            icon: FaGithub, 
+            href: "https://github.com", 
+            label: "GitHub" 
+        },
+        { 
+            icon: FaLinkedin, 
+            href: "https://linkedin.com", 
+            label: "LinkedIn" 
+        },
+        { 
+            icon: FaTwitter, 
+            href: "https://twitter.com", 
+            label: "Twitter" 
+        }
+    ], []);
 
     return (
         <div className="hero-section">
@@ -53,32 +73,36 @@ const HeroSection: React.FC = () => {
                     <button
                         className="primary-button"
                         onClick={() => navigate('/projects')}
+                        aria-label="Meine Projekte"
                     >
                         Meine Projekte
                     </button>
                     <button
                         className="secondary-button"
                         onClick={() => navigate('/contact')}
+                        aria-label="Kontakt"
                     >
                         Kontakt
                     </button>
                 </div>
                 <div className="social-links">
-                    <a href="https://github.com" target="_blank" rel="noopener noreferrer" className="social-icon">
-                        <FaGithub />
-                    </a>
-                    <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="social-icon">
-                        <FaLinkedin />
-                    </a>
-                    <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="social-icon">
-                        <FaTwitter />
-                    </a>
+                    {socialLinks.map(({ icon: Icon, href, label }) => (
+                        <a 
+                            key={href}
+                            href={href} 
+                            target="_blank" 
+                            rel="noopener noreferrer" 
+                            className="social-icon"
+                            aria-label={label}
+                        >
+                            <Icon />
+                        </a>
+                    ))}
                 </div>
-                <div className="scroll-indicator">
+                <div className="scroll-indicator" aria-hidden="true">
                     <FaArrowDown className="bounce" />
                 </div>
             </div>
-            {/* Hintergrund mit Neon-Gradient-Effekt */}
             <div className="hero-background">
                 <div className="gradient-overlay"></div>
                 <div className="grid-overlay"></div>
@@ -87,4 +111,4 @@ const HeroSection: React.FC = () => {
     );
 };
 
-export default HeroSection;
+export default React.memo(HeroSection);
