@@ -76,3 +76,20 @@ nav {
     height: 40px;
   }
 }
+
+.navbar--hidden {
+  padding: 0.3rem 1rem;
+  height: 50px;
+
+  .logo img {
+    width: 40px;
+    height: 40px;
+    transform: scale(1);
+  }
+
+  .nav-menu {
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity var(--transition-fast) ease;
+  }
+}

@@ -7,6 +7,7 @@ import Home from '../../pages/Home';
 import Projects from '../../pages/Projects';
 import About from '../../pages/About';
 import Contact from '../../pages/Contact';
+import ScrollToTopOnRouteChange from '../ui/ScrollToTopOnRouteChange';
 
 const Layout: React.FC = () => {
   const location = useLocation();
@@ -14,6 +15,7 @@ const Layout: React.FC = () => {
   return (
     <div className="app">
       <Navbar />
+      <ScrollToTopOnRouteChange />
       <main className="main-content">
         <Routes location={location} key={location.pathname}>
           <Route path="/" element={<Home />} />
