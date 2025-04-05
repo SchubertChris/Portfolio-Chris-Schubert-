@@ -2,6 +2,7 @@
 import React from 'react';
 import { FaCode, FaLaptopCode, FaGraduationCap, FaCoffee } from 'react-icons/fa';
 import TimelineItem from './TimelineItem';
+import './TimelineSection.scss'; // Importiere die CSS-Datei für das Styling
 
 interface TimelineSectionProps {
   isVisible: boolean;

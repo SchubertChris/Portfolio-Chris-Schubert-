@@ -1,6 +1,7 @@
 // src/components/home/SkillsSection.tsx
 import React from 'react';
 import { FaCode, FaBriefcase, FaLaptopCode } from 'react-icons/fa';
+import './SkillsSection.scss'; // Importiere die CSS-Datei für das Styling
 
 interface SkillsSectionProps {
     isVisible: boolean;

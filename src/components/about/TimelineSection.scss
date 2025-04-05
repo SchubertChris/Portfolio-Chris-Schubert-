@@ -1,0 +1,42 @@
+// src/components/about/TimelineSection.scss
+
+.timeline-section {
+    padding: 8rem 0;
+    background-color: var(--background-dark);
+    position: relative;
+
+    .section-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 2rem;
+    }
+
+    .timeline-container {
+        position: relative;
+        max-width: 1000px;
+        margin: 4rem auto 0;
+        padding: 0 2rem;
+
+        @media (max-width: 768px) {
+            padding: 0 1rem;
+        }
+    }
+
+    .timeline-line {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 50%;
+        width: 4px;
+        background: linear-gradient(to bottom,
+                transparent,
+                var(--primary),
+                var(--primary),
+                transparent);
+        transform: translateX(-50%);
+
+        @media (max-width: 768px) {
+            left: 30px;
+        }
+    }
+}

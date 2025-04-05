@@ -1,6 +1,7 @@
 // src/components/projects/ProjectHero.tsx
 import React, { useRef, useEffect } from 'react';
 import ParticleBackground from '../ui/ParticleBackground';
+import './ProjectHero.scss'; // Importiere die CSS-Datei für das Styling
 
 const ProjectHero: React.FC = () => {
     const heroRef = useRef<HTMLDivElement>(null);

@@ -1,6 +1,7 @@
 // src/components/about/SkillsSection.tsx
 import React from 'react';
 import SkillBarComponent from '../ui/SkillBar';
+import './SkillsSection.scss'; // Importiere die CSS-Datei für das Styling
 
 interface SkillsSectionProps {
   isVisible: boolean;

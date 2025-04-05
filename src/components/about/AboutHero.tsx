@@ -2,6 +2,7 @@
 import React, { useRef, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import ParticleBackground from '../ui/ParticleBackground';
+import './AboutHero.scss'; // Importiere die CSS-Datei für das Styling
 
 const AboutHero: React.FC = () => {
   const navigate = useNavigate();

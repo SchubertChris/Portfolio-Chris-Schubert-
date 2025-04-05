@@ -1,5 +1,6 @@
 // src/components/ui/SkillBar.tsx
 import React, { useEffect, useRef, useState } from 'react';
+import './SkillBar.scss';
 
 interface SkillBarProps {
     name: string;

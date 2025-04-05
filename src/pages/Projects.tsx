@@ -10,6 +10,7 @@ import { setupScrollReveal } from '../components/Utils/scrollUtils';
 import { PROJECTS_DATA } from '../data/projects.data';
 import { ProjectData } from '../types';
 import '../styles/pages/Projects.scss'; // Importiere die CSS-Datei für die Projekte-Seite
+import '../styles/shared/ProjectCard.scss'; // Importiere die CSS-Datei für die Projektkarten
 
 const Projects: React.FC = () => {
   const [selectedProject, setSelectedProject] = useState<ProjectData | null>(null);
@@ -64,14 +65,14 @@ const Projects: React.FC = () => {
   return (
     <div className="projects-page">
       {/* SEO-Komponente für die Projects-Seite */}
-      <Seo 
+      <Seo
         title="Projekte von Chris Schubert – Webdesign & React Entwicklung"
         description="Entdecke die Projekte von Chris Schubert. Webdesign, UI/UX-Design und React-Projekte, die innovative Lösungen bieten."
         keywords="Projekte, Webdesign, React, UI Design, Frontend Entwicklung, Portfolio"
         image="https://deine-domain.de/assets/projects-og-image.jpg"
         url="https://deine-domain.de/projects"
       />
-      
+
       <ProjectHero />
 
       <ProjectFilter

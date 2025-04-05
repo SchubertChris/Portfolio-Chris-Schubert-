@@ -1,0 +1,41 @@
+// src/components/ui/CountUpAnimation.scss
+
+.count-up-animation {
+    display: inline-block;
+    font-size: inherit;
+    font-weight: inherit;
+    color: inherit;
+    transition: all 0.3s ease;
+    will-change: content;
+    position: relative;
+
+    // Optional: Hinzufügen eines subtilen Glüheffekts während der Animation
+    &.animating {
+        text-shadow: 0 0 8px var(--primary-glow);
+    }
+
+    // Optional: Stilvoller Platzhalter während des Ladens
+    &.placeholder {
+        &::after {
+            content: '';
+            display: inline-block;
+            width: 0.8em;
+            height: 2px;
+            background-color: currentColor;
+            vertical-align: middle;
+            animation: blink 1s infinite;
+        }
+    }
+}
+
+@keyframes blink {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.3;
+    }
+}

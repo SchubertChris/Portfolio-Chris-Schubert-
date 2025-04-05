@@ -1,5 +1,7 @@
 // src/components/home/ProjectCard.tsx
 import React, { useRef, useState } from 'react';
+import '../../styles/shared/ProjectCard.scss'; // Importiere die CSS-Datei für das Styling
+
 
 interface ProjectCardProps {
     id: number;

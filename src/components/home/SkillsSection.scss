@@ -1,0 +1,119 @@
+// src/components/home/SkillsSection.scss
+
+.skills-section {
+    padding: 8rem 0;
+    background-color: var(--background-dark-lighter);
+    position: relative;
+
+    &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background:
+            radial-gradient(circle at 80% 20%, rgba(200, 162, 83, 0.1) 0%, transparent 30%),
+            radial-gradient(circle at 20% 80%, rgba(200, 162, 83, 0.1) 0%, transparent 30%);
+    }
+
+    .section-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 2rem;
+    }
+
+    .skills-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 3rem;
+        margin-top: 3rem;
+    }
+
+    .skill-category {
+        background-color: var(--background-dark);
+        padding: 2rem;
+        border-radius: 10px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        transition: transform var(--transition-fast) ease;
+        transform-style: preserve-3d;
+        perspective: 1000px;
+
+        &:hover {
+            transform: translateY(-10px);
+
+            .category-icon {
+                color: var(--primary);
+                animation: float 2s infinite ease-in-out;
+            }
+        }
+
+        .category-icon {
+            font-size: 2.5rem;
+            color: var(--text-light-muted);
+            margin-bottom: 1.5rem;
+            transition: color var(--transition-fast) ease;
+        }
+
+        h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--text-light);
+        }
+
+        .skill-list {
+            list-style: none;
+
+            li {
+                margin-bottom: 1.5rem;
+
+                .skill-name {
+                    display: block;
+                    font-size: 1rem;
+                    margin-bottom: 0.5rem;
+                    color: var(--text-light-muted);
+                }
+
+                .skill-bar {
+                    height: 8px;
+                    background-color: var(--background-dark-accent);
+                    border-radius: 4px;
+                    overflow: hidden;
+
+                    .skill-level {
+                        height: 100%;
+                        background: linear-gradient(90deg, var(--primary-dark), var(--primary), var(--primary-light));
+                        border-radius: 4px;
+                        animation: skillAnimation 1.5s ease forwards;
+                        transform-origin: left;
+                        transform: scaleX(0);
+                    }
+                }
+            }
+        }
+    }
+}
+
+@keyframes skillAnimation {
+    from {
+        transform: scaleX(0);
+    }
+
+    to {
+        transform: scaleX(1);
+    }
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(0px);
+    }
+
+    50% {
+        transform: translateY(-15px);
+    }
+
+    100% {
+        transform: translateY(0px);
+    }
+}

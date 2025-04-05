@@ -1,6 +1,7 @@
 // src/components/ui/ScrollToTop.tsx
 import React, { useEffect, useState } from 'react';
 import { FaArrowUp } from 'react-icons/fa';
+import './ScrollToTop.scss'; // Importiere die CSS-Datei für das Styling
 
 const ScrollToTop: React.FC = () => {
     const [visible, setVisible] = useState(false);

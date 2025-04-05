@@ -1,10 +1,11 @@
 // src/components/shared/ContactCTA.tsx
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import '../../styles/shared/ContactCTA.scss'; // Importiere die CSS-Datei für das Styling
 
 const ContactCTA: React.FC = () => {
   const navigate = useNavigate();
-  
+
   return (
     <div className="contact-cta" data-reveal="up">
       <div className="cta-content">

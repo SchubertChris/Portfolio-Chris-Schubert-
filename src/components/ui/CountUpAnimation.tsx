@@ -1,5 +1,7 @@
 // src/components/ui/CountUpAnimation.tsx
 import React, { useState, useEffect, useRef } from 'react';
+import './CountUpAnimation.scss'; // Importiere die CSS-Datei für das Styling
+
 
 interface CountUpProps {
     end: number;

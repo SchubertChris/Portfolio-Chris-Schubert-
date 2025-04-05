@@ -5,10 +5,11 @@ import HeroSection from '../components/home/HeroSection.tsx';
 import AboutSection from '../components/home/AboutSection.tsx';
 import ProjectsSection from '../components/home/ProjectsSection.tsx';
 import SkillsSection from '../components/home/SkillsSection.tsx';
-import ContactCTA from '../components/home/ContactCTA.tsx';
+import ContactCTA from '../components/shared/ContactCTA';
 import ScrollToTop from '../components/ui/ScrollToTop.tsx';
 import { setupScrollReveal } from '../components/Utils/scrollUtils.tsx';
 import '../styles/pages/Home.scss'; // Importiere die CSS-Datei für die Home-Seite
+
 
 const Home: React.FC = () => {
   const [isVisible, setIsVisible] = useState<Record<string, boolean>>({
@@ -45,14 +46,14 @@ const Home: React.FC = () => {
   return (
     <div className="home-page">
       {/* SEO-Komponente für die Home-Seite */}
-      <Seo 
+      <Seo
         title="Chris Schubert – Webdesign & React Entwicklung in Potsdam"
         description="Willkommen auf dem Portfolio von Chris Schubert. Webdesign, UI Design und React Entwicklung aus Potsdam."
         keywords="Chris Schubert, Webdesign, React, UI Design, Frontend, Potsdam, Portfolio"
         image="https://deine-domain.de/assets/home-og-image.jpg"
         url="https://deine-domain.de"
       />
-      
+
       <HeroSection />
       <AboutSection isVisible={isVisible.about} />
       <ProjectsSection isVisible={isVisible.projects} />

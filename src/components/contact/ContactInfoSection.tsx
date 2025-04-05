@@ -1,6 +1,7 @@
 // src/components/contact/ContactInfoSection.tsx
 import React from 'react';
 import { FaEnvelope, FaMapMarkerAlt, FaPhone } from 'react-icons/fa';
+import './ContactInfoSection.scss'; // Importiere die CSS-Datei für das Styling
 
 const ContactInfoSection: React.FC = () => {
   return (

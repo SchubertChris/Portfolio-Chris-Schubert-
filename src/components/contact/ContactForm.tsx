@@ -1,5 +1,6 @@
 // src/components/contact/ContactForm.tsx
 import React, { useState, useRef } from 'react';
+import './ContactForm.scss'; // Importiere die CSS-Datei für das Styling
 
 interface FormData {
   name: string;

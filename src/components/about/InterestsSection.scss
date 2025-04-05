@@ -1,0 +1,84 @@
+// src/components/about/InterestsSection.scss
+
+.interests-section {
+    padding: 8rem 0;
+    background-color: var(--background-dark);
+    position: relative;
+
+    .section-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 2rem;
+    }
+
+    .interests-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 2rem;
+        margin-top: 3rem;
+
+        @media (max-width: 640px) {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    .interest-card {
+        background-color: var(--background-dark-lighter);
+        padding: 2rem;
+        border-radius: 10px;
+        text-align: center;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        transition: all var(--transition-fast) ease;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        will-change: transform, box-shadow;
+
+        &:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+
+            .interest-icon {
+                border-color: var(--primary);
+                box-shadow: 0 0 20px var(--primary-glow);
+            }
+
+            h3 {
+                color: var(--primary);
+            }
+        }
+
+        .interest-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background-color: var(--background-dark);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            border: 2px solid var(--background-dark-accent);
+            transition: all var(--transition-fast) ease;
+
+            img {
+                width: 40px;
+                height: 40px;
+                object-fit: contain;
+            }
+        }
+
+        h3 {
+            font-size: 1.3rem;
+            color: var(--text-light);
+            margin-bottom: 1rem;
+            transition: color var(--transition-fast) ease;
+        }
+
+        p {
+            color: var(--text-light-muted);
+            line-height: 1.6;
+            font-size: 1rem;
+        }
+    }
+}

@@ -1,5 +1,6 @@
 // src/components/about/InterestsSection.tsx
 import React from 'react';
+import './InterestsSection.scss'; // Importiere die CSS-Datei für das Styling 
 
 interface InterestsSectionProps {
   isVisible: boolean;

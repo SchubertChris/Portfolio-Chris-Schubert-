@@ -2,6 +2,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import TechSymbols from './TechSymbols';
+import './AboutSection.scss'; // Importiere die CSS-Datei für das Styling
 
 interface AboutSectionProps {
     isVisible: boolean;

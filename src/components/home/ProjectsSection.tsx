@@ -2,6 +2,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import ProjectCard from './ProjectCard';
+import './ProjectsSection.scss'; // Importiere die CSS-Datei für das Styling
 
 interface ProjectsSectionProps {
     isVisible: boolean;

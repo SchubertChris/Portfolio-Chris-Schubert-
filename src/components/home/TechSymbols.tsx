@@ -1,5 +1,6 @@
 // src/components/home/TechSymbols.tsx
 import React from 'react';
+import './TechSymbols.scss'; // Importiere die CSS-Datei für das Styling
 
 const TechSymbols: React.FC = () => {
     return (

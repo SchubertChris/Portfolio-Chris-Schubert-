@@ -1,6 +1,7 @@
 // src/components/projects/ProjectFilter.tsx
 import React from 'react';
 import { FaSearch } from 'react-icons/fa';
+import './ProjectFilter.scss'; // Importiere die CSS-Datei für das Styling
 
 interface ProjectFilterProps {
     searchTerm: string;

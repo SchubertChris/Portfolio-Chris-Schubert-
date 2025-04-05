@@ -1,0 +1,205 @@
+// src/components/about/TimelineItem.scss
+
+.timeline-item {
+    position: relative;
+    margin-bottom: 4rem;
+    width: 50%;
+
+    @media (max-width: 768px) {
+        width: 100%;
+        padding-left: 60px;
+        padding-right: 15px;
+    }
+
+    &.left {
+        left: 0;
+        padding-right: 3rem;
+
+        .timeline-content {
+            text-align: right;
+            border-left: none;
+            border-right: 3px solid var(--primary);
+
+            h3::after {
+                left: auto;
+                right: 0;
+            }
+        }
+
+        @media (max-width: 768px) {
+            left: 0;
+            padding-right: 15px;
+
+            .timeline-content {
+                text-align: left;
+                border-right: none;
+                border-left: 3px solid var(--primary);
+
+                h3::after {
+                    left: 0;
+                    right: auto;
+                }
+            }
+        }
+    }
+
+    &.right {
+        left: 50%;
+        padding-left: 3rem;
+
+        @media (max-width: 768px) {
+            left: 0;
+        }
+    }
+
+    .timeline-icon {
+        position: absolute;
+        width: 60px;
+        height: 60px;
+        background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--background-dark);
+        font-size: 1.8rem;
+        box-shadow: 0 0 20px var(--primary-glow);
+        z-index: 2;
+        transition: all 0.3s ease;
+        will-change: transform;
+        top: 0; // Zentrieren Sie das Icon auf der Zeitlinie
+        transform: translateY(-50%); // Verschieben Sie das Icon vertikal
+
+        svg {
+            position: absolute; // Zentrieren Sie das SVG-Icon
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        &::before {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            border: 2px solid var(--primary);
+            opacity: 0.3;
+            animation: pulse 2s infinite;
+            will-change: transform, opacity;
+        }
+
+        &:hover {
+            transform: translateY(-50%) rotate(360deg);
+            transition: transform 0.8s ease;
+        }
+
+        .left & {
+            right: -30px;
+
+            @media (max-width: 768px) {
+                left: 5px;
+            }
+        }
+
+        .right & {
+            left: -30px;
+
+            @media (max-width: 768px) {
+                left: 5px;
+            }
+        }
+    }
+
+    .timeline-content {
+        background-color: var(--background-dark-lighter);
+        padding: 1.5rem;
+        border-radius: 10px;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+        border-left: 3px solid var(--primary);
+        position: relative;
+        transition: all 0.3s ease;
+        overflow: hidden;
+        will-change: transform, box-shadow;
+
+        &::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(200, 162, 83, 0.1) 0%, transparent 100%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        &:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+
+            &::before {
+                opacity: 1;
+            }
+
+            .timeline-year {
+                background-color: var(--primary-light);
+                box-shadow: 0 0 15px var(--primary-glow);
+            }
+        }
+
+        .timeline-year {
+            display: inline-block;
+            background-color: var(--primary);
+            color: var(--background-dark);
+            padding: 0.4rem 1.2rem;
+            border-radius: 30px;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        h3 {
+            font-size: 1.4rem;
+            color: var(--text-light);
+            margin-bottom: 0.8rem;
+            position: relative;
+            display: inline-block;
+
+            &::after {
+                content: '';
+                position: absolute;
+                bottom: -5px;
+                left: 0;
+                width: 40px;
+                height: 2px;
+                background-color: var(--primary);
+            }
+        }
+
+        p {
+            color: var(--text-light-muted);
+            line-height: 1.8;
+            font-size: 1rem;
+        }
+    }
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        opacity: 0.3;
+    }
+
+    50% {
+        transform: scale(1.1);
+        opacity: 0.5;
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 0.3;
+    }
+}

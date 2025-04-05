@@ -1,5 +1,6 @@
 // src/components/about/TimelineItem.tsx
 import React from 'react';
+import './TimelineItem.scss'; // Importiere die CSS-Datei für das Styling
 
 interface TimelineItemProps {
   year: string;

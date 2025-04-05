@@ -3,6 +3,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { FaGithub, FaLinkedin, FaTwitter, FaArrowDown } from 'react-icons/fa';
 import ParticleBackground from '../ui/ParticleBackground';
+import './HeroSection.scss'; // Importiere die CSS-Datei für das Styling
 
 const HeroSection: React.FC = () => {
     const navigate = useNavigate();

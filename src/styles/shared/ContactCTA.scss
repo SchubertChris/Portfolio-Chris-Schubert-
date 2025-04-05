@@ -1,0 +1,115 @@
+// src/components/shared/ContactCTA.scss
+
+.contact-cta {
+    position: relative;
+    padding: 6rem 0;
+    overflow: hidden;
+
+    .cta-background {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+
+        .gradient-overlay {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, var(--background-dark) 0%, rgba(0, 0, 0, 0.7) 100%);
+        }
+
+        &::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('/contact-bg.jpg') center/cover no-repeat;
+            opacity: 0.2;
+        }
+
+        &::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 200%;
+            height: 100%;
+            background: linear-gradient(90deg,
+                    transparent,
+                    rgba(200, 162, 83, 0.1),
+                    transparent,
+                    rgba(200, 162, 83, 0.1),
+                    transparent);
+            background-size: 200% 100%;
+            animation: wave 8s linear infinite;
+            will-change: background-position;
+        }
+    }
+
+    .cta-content {
+        max-width: 800px;
+        margin: 0 auto;
+        text-align: center;
+        padding: 0 2rem;
+
+        h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--text-light);
+
+            @media (max-width: 768px) {
+                font-size: 2rem;
+            }
+        }
+
+        p {
+            font-size: 1.2rem;
+            color: var(--text-light-muted);
+            margin-bottom: 2rem;
+
+            @media (max-width: 768px) {
+                font-size: 1.1rem;
+            }
+        }
+
+        .cta-button {
+            padding: 1rem 2.5rem;
+            background-color: var(--primary);
+            color: var(--background-dark);
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all var(--transition-fast) ease;
+            box-shadow: 0 0 20px var(--primary-glow);
+
+            &:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 0 30px var(--primary-glow);
+            }
+
+            &:active {
+                transform: translateY(-2px);
+            }
+        }
+    }
+}
+
+@keyframes wave {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}

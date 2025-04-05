@@ -1,6 +1,7 @@
 // src/components/contact/ContactHero.tsx
 import React, { useRef, useEffect } from 'react';
 import ParticleBackground from '../ui/ParticleBackground';
+import './ContactHero.scss'; // Importiere die CSS-Datei für das Styling
 
 const ContactHero: React.FC = () => {
   const heroRef = useRef<HTMLDivElement>(null);

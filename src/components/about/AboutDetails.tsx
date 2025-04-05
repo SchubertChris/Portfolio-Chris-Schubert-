@@ -2,6 +2,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import CountUpAnimation from '../ui/CountUpAnimation';
+import './AboutDetails.scss'; // Importiere die CSS-Datei für das Styling
 
 interface AboutDetailsProps {
   isVisible: boolean;

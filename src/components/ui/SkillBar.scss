@@ -1,0 +1,72 @@
+// src/components/ui/SkillBar.scss
+
+.skill-item {
+    margin-bottom: 1.5rem;
+
+    .skill-info {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 0.5rem;
+
+        .skill-name {
+            font-size: 1rem;
+            color: var(--text-light);
+            font-weight: 500;
+        }
+
+        .skill-percentage {
+            font-size: 1rem;
+            color: var(--text-light-muted);
+            font-weight: 600;
+        }
+    }
+
+    .skill-bar {
+        height: 10px;
+        background-color: var(--background-dark-accent);
+        border-radius: 5px;
+        overflow: hidden;
+        position: relative;
+        box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.3);
+
+        .skill-level {
+            height: 100%;
+            border-radius: 5px;
+            width: 0;
+            position: absolute;
+            top: 0;
+            left: 0;
+            transition: width 1.2s cubic-bezier(0.17, 0.67, 0.83, 0.67);
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+            will-change: width;
+
+            &::after {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 50%;
+                background: linear-gradient(to bottom,
+                        rgba(255, 255, 255, 0.2),
+                        rgba(255, 255, 255, 0.05));
+                border-radius: 5px 5px 0 0;
+            }
+        }
+
+        &.animated .skill-level {
+            animation: none;
+        }
+    }
+}
+
+// Benötigte Animation
+@keyframes skillAnimation {
+    from {
+        transform: scaleX(0);
+    }
+
+    to {
+        transform: scaleX(1);
+    }
+}

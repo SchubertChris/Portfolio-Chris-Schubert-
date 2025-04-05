@@ -2,6 +2,7 @@
 import React, { useEffect, useRef } from 'react';
 import { FaGithub, FaExternalLinkAlt } from 'react-icons/fa';
 import { ProjectData } from '../../types';
+import './ProjectModal.scss'; // Importiere die CSS-Datei für das Styling
 
 interface ProjectModalProps {
     project: ProjectData | null;

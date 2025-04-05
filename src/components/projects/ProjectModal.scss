@@ -1,0 +1,193 @@
+// src/components/projects/ProjectModal.scss
+
+.project-modal-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(5px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    padding: 2rem;
+    overflow-y: auto;
+}
+
+.project-modal {
+    background-color: var(--background-dark-lighter);
+    border-radius: 12px;
+    width: 100%;
+    max-width: 1000px;
+    max-height: 90vh;
+    overflow-y: auto;
+    position: relative;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+    animation: modalFadeIn 0.3s ease;
+
+    .close-button {
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        background: none;
+        border: none;
+        color: var(--text-light);
+        font-size: 2rem;
+        cursor: pointer;
+        z-index: 10;
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        background-color: rgba(0, 0, 0, 0.3);
+        transition: all 0.2s ease;
+
+        &:hover {
+            background-color: var(--primary);
+            color: var(--background-dark);
+        }
+    }
+
+    .modal-content {
+        display: flex;
+        flex-direction: column;
+
+        @media (min-width: 768px) {
+            flex-direction: row;
+        }
+    }
+
+    .modal-image {
+        flex: 1;
+
+        @media (min-width: 768px) {
+            max-width: 50%;
+        }
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+
+            @media (min-width: 768px) {
+                border-radius: 12px 0 0 12px;
+            }
+        }
+    }
+
+    .modal-details {
+        flex: 1;
+        padding: 2rem;
+
+        h2 {
+            font-size: 1.8rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
+
+            &::after {
+                content: '';
+                position: absolute;
+                bottom: -8px;
+                left: 0;
+                width: 40px;
+                height: 3px;
+                background-color: var(--primary);
+            }
+        }
+
+        .modal-description {
+            margin-bottom: 2rem;
+            line-height: 1.7;
+            color: var(--text-light-muted);
+        }
+
+        .tech-section {
+            margin-bottom: 2rem;
+
+            h3 {
+                font-size: 1.3rem;
+                color: var(--text-light);
+                margin-bottom: 1rem;
+            }
+
+            .tech-tags {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 0.8rem;
+
+                .tech-tag {
+                    font-size: 0.9rem;
+                    padding: 0.4rem 0.9rem;
+                    background-color: var(--background-dark-accent);
+                    color: var(--text-light);
+                    border-radius: 30px;
+                    transition: all 0.2s ease;
+
+                    &:hover {
+                        background-color: rgba(200, 162, 83, 0.2);
+                    }
+                }
+            }
+        }
+
+        .modal-links {
+            display: flex;
+            gap: 1.5rem;
+
+            a {
+                display: inline-flex;
+                align-items: center;
+                padding: 0.8rem 1.5rem;
+                border-radius: 5px;
+                font-weight: 600;
+                text-decoration: none;
+                transition: all 0.3s ease;
+
+                svg {
+                    margin-right: 0.5rem;
+                    font-size: 1.2rem;
+                }
+
+                &.github-link {
+                    background-color: var(--background-dark-accent);
+                    color: var(--text-light);
+
+                    &:hover {
+                        background-color: #333;
+                        transform: translateY(-3px);
+                    }
+                }
+
+                &.demo-link {
+                    background-color: var(--primary);
+                    color: var(--background-dark);
+                    box-shadow: 0 0 15px var(--primary-glow);
+
+                    &:hover {
+                        background-color: var(--primary-light);
+                        transform: translateY(-3px);
+                        box-shadow: 0 0 25px var(--primary-glow);
+                    }
+                }
+            }
+        }
+    }
+}
+
+@keyframes modalFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(30px) scale(0.95);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}

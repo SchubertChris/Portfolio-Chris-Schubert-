@@ -1,0 +1,178 @@
+// src/styles/shared/ProjectCard.scss
+
+.project-card {
+    background-color: var(--background-dark-lighter);
+    border-radius: 12px;
+    overflow: hidden;
+    height: 100%;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transform-style: preserve-3d;
+    will-change: transform;
+
+    // Home-Seite Klassen
+    .card-image {
+        position: relative;
+        height: 200px;
+        overflow: hidden;
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .card-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+    }
+
+    .card-content {
+        padding: 1.5rem;
+
+        h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.7rem;
+            color: var(--primary);
+        }
+
+        p {
+            font-size: 1rem;
+            color: var(--text-light-muted);
+            margin-bottom: 1.2rem;
+            line-height: 1.5;
+        }
+
+        .card-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+    }
+
+    // Projects-Seite Klassen
+    .project-image {
+        position: relative;
+        height: 200px;
+        overflow: hidden;
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .project-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+    }
+
+    .project-content {
+        padding: 1.5rem;
+
+        h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.7rem;
+            color: var(--primary);
+        }
+
+        p {
+            font-size: 1rem;
+            color: var(--text-light-muted);
+            margin-bottom: 1.2rem;
+            line-height: 1.5;
+        }
+
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+    }
+
+    // Gemeinsame Styles für Tags
+    .tech-tag {
+        font-size: 0.8rem;
+        padding: 0.3rem 0.8rem;
+        background-color: var(--background-dark-accent);
+        color: var(--text-light);
+        border-radius: 30px;
+        transition: all 0.2s ease;
+
+        &:hover {
+            background-color: rgba(200, 162, 83, 0.2);
+        }
+
+        &.more {
+            background-color: rgba(71, 200, 255, 0.2);
+            color: var(--blue);
+        }
+    }
+
+    // Hover-Effekte
+    &:hover {
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+
+        // Für Home-Seite
+        .card-image {
+            .card-overlay {
+                opacity: 1;
+            }
+
+            img {
+                transform: scale(1.1);
+            }
+        }
+
+        // Für Projects-Seite
+        .project-image {
+            .project-overlay {
+                opacity: 1;
+            }
+
+            img {
+                transform: scale(1.1);
+            }
+        }
+    }
+}
+
+// Buttons innerhalb der Overlays
+.view-details-btn {
+    padding: 0.7rem 1.5rem;
+    background-color: var(--primary);
+    color: var(--background-dark);
+    border: none;
+    border-radius: 5px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 15px var(--primary-glow);
+
+    &:hover {
+        background-color: var(--primary-light);
+        transform: scale(1.05);
+    }
+}
