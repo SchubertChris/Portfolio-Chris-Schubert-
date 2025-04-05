@@ -39,7 +39,7 @@ const Navbar: React.FC = () => {
       <div className="nav-container">
         <div className="logo">
           <img
-            src="/csGold.png"
+            src="/csGold.webp"
             alt="Logo"
             onClick={() => handleNavigation('/')}
             style={{ cursor: 'pointer' }}
