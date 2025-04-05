@@ -26,9 +26,9 @@ const ContactInfoSection: React.FC = () => {
             </div>
             <h3>Telefon</h3>
             <p>
-              <a href="tel:+49XXXXXXXXXX">
-                +49 (0) XX XXXXX XXX
-              </a>
+                <a href="tel:+4916094168348">
+                +49 (0) 160 9416 8348
+                </a>
             </p>
           </div>
 
@@ -37,7 +37,7 @@ const ContactInfoSection: React.FC = () => {
               <FaMapMarkerAlt />
             </div>
             <h3>Standort</h3>
-            <p>Berlin, Deutschland</p>
+            <p>Potsdam, Deutschland</p>
           </div>
         </div>
       </div>
