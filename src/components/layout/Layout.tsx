@@ -3,6 +3,7 @@ import React, { lazy, Suspense, useEffect } from 'react';
 import { Routes, Route, useLocation } from 'react-router-dom';
 import Navbar from './Navbar';
 import Footer from './Footer';
+import '../../styles/layout/Layout.scss';
 import ScrollToTopOnRouteChange from '../ui/ScrollToTopOnRouteChange';
 
 // Verbesserte Loader-Komponente mit Stil

@@ -1,0 +1,56 @@
+// Layout.scss
+
+// Variables
+$bg-color: #000;
+$text-color: #fff;
+$transition-duration: 0.3s;
+
+// Global Styles
+.app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: var(--bg-color, $bg-color);
+  color: var(--text-color, $text-color);
+}
+
+.main-content {
+  flex: 1;
+  padding: 20px;
+}
+
+// Loader Styles
+.page-loader-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: var(--bg-color, $bg-color);
+  z-index: 999;
+  transition: opacity $transition-duration ease-in-out;
+
+  .loader {
+    font-size: 1.5rem;
+    color: var(--text-color, $text-color);
+  }
+}
+
+// Navbar Styles
+.navbar {
+  background-color: var(--bg-color, $bg-color);
+  padding: 10px 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+// Footer Styles
+.footer {
+  background-color: var(--bg-color, $bg-color);
+  padding: 10px 20px;
+  text-align: center;
+  font-size: 0.9rem;
+  color: var(--text-color, $text-color);
+}
