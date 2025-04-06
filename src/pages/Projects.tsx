@@ -1,6 +1,6 @@
 // src/pages/Projects.tsx
-import React, { useEffect, useState } from 'react';
-import Seo from '../components/shared/Seo';  // SEO-Komponente importieren
+import React, { useEffect, useState, useCallback, useMemo } from 'react';
+import Seo from '../components/shared/Seo';
 import ProjectHero from '../components/projects/ProjectHero';
 import ProjectFilter from '../components/projects/ProjectFilter';
 import ProjectCard from '../components/projects/ProjectCard';
@@ -9,8 +9,8 @@ import ScrollToTop from '../components/ui/ScrollToTop';
 import { setupScrollReveal } from '../components/Utils/scrollUtils';
 import { PROJECTS_DATA } from '../data/projects.data';
 import { ProjectData } from '../types';
-import '../styles/pages/Projects.scss'; // Importiere die CSS-Datei für die Projekte-Seite
-import '../styles/shared/ProjectCard.scss'; // Importiere die CSS-Datei für die Projektkarten
+import '../styles/pages/Projects.scss';
+import '../styles/shared/ProjectCard.scss';
 
 const Projects: React.FC = () => {
   const [selectedProject, setSelectedProject] = useState<ProjectData | null>(null);
@@ -18,20 +18,21 @@ const Projects: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [activeFilter, setActiveFilter] = useState('Alle');
 
-  // Suchfunktion verbessern
-  const applyFilters = (term: string = searchTerm, category: string = activeFilter) => {
-    let filtered = [...PROJECTS_DATA];
+  // Suchfunktion optimiert mit useCallback
+  const applyFilters = useCallback((term: string, category: string) => {
+    let filtered = PROJECTS_DATA;
 
-    // Suchwort anwenden
+    // Suchwort anwenden (nur wenn nicht leer)
     if (term.trim() !== '') {
+      const lowercaseTerm = term.toLowerCase();
       filtered = filtered.filter(project =>
-        project.title.toLowerCase().includes(term.toLowerCase()) ||
-        project.description.toLowerCase().includes(term.toLowerCase()) ||
-        project.technologies.some(tech => tech.toLowerCase().includes(term.toLowerCase()))
+        project.title.toLowerCase().includes(lowercaseTerm) ||
+        project.description.toLowerCase().includes(lowercaseTerm) ||
+        project.technologies.some(tech => tech.toLowerCase().includes(lowercaseTerm))
       );
     }
 
-    // Kategorie anwenden
+    // Kategorie anwenden (nur wenn nicht "Alle")
     if (category !== 'Alle') {
       if (category === 'Featured') {
         filtered = filtered.filter(project => project.featured);
@@ -40,21 +41,34 @@ const Projects: React.FC = () => {
       }
     }
 
-    setFilteredProjects(filtered);
-  };
+    return filtered;
+  }, []);
+
+  // Filtern der Projekte mit useMemo
+  useMemo(() => {
+    const newFilteredProjects = applyFilters(searchTerm, activeFilter);
+    setFilteredProjects(newFilteredProjects);
+  }, [searchTerm, activeFilter, applyFilters]);
 
   // Filter ändern
-  const handleFilterChange = (category: string) => {
+  const handleFilterChange = useCallback((category: string) => {
     setActiveFilter(category);
-    applyFilters(searchTerm, category);
-  };
+  }, []);
 
   // Suche ändern
-  const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const term = e.target.value;
-    setSearchTerm(term);
-    applyFilters(term, activeFilter);
-  };
+  const handleSearchChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchTerm(e.target.value);
+  }, []);
+
+  // Projekt auswählen
+  const handleProjectSelect = useCallback((project: ProjectData) => {
+    setSelectedProject(project);
+  }, []);
+
+  // Projekt-Modal schließen
+  const handleCloseModal = useCallback(() => {
+    setSelectedProject(null);
+  }, []);
 
   // Scroll Reveal Effekt
   useEffect(() => {
@@ -62,9 +76,28 @@ const Projects: React.FC = () => {
     return cleanup;
   }, []);
 
+  // Memoized ProjectCards für bessere Performance
+  const projectCardsList = useMemo(() => {
+    if (filteredProjects.length > 0) {
+      return filteredProjects.map((project) => (
+        <ProjectCard
+          key={project.id}
+          project={project}
+          onClick={() => handleProjectSelect(project)}
+        />
+      ));
+    }
+    
+    return (
+      <div className="no-results">
+        <h3>Keine Projekte gefunden</h3>
+        <p>Versuchen Sie eine andere Suche oder Filter-Kategorie.</p>
+      </div>
+    );
+  }, [filteredProjects, handleProjectSelect]);
+
   return (
     <div className="projects-page">
-      {/* SEO-Komponente für die Projects-Seite */}
       <Seo
         title="Projekte von Chris Schubert – Webdesign & React Entwicklung"
         description="Entdecke die Projekte von Chris Schubert. Webdesign, UI/UX-Design und React-Projekte, die innovative Lösungen bieten."
@@ -84,28 +117,14 @@ const Projects: React.FC = () => {
 
       <div className="projects-grid-section">
         <div className="projects-grid">
-          {filteredProjects.length > 0 ? (
-            filteredProjects.map((project) => (
-              <ProjectCard
-                key={project.id}
-                project={project}
-                onClick={() => setSelectedProject(project)}
-              />
-            ))
-          ) : (
-            <div className="no-results">
-              <h3>Keine Projekte gefunden</h3>
-              <p>Versuchen Sie eine andere Suche oder Filter-Kategorie.</p>
-            </div>
-          )}
+          {projectCardsList}
         </div>
       </div>
 
-      {/* Projektdetail-Modal */}
       {selectedProject && (
         <ProjectModal
           project={selectedProject}
-          onClose={() => setSelectedProject(null)}
+          onClose={handleCloseModal}
         />
       )}
 

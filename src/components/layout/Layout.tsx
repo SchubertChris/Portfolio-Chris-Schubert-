@@ -1,31 +1,61 @@
 // src/components/layout/Layout.tsx
-import React, { lazy, Suspense } from 'react';
+import React, { lazy, Suspense, useEffect } from 'react';
 import { Routes, Route, useLocation } from 'react-router-dom';
 import Navbar from './Navbar';
 import Footer from './Footer';
 import ScrollToTopOnRouteChange from '../ui/ScrollToTopOnRouteChange';
 
-// Lazy loaded Komponenten
-const Home = lazy(() => import('../../pages/Home'));
-const Projects = lazy(() => import('../../pages/Projects'));
-const About = lazy(() => import('../../pages/About'));
-const Contact = lazy(() => import('../../pages/Contact'));
-
-// Einfacher Loader-Komponente
+// Verbesserte Loader-Komponente mit Stil
 const Loader = () => (
-  <div className="loader-container" style={{
-    display: 'flex', 
-    justifyContent: 'center', 
-    alignItems: 'center', 
-    height: '100vh'
-  }}>
+  <div className="page-loader-container" 
+       style={{
+         display: 'flex',
+         justifyContent: 'center',
+         alignItems: 'center',
+         height: '100vh',
+         width: '100%',
+         position: 'fixed',
+         top: 0,
+         left: 0,
+         backgroundColor: 'var(--bg-color,rgb(0, 0, 0))',
+         zIndex: 999,
+         transition: 'opacity 0.3s ease-in-out'
+       }}>
     <div className="loader">Lädt...</div>
   </div>
 );
 
+// Lazy loaded Komponenten mit Präfetching-Hinweis
+const Home = lazy(() => {
+  // Hinweis für den Browser, dass diese Ressource wichtig ist
+  return import('../../pages/Home');
+});
+
+const Projects = lazy(() => import('../../pages/Projects'));
+const About = lazy(() => import('../../pages/About'));
+const Contact = lazy(() => import('../../pages/Contact'));
+
+// Präfetching-Funktion für Route-basiertes Präfetching
+const usePrefetchRoutes = () => {
+  useEffect(() => {
+    // Verzögertes Präfetching nach dem initialen Laden
+    const timer = setTimeout(() => {
+      // Präfetch aller Routen nach dem ersten Render
+      import('../../pages/Projects');
+      import('../../pages/About');
+      import('../../pages/Contact');
+    }, 2000); // 2 Sekunden Verzögerung nach dem Laden der Hauptseite
+    
+    return () => clearTimeout(timer);
+  }, []);
+};
+
 const Layout: React.FC = () => {
   const location = useLocation();
- 
+  
+  // Route-Präfetching aktivieren
+  usePrefetchRoutes();
+  
   return (
     <div className="app">
       <Navbar />

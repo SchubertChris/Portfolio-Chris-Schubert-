@@ -27,7 +27,7 @@
 
         .outline-button {
             padding: 0.8rem 2.5rem;
-            background-color: transparent;
+            background: none;
             color: var(--text-light);
             border: 2px solid var(--text-light);
             border-radius: 8px;
@@ -43,5 +43,21 @@
                 transform: translateY(-3px);
             }
         }
+    }
+}
+
+.view-project {
+    padding: 0.7rem 1.5rem;
+    background-color: var(--primary);
+    color: var(--background-dark);
+    border: none;
+    border-radius: 5px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 15px var(--primary-glow);
+
+    &:hover {
+        color: black;
     }
 }

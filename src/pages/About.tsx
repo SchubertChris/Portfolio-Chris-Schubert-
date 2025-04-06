@@ -1,6 +1,6 @@
 // src/pages/About.tsx
-import React, { useEffect, useState } from 'react';
-import Seo from '../components/shared/Seo';  // SEO-Komponente importieren
+import React, { useEffect, useState, useCallback, memo } from 'react';
+import Seo from '../components/shared/Seo';
 import AboutHero from '../components/about/AboutHero';
 import AboutDetails from '../components/about/AboutDetails';
 import TimelineSection from '../components/about/TimelineSection';
@@ -9,35 +9,54 @@ import InterestsSection from '../components/about/InterestsSection';
 import ContactCTA from '../components/shared/ContactCTA';
 import ScrollToTop from '../components/ui/ScrollToTop';
 import { setupScrollReveal } from '../components/Utils/scrollUtils';
-import '../styles/pages/About.scss'; // Importiere die CSS-Datei für die About-Seite
+import '../styles/pages/About.scss';
+
+// Definiere einen Typ für die Sichtbarkeitszustände
+type VisibilityState = {
+  about: boolean;
+  timeline: boolean;
+  skills: boolean;
+  interests: boolean;
+};
+
+// Memoized Komponenten für bessere Performance
+const MemoizedAboutHero = memo(AboutHero);
+const MemoizedContactCTA = memo(ContactCTA);
+const MemoizedScrollToTop = memo(ScrollToTop);
 
 const About: React.FC = () => {
-  const [isVisible, setIsVisible] = useState<Record<string, boolean>>({
+  const [isVisible, setIsVisible] = useState<VisibilityState>({
     about: false,
     timeline: false,
     skills: false,
     interests: false
   });
 
-  // Überprüfen, ob Elemente im Viewport sind
+  // Memoize handleScroll mit useCallback
+  const handleScroll = useCallback(() => {
+    const sections = document.querySelectorAll('.section-animate');
+    sections.forEach(section => {
+      const rect = section.getBoundingClientRect();
+      const isInViewport = rect.top <= window.innerHeight * 0.8;
+      if (isInViewport) {
+        const id = section.id;
+        setIsVisible(prev => {
+          // Nur aktualisieren, wenn sich der Wert ändert
+          if (prev[id as keyof VisibilityState] === false) {
+            return { ...prev, [id]: true };
+          }
+          return prev;
+        });
+      }
+    });
+  }, []);
+
+  // Scroll-Event-Listener mit passivem Event für bessere Performance
   useEffect(() => {
-    const handleScroll = () => {
-      const sections = document.querySelectorAll('.section-animate');
-      sections.forEach(section => {
-        const rect = section.getBoundingClientRect();
-        const isInViewport = rect.top <= window.innerHeight * 0.8;
-
-        if (isInViewport) {
-          const id = section.id;
-          setIsVisible(prev => ({ ...prev, [id]: true }));
-        }
-      });
-    };
-
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
     handleScroll(); // Initiales Auslösen
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [handleScroll]);
 
   // ScrollReveal einrichten
   useEffect(() => {
@@ -45,24 +64,32 @@ const About: React.FC = () => {
     return cleanup;
   }, []);
 
+  // SEO-Konstanten - bessere Wartbarkeit und verhindert unnötige Re-Renderings
+  const seoData = {
+    title: "Über mich – Chris Schubert Webdesign & React Entwicklung",
+    description: "Erfahren Sie mehr über Chris Schubert, einen Webdesigner und React Entwickler aus Potsdam mit einer Leidenschaft für UI Design und Frontend-Entwicklung.",
+    keywords: "Über mich, Chris Schubert, Webdesign, React, UI Design, Frontend, Potsdam, Entwickler",
+    image: "https://deine-domain.de/assets/about-og-image.jpg",
+    url: "https://deine-domain.de/about"
+  };
+
   return (
     <div className="about-page">
-      {/* SEO-Komponente für die About-Seite */}
-      <Seo 
-        title="Über mich – Chris Schubert Webdesign & React Entwicklung"
-        description="Erfahren Sie mehr über Chris Schubert, einen Webdesigner und React Entwickler aus Potsdam mit einer Leidenschaft für UI Design und Frontend-Entwicklung."
-        keywords="Über mich, Chris Schubert, Webdesign, React, UI Design, Frontend, Potsdam, Entwickler"
-        image="https://deine-domain.de/assets/about-og-image.jpg"  // Beispielbild für OG-Image
-        url="https://deine-domain.de/about"
+      <Seo
+        title={seoData.title}
+        description={seoData.description}
+        keywords={seoData.keywords}
+        image={seoData.image}
+        url={seoData.url}
       />
       
-      <AboutHero />
+      <MemoizedAboutHero />
       <AboutDetails isVisible={isVisible.about} />
       <TimelineSection isVisible={isVisible.timeline} />
       <SkillsSection isVisible={isVisible.skills} />
       <InterestsSection isVisible={isVisible.interests} />
-      <ContactCTA />
-      <ScrollToTop />
+      <MemoizedContactCTA />
+      <MemoizedScrollToTop />
     </div>
   );
 };

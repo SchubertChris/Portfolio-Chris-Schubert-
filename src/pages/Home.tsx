@@ -1,5 +1,5 @@
 // src/pages/Home.tsx
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import Seo from '../components/shared/Seo.tsx';
 import HeroSection from '../components/home/HeroSection.tsx';
 import AboutSection from '../components/home/AboutSection.tsx';
@@ -7,35 +7,41 @@ import ProjectsSection from '../components/home/ProjectsSection.tsx';
 import SkillsSection from '../components/home/SkillsSection.tsx';
 import ContactCTA from '../components/shared/ContactCTA';
 import ScrollToTop from '../components/ui/ScrollToTop.tsx';
-import { setupScrollReveal } from '../components/Utils/scrollUtils.tsx';
-import '../styles/pages/Home.scss'; // Importiere die CSS-Datei für die Home-Seite
+import { setupScrollReveal, setupSectionObserver } from '../components/Utils/scrollUtils.tsx';
+import '../styles/pages/Home.scss';
 
+// Definiere einen Typ für die Sichtbarkeitszustände
+type VisibilityState = {
+  about: boolean;
+  projects: boolean;
+  skills: boolean;
+};
 
 const Home: React.FC = () => {
-  const [isVisible, setIsVisible] = useState<Record<string, boolean>>({
+  const [isVisible, setIsVisible] = useState<VisibilityState>({
     about: false,
     projects: false,
     skills: false
   });
 
-  // Überprüfen, ob Elemente im Viewport sind
-  useEffect(() => {
-    const handleScroll = () => {
-      const sections = document.querySelectorAll('.section-animate');
-      sections.forEach(section => {
-        const rect = section.getBoundingClientRect();
-        const isInViewport = rect.top <= window.innerHeight * 0.8;
-
-        if (isInViewport) {
-          const id = section.id;
-          setIsVisible(prev => ({ ...prev, [id]: true }));
+  // Callback für den Sektions-Observer
+  const handleSectionVisible = useCallback((id: string, visible: boolean) => {
+    if (visible) {
+      setIsVisible(prev => {
+        // Nur aktualisieren, wenn sich der Wert ändert
+        if (prev[id as keyof VisibilityState] === false) {
+          return { ...prev, [id]: true };
         }
+        return prev;
       });
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    }
   }, []);
+
+  // IntersectionObserver für Sektionen einrichten
+  useEffect(() => {
+    const cleanup = setupSectionObserver(handleSectionVisible);
+    return cleanup;
+  }, [handleSectionVisible]);
 
   // ScrollReveal einrichten
   useEffect(() => {
@@ -45,7 +51,6 @@ const Home: React.FC = () => {
 
   return (
     <div className="home-page">
-      {/* SEO-Komponente für die Home-Seite */}
       <Seo
         title="Chris Schubert – Webdesign & React Entwicklung in Potsdam"
         description="Willkommen auf dem Portfolio von Chris Schubert. Webdesign, UI Design und React Entwicklung aus Potsdam."
@@ -53,7 +58,6 @@ const Home: React.FC = () => {
         image="https://deine-domain.de/assets/home-og-image.jpg"
         url="https://deine-domain.de"
       />
-
       <HeroSection />
       <AboutSection isVisible={isVisible.about} />
       <ProjectsSection isVisible={isVisible.projects} />
