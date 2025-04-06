@@ -10,8 +10,11 @@ interface Skill {
   technologies: string[];
 }
 
+interface SkillsSectionProps {
+  isVisible: boolean;
+}
+
 const skillsData: Skill[] = [
-  // Frontend Skills
   {
     name: 'React',
     category: 'Frontend',
@@ -129,7 +132,7 @@ const skillsData: Skill[] = [
   },
 ];
 
-const SkillsSection: React.FC = () => {
+const SkillsSection: React.FC<SkillsSectionProps> = ({ isVisible }) => {
   const [activeCategory, setActiveCategory] = useState<Skill['category'] | 'All'>('All');
   const [activeSkills, setActiveSkills] = useState<Skill[]>(skillsData);
 
@@ -154,7 +157,7 @@ const SkillsSection: React.FC = () => {
   };
 
   return (
-    <section className="skills-section section-padding">
+    <section className={`skills-section section-padding ${isVisible ? 'visible' : ''}`}>
       <div className="section-container">
         <motion.h2 
           initial={{ opacity: 0, y: -50 }}
