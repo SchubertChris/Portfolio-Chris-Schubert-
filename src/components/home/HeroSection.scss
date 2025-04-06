@@ -19,7 +19,7 @@
     justify-content: center;
     overflow: hidden;
     z-index: 999;
-    // will-change entfernt
+    // will-change property entfernt
 
     .hero-content {
         position: relative;
@@ -27,7 +27,7 @@
         z-index: 2;
         max-width: 1000px;
         padding: 0 2rem;
-        // will-change entfernt
+        // will-change property entfernt
 
         .animated-title {
             font-size: clamp(2.5rem, 5vw, 3.5rem);
