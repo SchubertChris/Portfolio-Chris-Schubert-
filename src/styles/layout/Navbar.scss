@@ -119,6 +119,7 @@ nav {
   transition: transform 0.4s var(--cubic-bezier);
   padding: 2rem 1.5rem;
   box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.3);
+  height: 500px;
   
   &::before {
     content: '';

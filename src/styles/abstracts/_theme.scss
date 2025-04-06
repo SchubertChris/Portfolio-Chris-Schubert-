@@ -1,0 +1,64 @@
+// Theme Specific Styles
+:root {
+  // Light Mode Overrides
+  --background-light: #f4f4f4;
+  --text-dark: #121212;
+  --text-muted-dark: #666666;
+}
+
+// Global Theme Transition
+body, * {
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.light {
+  background-color: var(--background-light);
+  color: var(--text-dark);
+
+  // Override specific components
+  .app {
+    background-color: var(--background-light);
+    color: var(--text-dark);
+  }
+
+  .navbar {
+    background-color: rgba(255, 255, 255, 0.9);
+    color: var(--text-dark);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  }
+
+  .main-content {
+    background-color: var(--background-light);
+    color: var(--text-dark);
+  }
+
+  // Adjust other components as needed
+  h1, h2, h3 {
+    color: var(--text-dark);
+  }
+
+  p {
+    color: var(--text-muted-dark);
+  }
+}
+
+.dark {
+  background-color: var(--background-dark);
+  color: var(--text-light);
+
+  // These styles are mostly already in place from your existing design
+}
+
+// Theme Toggle Button Styles
+.theme-toggle {
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+  
+  &:hover {
+    transform: scale(1.1);
+  }
+}
+
+
