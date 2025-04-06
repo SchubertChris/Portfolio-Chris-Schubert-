@@ -4,7 +4,7 @@
 .about-hero-section,
 .projects-hero-section,
 .contact-hero-section {
-    position: absolute;
+    position: relative;
     height: 60vh;
     width: 100%;
     display: flex;
@@ -15,7 +15,6 @@
     // Für Home-Seite passt die Höhe an
     &.hero-section {
         height: 100vh;
-        z-index: 999;
     }
 
     // Für Contact- und Projects-Seite passt die Höhe an

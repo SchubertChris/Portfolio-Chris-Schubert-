@@ -1,7 +1,7 @@
 // src/components/layout/Footer.tsx
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { FaGithub, FaLinkedin, FaTwitter, FaEnvelope, FaArrowUp } from 'react-icons/fa';
+import { FaGithub, FaLinkedin, FaInstagram, FaEnvelope, FaArrowUp } from 'react-icons/fa';
 import '../../styles/layout/Footer.scss'; // Importiere die CSS-Datei für den Footer
 
 const Footer: React.FC = () => {
@@ -23,10 +23,10 @@ const Footer: React.FC = () => {
         <div className="footer-section">
           <h3>Schnellzugriff</h3>
           <ul className="footer-links">
-            <li><Link to="/">Home</Link></li>
-            <li><Link to="/projects">Projekte</Link></li>
-            <li><Link to="/about">Über mich</Link></li>
-            <li><Link to="/contact">Kontakt</Link></li>
+        <li><Link to="/">Home</Link></li>
+        <li><Link to="/projects">Projekte</Link></li>
+        <li><Link to="/about">Über mich</Link></li>
+        <li><Link to="/contact">Kontakt</Link></li>
           </ul>
         </div>
         
@@ -39,15 +39,15 @@ const Footer: React.FC = () => {
         <div className="footer-section">
           <h3>Social Media</h3>
           <div className="social-links">
-            <a href="https://github.com" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
-              <FaGithub className="social-icon" />
-            </a>
-            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
-              <FaLinkedin className="social-icon" />
-            </a>
-            <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" aria-label="Twitter">
-              <FaTwitter className="social-icon" />
-            </a>
+        <a href="https://github.com/SchubertChris" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+          <FaGithub className="social-icon" />
+        </a>
+        <a href="https://www.linkedin.com/in/chris-schubert-4bb5b0353/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+          <FaLinkedin className="social-icon" />
+        </a>
+        <a href="https://www.instagram.com/candlescope" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+          <FaInstagram className="social-icon" />
+        </a>
           </div>
         </div>
       </div>

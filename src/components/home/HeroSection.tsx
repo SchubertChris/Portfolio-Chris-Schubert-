@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState, useMemo } from 'react';
+import React, { useEffect, useRef, useState, useCallback, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { FaGithub, FaLinkedin, FaInstagram, FaArrowDown } from 'react-icons/fa';
 import ParticleBackground from '../ui/ParticleBackground';
@@ -8,10 +8,22 @@ const HeroSection: React.FC = () => {
     const navigate = useNavigate();
     const heroRef = useRef<HTMLDivElement>(null);
 
-    // Der problematische Scroll-Handler wurde entfernt
+    // Memoize the scroll handler to prevent unnecessary re-creations
+    const handleScroll = useCallback(() => {
+        if (heroRef.current) {
+            const scrollPos = window.scrollY;
+            heroRef.current.style.transform = `translateY(${scrollPos * 0.4}px)`;
+        }
+    }, []);
+
+    // Use useEffect for scroll event with proper cleanup
+    useEffect(() => {
+        window.addEventListener('scroll', handleScroll);
+        return () => window.removeEventListener('scroll', handleScroll);
+    }, [handleScroll]);
 
     // Optimize typewriter effect
-    const fullText = useMemo(() => "Ich entwickle moderne Webapplikationen.", []);
+    const fullText = useMemo(() => "I ch entwickle moderne Webapplikationen.", []);
     const [displayText, setDisplayText] = useState("");
 
     useEffect(() => {

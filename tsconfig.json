@@ -1,4 +1,7 @@
 {
+  "compilerOptions": {
+    "lib": ["dom", "esnext"] // DOM-Typen sind wichtig
+  },
   "files": [],
   "references": [
     { "path": "./tsconfig.app.json" },
