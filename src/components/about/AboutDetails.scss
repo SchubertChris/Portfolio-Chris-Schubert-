@@ -76,7 +76,12 @@
                 box-shadow: 0 0 15px var(--primary-glow);
                 animation: neonPulse 2s infinite alternate;
                 z-index: -1;
-                will-change: box-shadow, border-color;
+                // will-change entfernt
+                
+                // Reduzierte Animation auf Mobilgeräten
+                @media (max-width: 768px) {
+                    animation-duration: 3s;
+                }
             }
         }
     }
@@ -162,7 +167,7 @@
                         rgba(200, 162, 83, 0.2),
                         transparent);
                 transition: all 0.5s;
-                will-change: left;
+                // will-change entfernt
             }
 
             &:hover {

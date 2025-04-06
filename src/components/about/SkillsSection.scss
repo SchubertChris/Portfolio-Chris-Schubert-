@@ -1,22 +1,9 @@
-// src/components/about/SkillsSection.scss
+// src/components/about/TimelineItem.scss
 
-.about-skills-section {
+.skills-section {
     padding: 8rem 0;
-    background-color: var(--background-dark-lighter);
+    background-color: var(--background-dark);
     position: relative;
-
-    &::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background:
-            radial-gradient(circle at 80% 20%, rgba(200, 162, 83, 0.1) 0%, transparent 30%),
-            radial-gradient(circle at 20% 80%, rgba(200, 162, 83, 0.1) 0%, transparent 30%);
-        pointer-events: none;
-    }
 
     .section-container {
         max-width: 1200px;
@@ -24,72 +11,148 @@
         padding: 0 2rem;
     }
 
-    .skills-container {
-        margin-top: 3rem;
-    }
+    .section-title {
+        font-size: 2.5rem;
+        margin-bottom: 2rem;
+        text-align: center;
+        color: var(--primary);
+        position: relative;
+        display: inline-block;
+        animation: textGlow 3s infinite;
+        will-change: text-shadow;
 
-    .skills-group {
-        margin-bottom: 4rem;
-
-        h3 {
-            font-size: 1.5rem;
-            color: var(--text-light);
-            margin-bottom: 2rem;
-            display: inline-block;
-            position: relative;
-
-            @media (max-width: 768px) {
-                font-size: 1.3rem;
-            }
-
-            &::after {
-                content: '';
-                position: absolute;
-                bottom: -8px;
-                left: 0;
-                width: 40px;
-                height: 3px;
-                background-color: var(--primary);
-            }
-
-            &::before {
-                content: '';
-                position: absolute;
-                bottom: -8px;
-                left: 0;
-                width: 80px;
-                height: 3px;
-                background: linear-gradient(to right, var(--primary), transparent);
-                opacity: 0.5;
-            }
+        @media (max-width: 768px) {
+            font-size: 2rem;
         }
 
-        &:nth-child(2) h3::after,
-        &:nth-child(2) h3::before {
-            background-color: var(--blue);
-        }
-
-        &:nth-child(2) h3::before {
-            background: linear-gradient(to right, var(--blue), transparent);
-        }
-
-        &:nth-child(3) h3::after,
-        &:nth-child(3) h3::before {
-            background-color: var(--yellow);
-        }
-
-        &:nth-child(3) h3::before {
-            background: linear-gradient(to right, var(--yellow), transparent);
+        &::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--primary), transparent);
         }
     }
 
-    .skills-list {
+    .skills-category-filters {
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+        margin-bottom: 2rem;
+        flex-wrap: wrap;
+    }
+
+    .skills-category-btn {
+        padding: 0.8rem 2rem;
+        background-color: transparent;
+        border: 2px solid var(--text-light-muted);
+        color: var(--text-light-muted);
+        border-radius: 8px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        will-change: transform, box-shadow;
+
+        &.active {
+            border-color: var(--primary);
+            color: var(--primary);
+            box-shadow: 0 0 15px var(--primary-glow);
+        }
+
+        &:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 0 15px var(--primary-glow);
+            border-color: var(--primary);
+        }
+
+        &:active {
+            transform: translateY(-1px);
+        }
+    }
+
+    .skills-grid {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
         gap: 2rem;
 
         @media (max-width: 768px) {
-            grid-template-columns: 1fr;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
         }
     }
+
+    .skills-card {
+        background-color: var(--background-dark-lighter);
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+        transition: all 0.3s ease;
+        will-change: transform, box-shadow;
+
+        &:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+        }
+
+        .skills-card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem;
+            border-bottom-width: 3px;
+            border-bottom-style: solid;
+            background-color: var(--background-dark);
+
+            h3 {
+                font-size: 1.2rem;
+                color: var(--text-light);
+                font-weight: 600;
+            }
+        }
+
+        .skills-expertise-badge {
+            font-size: 0.875rem;
+            font-weight: 600;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .skills-card-body {
+            padding: 1rem;
+
+            p {
+                color: var(--text-light-muted);
+                margin-bottom: 1rem;
+                line-height: 1.6;
+            }
+        }
+
+        .skills-technologies {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .skills-tech-tag {
+            font-size: 0.8rem;
+            padding: 0.3rem 0.8rem;
+            background-color: var(--background-dark-accent);
+            color: var(--text-light);
+            border-radius: 30px;
+            transition: all 0.2s ease;
+
+            &:hover {
+                background-color: rgba(200, 162, 83, 0.2);
+            }
+        }
+    }
+
+    // Expertise Badge Colors
+    .text-yellow-500 { color: var(--yellow); }
+    .text-blue-500 { color: var(--blue); }
+    .text-green-500 { color: var(--green); }
+    .text-primary { color: var(--primary); }
 }

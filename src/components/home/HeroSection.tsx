@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState, useCallback, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { FaGithub, FaLinkedin, FaTwitter, FaArrowDown } from 'react-icons/fa';
+import { FaGithub, FaLinkedin, FaInstagram, FaArrowDown } from 'react-icons/fa';
 import ParticleBackground from '../ui/ParticleBackground';
 import './HeroSection.scss';
 
@@ -46,18 +46,18 @@ const HeroSection: React.FC = () => {
     const socialLinks = useMemo(() => [
         { 
             icon: FaGithub, 
-            href: "https://github.com", 
+            href: "https://github.com/SchubertChris", 
             label: "GitHub" 
         },
         { 
             icon: FaLinkedin, 
-            href: "https://linkedin.com", 
+            href: "https://www.linkedin.com/in/chris-schubert-4bb5b0353/", 
             label: "LinkedIn" 
         },
         { 
-            icon: FaTwitter, 
-            href: "https://twitter.com", 
-            label: "Twitter" 
+            icon: FaInstagram, 
+            href: "https://www.instagram.com/candlescope", 
+            label: "Instagram" 
         }
     ], []);
 
@@ -112,3 +112,4 @@ const HeroSection: React.FC = () => {
 };
 
 export default React.memo(HeroSection);
+// Hinweis: Der Instagram-Link wurde hinzugefügt, um auf die Trading-Seite hinzuweisen.

@@ -9,6 +9,11 @@
     z-index: 0;
     overflow: hidden;
     pointer-events: none;
+    
+    // Reduzieren der Komplexität auf Mobilgeräten
+    @media (max-width: 768px) {
+        opacity: 0.1; // Leicht reduzierte Sichtbarkeit
+    }
 }
 
 .ts-logo {
@@ -26,19 +31,24 @@
     opacity: 0.15;
     z-index: -1;
     animation: float 6s infinite ease-in-out;
-
+    
+    // Langsamere Animation auf Mobilgeräten
+    @media (max-width: 768px) {
+        animation-duration: 10s;
+    }
+    
     &:nth-child(1) {
         top: 15%;
         left: 10%;
         animation-delay: 0s;
     }
-
+    
     &:nth-child(2) {
         top: 30%;
         right: 5%;
         animation-delay: 1s;
     }
-
+    
     &:nth-child(3) {
         bottom: 20%;
         left: 20%;
@@ -52,14 +62,19 @@
     height: 60px;
     opacity: 0.15;
     z-index: -1;
-
+    
+    // Langsamere Animation auf Mobilgeräten
+    @media (max-width: 768px) {
+        animation-duration: 10s;
+    }
+    
     &:nth-child(4) {
         top: 25%;
         right: 15%;
         animation: float 8s infinite ease-in-out;
         animation-delay: 1.5s;
     }
-
+    
     .orbit {
         position: absolute;
         top: 50%;
@@ -71,7 +86,7 @@
         transform: translate(-50%, -50%);
         animation: spin 10s linear infinite;
     }
-
+    
     .core {
         position: absolute;
         top: 50%;
@@ -92,6 +107,11 @@
     opacity: 0.15;
     z-index: -1;
     animation: float 7s infinite ease-in-out;
+    
+    // Langsamere Animation auf Mobilgeräten
+    @media (max-width: 768px) {
+        animation-duration: 10s;
+    }
 }
 
 .html-logo {
@@ -114,11 +134,9 @@
     0% {
         transform: translateY(0px);
     }
-
     50% {
         transform: translateY(-15px);
     }
-
     100% {
         transform: translateY(0px);
     }
@@ -128,7 +146,6 @@
     from {
         transform: translate(-50%, -50%) rotate(0deg);
     }
-
     to {
         transform: translate(-50%, -50%) rotate(360deg);
     }

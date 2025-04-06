@@ -105,13 +105,13 @@
 @mixin neon-text($color: $primary, $glow-color: $primary-glow) {
     color: $color;
     text-shadow: 0 0 10px $glow-color;
-    will-change: text-shadow;
+    // will-change entfernt
 }
 
 @mixin neon-border($color: $primary, $glow-color: $primary-glow, $border-width: 2px) {
     border: $border-width solid $color;
     box-shadow: 0 0 15px $glow-color;
-    will-change: box-shadow;
+    // will-change entfernt
 }
 
 @mixin neon-glow($color: $primary, $glow-color: $primary-glow, $intensity: 1) {
@@ -119,7 +119,7 @@
         0 0 5px $glow-color,
         0 0 10px $glow-color,
         0 0 #{15px * $intensity} $glow-color;
-    will-change: box-shadow;
+    // will-change entfernt
 }
 
 // Gradient Mixins
@@ -202,7 +202,8 @@
     position: relative;
     display: inline-block;
     animation: textGlow 3s infinite;
-    will-change: text-shadow;
+    // Nur für wichtige Titel behalten
+    // will-change entfernt
 
     &::after {
         content: '';
@@ -233,7 +234,7 @@
     cursor: pointer;
     transition: all var(--transition-fast) ease;
     user-select: none;
-    will-change: transform, box-shadow;
+    // will-change entfernt
 }
 
 @mixin primary-button {
@@ -305,7 +306,7 @@
     overflow: hidden;
     box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
     transition: all var(--transition-fast) ease;
-    will-change: transform, box-shadow;
+    // will-change entfernt
 }
 
 @mixin card-hover {
@@ -323,7 +324,7 @@
     color: var(--text-light);
     font-size: $font-size-base;
     transition: all 0.3s ease;
-    will-change: border-color, box-shadow;
+    // will-change entfernt
 
     &:focus {
         border-color: var(--primary);
@@ -360,7 +361,7 @@
         animation: skillAnimation 1.5s ease forwards;
         transform-origin: left;
         transform: scaleX(0);
-        will-change: transform;
+        // will-change nur für wichtige Animationen behalten
     }
 }
 
@@ -406,14 +407,14 @@
 
 @mixin animate($animation, $duration, $timing: ease, $delay: 0s, $iteration: 1, $direction: normal, $fill-mode: forwards) {
     animation: $animation $duration $timing $delay $iteration $direction $fill-mode;
-    will-change: auto;
+    // will-change: auto entfernt (besonders problematisch)
 }
 
 // Scroll-Reveal
 @mixin reveal-base {
     opacity: 0;
     transition: opacity 0.8s ease, transform 0.8s ease;
-    will-change: opacity, transform;
+    // will-change: opacity, transform entfernt
 
     &.revealed {
         opacity: 1;
@@ -502,5 +503,74 @@
     @media (prefers-reduced-motion: reduce) {
         animation: none !important;
         transition: none !important;
+    }
+}
+
+// Zusätzliche Mixins für Skills-Sektion
+
+// Tech Tag Mixin (falls noch nicht vorhanden oder unterschiedlich)
+@mixin skills-tech-tag($bg-color: var(--background-dark-accent), $text-color: var(--text-light)) {
+    font-size: 0.8rem;
+    padding: 0.3rem 0.8rem;
+    background-color: $bg-color;
+    color: $text-color;
+    border-radius: 30px;
+    transition: all 0.2s ease;
+    
+    &:hover {
+        background-color: rgba(200, 162, 83, 0.2);
+    }
+}
+
+// Expertise Badge Mixin
+@mixin expertise-badge {
+    font-size: $font-size-sm;
+    font-weight: 600;
+    padding: 0.25rem 0.5rem;
+    border-radius: 20px;
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+// Skills Card Mixin
+@mixin skills-card {
+    background-color: var(--background-dark);
+    border-radius: 12px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+
+    &:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+    }
+}
+
+// Skills Category Filter Button
+@mixin skills-category-btn {
+    @include button-base;
+    background-color: transparent;
+    border: 2px solid var(--text-light-muted);
+    color: var(--text-light-muted);
+    transition: all 0.3s ease;
+    
+    &.active {
+        @include neon-glow;
+        border-color: currentColor;
+    }
+
+    &:hover {
+        transform: translateY(-3px);
+        @include neon-glow($intensity: 1.2);
+    }
+}
+
+// Skills Grid
+@mixin skills-grid($min-width: 250px, $gap: 1.5rem) {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax($min-width, 1fr));
+    gap: $gap;
+
+    @media (max-width: $breakpoint-md) {
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     }
 }

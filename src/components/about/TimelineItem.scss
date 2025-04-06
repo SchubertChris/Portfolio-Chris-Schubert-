@@ -66,12 +66,17 @@
         box-shadow: 0 0 20px var(--primary-glow);
         z-index: 2;
         transition: all 0.3s ease;
-        will-change: transform;
-        top: 0; // Zentrieren Sie das Icon auf der Zeitlinie
-        transform: translateY(-50%); // Verschieben Sie das Icon vertikal
+        // will-change entfernt
+        top: 0;
+        transform: translateY(-50%);
+
+        // Nur auf Desktop, wenn wirklich nötig
+        @media (min-width: 992px) {
+            // will-change: transform;
+        }
 
         svg {
-            position: absolute; // Zentrieren Sie das SVG-Icon
+            position: absolute;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
@@ -86,7 +91,12 @@
             border: 2px solid var(--primary);
             opacity: 0.3;
             animation: pulse 2s infinite;
-            will-change: transform, opacity;
+            // will-change entfernt
+            
+            // Langsamere Animation auf Mobilgeräten
+            @media (max-width: 768px) {
+                animation-duration: 3s;
+            }
         }
 
         &:hover {
@@ -120,7 +130,7 @@
         position: relative;
         transition: all 0.3s ease;
         overflow: hidden;
-        will-change: transform, box-shadow;
+        // will-change entfernt
 
         &::before {
             content: '';
