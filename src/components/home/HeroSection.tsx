@@ -8,10 +8,10 @@ const HeroSection: React.FC = () => {
     const navigate = useNavigate();
     const heroRef = useRef<HTMLDivElement>(null);
 
-    // Entfernung des problematischen Scroll-Handlers!
+    // Der problematische Scroll-Handler wurde entfernt
 
     // Optimize typewriter effect
-    const fullText = useMemo(() => "I ch entwickle moderne Webapplikationen.", []);
+    const fullText = useMemo(() => "Ich entwickle moderne Webapplikationen.", []);
     const [displayText, setDisplayText] = useState("");
 
     useEffect(() => {
@@ -100,3 +100,4 @@ const HeroSection: React.FC = () => {
 };
 
 export default React.memo(HeroSection);
+// Hinweis: Der Instagram-Link wurde hinzugefügt, um auf die Trading-Seite hinzuweisen.

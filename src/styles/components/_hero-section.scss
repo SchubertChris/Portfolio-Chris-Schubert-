@@ -1,35 +1,37 @@
 // src/styles/components/_hero-section.scss
+
 .hero-section,
 .about-hero-section,
 .projects-hero-section,
 .contact-hero-section {
-    position: relative;
+    position: absolute;
     height: 60vh;
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
     overflow: hidden;
-    
+
     // Für Home-Seite passt die Höhe an
     &.hero-section {
         height: 100vh;
+        z-index: 999;
     }
-    
+
     // Für Contact- und Projects-Seite passt die Höhe an
     &.contact-hero-section,
     &.projects-hero-section {
         height: 50vh;
     }
-    
+
     .hero-content {
         position: relative;
         text-align: center;
         z-index: 2;
         max-width: 1000px;
         padding: 0 2rem;
-        // will-change: transform entfernt
-        
+        will-change: transform;
+
         .animated-title {
             font-size: 3.5rem;
             margin-bottom: 1rem;
@@ -40,23 +42,25 @@
             opacity: 0;
             animation: fadeInUp 1s forwards 0.5s;
             text-shadow: 0 0 10px var(--primary-glow);
+
             @media (max-width: 768px) {
                 font-size: 2.5rem;
             }
         }
-        
+
         .animated-subtitle {
             font-size: 1.5rem;
             color: var(--text-light);
             opacity: 0;
             animation: fadeInUp 1s forwards 0.8s;
             margin-bottom: 2rem;
+
             @media (max-width: 768px) {
                 font-size: 1.2rem;
             }
         }
     }
-    
+
     .hero-background {
         position: absolute;
         top: 0;
@@ -65,7 +69,7 @@
         height: 100%;
         z-index: -1;
         background-color: var(--background-dark);
-        
+
         .gradient-overlay {
             position: absolute;
             width: 100%;
@@ -74,7 +78,7 @@
                     rgba(200, 162, 83, 0.2) 0%,
                     rgba(0, 0, 0, 0.8) 70%);
         }
-        
+
         .grid-overlay {
             position: absolute;
             width: 100%;
