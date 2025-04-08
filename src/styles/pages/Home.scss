@@ -6,7 +6,7 @@
 }
 
 // Scroll Reveal Animationen
-[data-reveal] {
+/* [data-reveal] {
   opacity: 0;
   transition: opacity 0.8s ease, transform 0.8s ease;
 }
@@ -30,7 +30,7 @@
 [data-reveal].revealed {
   opacity: 1;
   transform: translate(0);
-}
+} */
 
 // Section Title Styling (falls nicht bereits in einer gemeinsamen Datei)
 .section-title {
