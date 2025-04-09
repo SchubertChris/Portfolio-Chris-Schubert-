@@ -1,4 +1,4 @@
-// src/styles/pages/Home.scss
+/* // src/styles/pages/Home.scss
 
 // Home Seite Hauptstil
 .home-page {
@@ -6,7 +6,7 @@
 }
 
 // Scroll Reveal Animationen
-/* [data-reveal] {
+[data-reveal] {
   opacity: 0;
   transition: opacity 0.8s ease, transform 0.8s ease;
 }
@@ -30,7 +30,7 @@
 [data-reveal].revealed {
   opacity: 1;
   transform: translate(0);
-} */
+}
 
 // Section Title Styling (falls nicht bereits in einer gemeinsamen Datei)
 .section-title {
@@ -64,4 +64,4 @@
   50% {
     text-shadow: 0 0 20px var(--primary-glow), 0 0 30px var(--primary-glow);
   }
-}
+} */

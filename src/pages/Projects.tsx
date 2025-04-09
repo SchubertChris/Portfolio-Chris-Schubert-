@@ -12,11 +12,38 @@ import { ProjectData } from '../types';
 import '../styles/pages/Projects.scss'; // Importiere die CSS-Datei für die Projekte-Seite
 import '../styles/shared/ProjectCard.scss'; // Importiere die CSS-Datei für die Projektkarten
 
+// Styles für das Grid - maximal 3 Karten nebeneinander
+const gridStyles = {
+  display: 'grid',
+  gridTemplateColumns: 'repeat(auto-fill, minmax(calc(33.333% - 2rem), 1fr))',
+  gap: '2rem',
+  width: '100%',
+  maxWidth: '1200px',
+  margin: '0 auto',
+  padding: '2rem'
+};
+
+// Responsive Anpassung für kleinere Bildschirme
+const getResponsiveGridStyles = () => {
+  if (window.innerWidth < 1024) {
+    return {
+      gridTemplateColumns: 'repeat(auto-fill, minmax(calc(50% - 1.5rem), 1fr))'
+    };
+  }
+  if (window.innerWidth < 640) {
+    return {
+      gridTemplateColumns: 'repeat(auto-fill, minmax(100%, 1fr))'
+    };
+  }
+  return {};
+};
+
 const Projects: React.FC = () => {
   const [selectedProject, setSelectedProject] = useState<ProjectData | null>(null);
   const [filteredProjects, setFilteredProjects] = useState<ProjectData[]>(PROJECTS_DATA);
   const [searchTerm, setSearchTerm] = useState('');
   const [activeFilter, setActiveFilter] = useState('Alle');
+  const [responsiveStyles, setResponsiveStyles] = useState({});
 
   // Suchfunktion verbessern
   const applyFilters = (term: string = searchTerm, category: string = activeFilter) => {
@@ -56,10 +83,25 @@ const Projects: React.FC = () => {
     applyFilters(term, activeFilter);
   };
 
-  // Scroll Reveal Effekt
+  // Scroll Reveal Effekt und responsive Anpassung
   useEffect(() => {
     const cleanup = setupScrollReveal();
-    return cleanup;
+    
+    // Initial und bei Größenänderung die responsiven Styles anpassen
+    const updateResponsiveStyles = () => {
+      setResponsiveStyles(getResponsiveGridStyles());
+    };
+    
+    // Initial ausführen
+    updateResponsiveStyles();
+    
+    // Event Listener für Fenstergröße
+    window.addEventListener('resize', updateResponsiveStyles);
+    
+    return () => {
+      cleanup();
+      window.removeEventListener('resize', updateResponsiveStyles);
+    };
   }, []);
 
   return (
@@ -83,7 +125,8 @@ const Projects: React.FC = () => {
       />
 
       <div className="projects-grid-section">
-        <div className="projects-grid">
+        {/* Angepasstes Grid mit maximal 3 Karten pro Zeile */}
+        <div className="projects-grid" style={{...gridStyles, ...responsiveStyles}}>
           {filteredProjects.length > 0 ? (
             filteredProjects.map((project) => (
               <ProjectCard
