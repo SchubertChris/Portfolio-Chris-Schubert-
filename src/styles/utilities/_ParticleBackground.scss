@@ -8,4 +8,8 @@
     height: 100%;
     z-index: 0;
     pointer-events: none;
+    // BEDEUTUNG:
+    // Deaktiviert Zeigerereignisse auf dem Element, wodurch es nicht interaktiv ist.
+    // Das bedeutet, dass das Element nicht auf Maus- oder Touch-Ereignisse reagiert,
+    // und alle Klicks oder Interaktionen an darunterliegende Elemente weitergeleitet werden.
 }

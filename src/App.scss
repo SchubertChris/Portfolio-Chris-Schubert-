@@ -18,7 +18,6 @@
   width: 100%;
 
   // Optimierte Fade-In-Animation für Seitenübergänge
-  animation: fadeIn var(--transition-fast) ease-in-out;
   will-change: opacity, transform;
 
   // Verbesserter Scrolling-Bereich
@@ -26,17 +25,6 @@
   scroll-behavior: smooth;
 }
 
-// Überarbeitete Fade-In-Animation für Page-Transitions
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
 
 // Globale Fokus-Stile für Barrierefreiheit
 :focus {
