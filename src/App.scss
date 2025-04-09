@@ -17,9 +17,6 @@
   margin-top: var(--navbar-height);
   width: 100%;
 
-  // Optimierte Fade-In-Animation für Seitenübergänge
-  will-change: opacity, transform;
-
   // Verbesserter Scrolling-Bereich
   overflow-x: hidden;
   scroll-behavior: smooth;
