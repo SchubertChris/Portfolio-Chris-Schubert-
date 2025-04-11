@@ -12,12 +12,12 @@ const AboutSection: React.FC<AboutSectionProps> = ({ isVisible }) => {
     const navigate = useNavigate();
 
     return (
-        <div id="about" className={`about-section section-animate ${isVisible ? 'visible' : ''}`}>
+        <div id="about" className={`about-section ${isVisible ? 'visible' : ''}`}>
             <TechSymbols />
             <div className="section-container">
                 <h2 className="section-title">Über Mich</h2>
                 <div className="about-content">
-                    <div className="about-image" data-reveal="left" data-reveal-delay="200">
+                    <div className="about-image">
                         <div className="image-frame">
                             <div className="image-placeholder">
                                 <img src="/Profilbild.webp" alt="Profilbild" />
@@ -25,7 +25,7 @@ const AboutSection: React.FC<AboutSectionProps> = ({ isVisible }) => {
                             <div className="neon-border"></div>
                         </div>
                     </div>
-                    <div className="about-text" data-reveal="right" data-reveal-delay="400">
+                    <div className="about-text">
                         <p>Als leidenschaftlicher Web-Entwickler verbinde ich kreatives Design mit technischer Präzision.
                             Ich habe Erfahrung in der Entwicklung moderner, reaktionsfähiger und benutzerfreundlicher Webanwendungen.</p>
 

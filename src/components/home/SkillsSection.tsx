@@ -9,11 +9,11 @@ interface SkillsSectionProps {
 
 const SkillsSection: React.FC<SkillsSectionProps> = ({ isVisible }) => {
     return (
-        <div id="skills" className={`skills-section section-animate ${isVisible ? 'visible' : ''}`}>
+        <div id="skills" className={`skills-section ${isVisible ? 'visible' : ''}`}>
             <div className="section-container">
-                <h2 className="section-title" data-reveal="up">Meine Fähigkeiten</h2>
+                <h2 className="section-title">Meine Fähigkeiten</h2>
                 <div className="skills-container">
-                    <div className="skill-category" data-reveal="left" data-reveal-delay="200">
+                    <div className="skill-category">
                         <div className="category-icon">
                             <FaCode />
                         </div>
@@ -46,7 +46,7 @@ const SkillsSection: React.FC<SkillsSectionProps> = ({ isVisible }) => {
                         </ul>
                     </div>
 
-                    <div className="skill-category" data-reveal="up" data-reveal-delay="400">
+                    <div className="skill-category">
                         <div className="category-icon">
                             <FaLaptopCode />
                         </div>
@@ -79,7 +79,7 @@ const SkillsSection: React.FC<SkillsSectionProps> = ({ isVisible }) => {
                         </ul>
                     </div>
 
-                    <div className="skill-category" data-reveal="right" data-reveal-delay="600">
+                    <div className="skill-category">
                         <div className="category-icon">
                             <FaBriefcase />
                         </div>

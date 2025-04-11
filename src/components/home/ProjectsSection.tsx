@@ -12,9 +12,9 @@ const ProjectsSection: React.FC<ProjectsSectionProps> = ({ isVisible }) => {
     const navigate = useNavigate();
 
     return (
-        <div id="projects" className={`projects-preview section-animate ${isVisible ? 'visible' : ''}`}>
+        <div id="projects" className={`projects-preview ${isVisible ? 'visible' : ''}`}>
             <div className="section-container">
-                <h2 className="section-title" data-reveal="up">Aktuelle Projekte</h2>
+                <h2 className="section-title">Aktuelle Projekte</h2>
                 <div className="project-cards">
                     <ProjectCard
                         id={1}
@@ -38,7 +38,7 @@ const ProjectsSection: React.FC<ProjectsSectionProps> = ({ isVisible }) => {
                         imageUrl="/project-3.jpg"
                     />
                 </div>
-                <div className="section-footer" data-reveal="up" data-reveal-delay="400">
+                <div className="section-footer">
                     <button
                         className="outline-button"
                         onClick={() => navigate('/projects')}

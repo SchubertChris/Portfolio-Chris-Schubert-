@@ -40,12 +40,12 @@ const SkillBar: React.FC<SkillBarProps> = ({ name, level, color, delay = 0 }) =>
     }, [delay]);
 
     return (
-        <div className="skill-item" data-reveal="up" ref={skillBarRef}>
+        <div className="skill-item" ref={skillBarRef}>
             <div className="skill-info">
                 <span className="skill-name">{name}</span>
                 <span className="skill-percentage">{level}%</span>
             </div>
-            <div className={`skill-bar ${isVisible ? 'animated' : ''}`}>
+            <div className="skill-bar">
                 <div
                     className="skill-level"
                     style={{

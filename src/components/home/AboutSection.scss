@@ -40,6 +40,7 @@
         justify-content: center;
         align-items: center;
 
+
         .image-frame {
             position: relative;
             width: 300px;
@@ -69,7 +70,6 @@
                 border: 2px solid transparent;
                 box-shadow: 0 0 15px var(--primary-glow);
                 animation: neonPulse 2s infinite alternate;
-                z-index: -1;
             }
         }
     }

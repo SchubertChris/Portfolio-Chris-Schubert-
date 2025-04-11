@@ -7,7 +7,7 @@ const ContactCTA: React.FC = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="contact-cta" data-reveal="up">
+    <div className="contact-cta">
       <div className="cta-content">
         <h2>Bereit für eine Zusammenarbeit?</h2>
         <p>Lassen Sie uns gemeinsam Ihr nächstes Projekt zum Leben erwecken!</p>

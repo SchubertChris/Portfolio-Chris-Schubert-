@@ -4,9 +4,5 @@
 @use './styles/abstracts/global';
 @use './styles/abstracts/mixins';
 
-// Komponenten-Styles
-@use './styles/utilities/NeonButtonMitTooltip.scss';
-@use './styles/layout/Navbar.scss';
-
 // App-Styles
 @use './App';

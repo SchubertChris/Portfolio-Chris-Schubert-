@@ -12,13 +12,13 @@ const AboutDetails: React.FC<AboutDetailsProps> = ({ isVisible }) => {
   const navigate = useNavigate();
 
   return (
-    <div id="about" className={`about-details-section section-animate ${isVisible ? 'visible' : ''}`}>
+    <div id="about" className={`about-details-section ${isVisible ? 'visible' : ''}`}>
       <div className="section-container">
         <div className="title-wrapper">
           <h2 className="section-title">Wer ich bin</h2>
         </div>
         <div className="about-content">
-          <div className="about-image" data-reveal="left">
+          <div className="about-image">
             <div className="image-frame">
               <div className="image-placeholder">
                 <img src="/Profilbild.webp" alt="Profilbild" />
@@ -26,7 +26,7 @@ const AboutDetails: React.FC<AboutDetailsProps> = ({ isVisible }) => {
               <div className="neon-border"></div>
             </div>
           </div>
-          <div className="about-text" data-reveal="right">
+          <div className="about-text">
             <p>Herzlich willkommen auf meiner Portfolio-Seite! Ich bin ein <span className="highlight">Frontend-Entwickler</span> mit über 5 Jahren Erfahrung in der Webentwicklung.</p>
 
             <p>Meine Reise in der Programmierung begann während meines Informatikstudiums, als ich entdeckte, wie faszinierend es ist, Benutzeroberflächen zu gestalten, die nicht nur funktional, sondern auch ästhetisch ansprechend sind.</p>

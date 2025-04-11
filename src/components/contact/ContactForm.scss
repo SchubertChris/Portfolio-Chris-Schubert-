@@ -228,6 +228,7 @@
             height: 100%;
             min-height: 400px;
             border-radius: 10px;
+            animation: neonPulse 2s infinite alternate;
             overflow: hidden;
 
             img {
@@ -248,7 +249,6 @@
                 border: 2px solid transparent;
                 box-shadow: 0 0 15px var(--primary-glow);
                 animation: neonPulse 2s infinite alternate;
-                z-index: -1;
                 will-change: border-color, box-shadow;
             }
         }

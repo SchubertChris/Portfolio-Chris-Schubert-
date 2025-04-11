@@ -10,10 +10,10 @@ interface TimelineSectionProps {
 
 const TimelineSection: React.FC<TimelineSectionProps> = ({ isVisible }) => {
   return (
-    <div id="timeline" className={`timeline-section section-animate ${isVisible ? 'visible' : ''}`}>
+    <div id="timeline" className={`timeline-section ${isVisible ? 'visible' : ''}`}>
       <div className="section-container">
         <div className="title-wrapper">
-          <h2 className="section-title" data-reveal="up">Mein Werdegang</h2>
+          <h2 className="section-title">Mein Werdegang</h2>
         </div>
         <div className="timeline-container">
           <div className="timeline-line"></div>

@@ -1,7 +1,7 @@
 // src/components/ui/NeonButtonMitTooltip.tsx
 
 import React, { useState, useRef } from 'react'
-import '../../styles/utilities/_NeonButtonMitTooltip.scss' // Importiere die CSS-Datei für den NeonButton mit Tooltip
+import './NeonButtonMitTooltip.scss'
 
 interface NeonButtonMitTooltipProps {
   icon: React.ReactNode
@@ -20,13 +20,13 @@ const NeonButtonMitTooltip: React.FC<NeonButtonMitTooltipProps> = ({
 }) => {
   const [showTooltip, setShowTooltip] = useState(false)
   const buttonRef = useRef<HTMLButtonElement>(null)
-  
+
   const handleMouseDown = () => {
     if (buttonRef.current) {
       buttonRef.current.style.transform = 'translateY(2px) scale(0.95)'
     }
   }
-  
+
   const handleMouseUp = () => {
     if (buttonRef.current) {
       buttonRef.current.style.transform = 'translateY(-3px) scale(1.05)'

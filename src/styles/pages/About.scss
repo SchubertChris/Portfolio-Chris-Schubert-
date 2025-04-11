@@ -1,35 +1,8 @@
-/* // src/styles/pages/About.scss
+// src/styles/pages/About.scss
 
 // About Seite Hauptstil
 .about-page {
   overflow-x: hidden;
-}
-
-// Scroll Reveal Animationen
-[data-reveal] {
-  opacity: 0;
-  transition: opacity 0.8s ease, transform 0.8s ease;
-}
-
-[data-reveal="left"] {
-  transform: translateX(-50px);
-}
-
-[data-reveal="right"] {
-  transform: translateX(50px);
-}
-
-[data-reveal="up"] {
-  transform: translateY(50px);
-}
-
-[data-reveal="down"] {
-  transform: translateY(-50px);
-}
-
-[data-reveal].revealed {
-  opacity: 1;
-  transform: translate(0);
 }
 
 // Section Title Styling
@@ -84,4 +57,4 @@
   50% {
     text-shadow: 0 0 20px var(--primary-glow), 0 0 30px var(--primary-glow);
   }
-} */
+}
