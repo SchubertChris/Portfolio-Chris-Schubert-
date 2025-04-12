@@ -5,18 +5,8 @@ $bg-color: #000;
 $text-color: #fff;
 $transition-duration: 0.3s;
 
-// Global Styles
-.app {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-  background-color: var(--bg-color, $bg-color);
-  color: var(--text-color, $text-color);
-}
-
 .main-content {
   flex: 1;
-  padding: 20px;
 }
 
 // Loader Styles
