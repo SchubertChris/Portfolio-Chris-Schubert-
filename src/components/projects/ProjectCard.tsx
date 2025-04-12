@@ -3,7 +3,6 @@ import React, { useRef, useState } from 'react';
 import { ProjectData } from '../../types';
 import '../../styles/shared/ProjectCard.scss'; // Importiere die CSS-Datei für das Styling
 
-
 interface ProjectCardProps {
     project: ProjectData;
     onClick: () => void;
@@ -57,7 +56,6 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, onClick }) => {
             style={cardStyle}
             onMouseMove={handleMouseMove}
             onMouseLeave={handleMouseLeave}
-            data-reveal="up"
         >
             <div className="project-image">
                 <img src={project.image} alt={project.title} />

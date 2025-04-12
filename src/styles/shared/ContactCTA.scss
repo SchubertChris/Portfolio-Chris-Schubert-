@@ -46,8 +46,6 @@
                     rgba(200, 162, 83, 0.1),
                     transparent);
             background-size: 200% 100%;
-            animation: wave 8s linear infinite;
-            will-change: background-position;
         }
     }
 
@@ -98,19 +96,5 @@
                 transform: translateY(-2px);
             }
         }
-    }
-}
-
-@keyframes wave {
-    0% {
-        background-position: 0% 50%;
-    }
-
-    50% {
-        background-position: 100% 50%;
-    }
-
-    100% {
-        background-position: 0% 50%;
     }
 }

@@ -1,7 +1,6 @@
-// src/components/projects/ProjectFilter.tsx
-import React from 'react';
+import React, { memo } from 'react';
 import { FaSearch } from 'react-icons/fa';
-import './ProjectFilter.scss'; // Importiere die CSS-Datei für das Styling
+import './ProjectFilter.scss';
 
 interface ProjectFilterProps {
     searchTerm: string;
@@ -10,14 +9,14 @@ interface ProjectFilterProps {
     onFilterChange: (category: string) => void;
 }
 
+const categories = ['Alle', 'Web', 'Mobile', 'Frontend', 'Backend', 'Fullstack', 'Widget'];
+
 const ProjectFilter: React.FC<ProjectFilterProps> = ({
     searchTerm,
     activeFilter,
     onSearchChange,
     onFilterChange
 }) => {
-    const categories = ['Alle', 'Featured', 'Web', 'Mobile', 'Frontend', 'Backend', 'Fullstack', 'Widget'];
-
     return (
         <div className="projects-filter-section">
             <div className="filter-container">
@@ -47,4 +46,5 @@ const ProjectFilter: React.FC<ProjectFilterProps> = ({
     );
 };
 
-export default ProjectFilter;
+// Verhindert unnötige Re-Renders
+export default memo(ProjectFilter);

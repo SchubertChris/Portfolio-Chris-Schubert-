@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { FaHome, FaProjectDiagram, FaUser, FaEnvelope, FaBars, FaTimes } from 'react-icons/fa';
 import NeonButtonMitTooltip from '../ui/NeonButtonMitTooltip';
@@ -12,45 +12,55 @@ const Navbar: React.FC = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
 
-  // Überwachen der Scrollrichtung
+  // Optimierter Scroll-Handler mit Throttling
   useEffect(() => {
     let lastScrollY = window.scrollY;
+    let ticking = false;
+
     const handleScroll = () => {
-      const currentScrollY = window.scrollY;
-      if (currentScrollY > lastScrollY && currentScrollY > 100) {
-        setIsScrolledDown(true); // Scrollt runter
-      } else {
-        setIsScrolledDown(false); // Scrollt hoch
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          const currentScrollY = window.scrollY;
+          setIsScrolledDown(currentScrollY > 100 && currentScrollY > lastScrollY);
+          lastScrollY = currentScrollY;
+          ticking = false;
+        });
+        ticking = true;
       }
-      lastScrollY = currentScrollY;
     };
+
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Überwachen der Bildschirmbreite
-  useEffect(() => {
-    const handleResize = () => {
-      setIsMobile(window.innerWidth <= 768);
-      // Schließen des Mobile-Menüs bei Größenänderung zu Desktop
-      if (window.innerWidth > 768) {
-        setIsMobileMenuOpen(false);
-      }
-    };
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
-
-  // Scrollsperren bei geöffnetem Menü auf Mobilgeräten
-  useEffect(() => {
-    if (isMobileMenuOpen && isMobile) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = '';
+  // Throttled resize handler
+  const handleResize = useCallback(() => {
+    const isMobileView = window.innerWidth <= 768;
+    setIsMobile(isMobileView);
+    if (!isMobileView && isMobileMenuOpen) {
+      setIsMobileMenuOpen(false);
     }
-    return () => {
-      document.body.style.overflow = '';
+  }, [isMobileMenuOpen]);
+
+  useEffect(() => {
+    let resizeTimer: number;
+    
+    const debouncedResize = () => {
+      clearTimeout(resizeTimer);
+      resizeTimer = window.setTimeout(handleResize, 100);
     };
+    
+    window.addEventListener('resize', debouncedResize);
+    return () => {
+      window.removeEventListener('resize', debouncedResize);
+      clearTimeout(resizeTimer);
+    };
+  }, [handleResize]);
+
+  // Scrollsperren bei geöffnetem Menü
+  useEffect(() => {
+    document.body.style.overflow = (isMobileMenuOpen && isMobile) ? 'hidden' : '';
+    return () => { document.body.style.overflow = ''; };
   }, [isMobileMenuOpen, isMobile]);
 
   const handleNavigation = (path: string) => {
@@ -58,10 +68,6 @@ const Navbar: React.FC = () => {
     if (isMobile) {
       setIsMobileMenuOpen(false);
     }
-  };
-
-  const toggleMobileMenu = () => {
-    setIsMobileMenuOpen(!isMobileMenuOpen);
   };
 
   return (
@@ -72,17 +78,19 @@ const Navbar: React.FC = () => {
             src="/csGold.webp"
             alt="Logo"
             onClick={() => handleNavigation('/')}
+            width="60"
+            height="60"
           />
         </div>
         
-        {/* Hamburger Button für mobile Geräte */}
+        {/* Hamburger Button nur für mobile */}
         {isMobile && (
-          <button className="hamburger-button" onClick={toggleMobileMenu} aria-label="Menü öffnen">
+          <button className="hamburger-button" onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)} aria-label="Menü öffnen">
             {isMobileMenuOpen ? <FaTimes /> : <FaBars />}
           </button>
         )}
 
-        {/* Desktop Navigation */}
+        {/* Desktop Navigation - nur rendern wenn nicht mobile */}
         {!isMobile && (
           <ul className="nav-menu">
             <li className={currentPath === '/' ? 'active' : ''}>
@@ -124,38 +132,40 @@ const Navbar: React.FC = () => {
           </ul>
         )}
 
-        {/* Mobile Navigation */}
-        <div className="mobile-menu-container">
-          <div className="mobile-menu-overlay" onClick={() => setIsMobileMenuOpen(false)}></div>
-          <div className="mobile-menu">
-            <ul className="mobile-nav-menu">
-              <li className={currentPath === '/' ? 'active' : ''}>
-                <button onClick={() => handleNavigation('/')}>
-                  <FaHome className="menu-icon blue-icon" />
-                  <span>Startseite</span>
-                </button>
-              </li>
-              <li className={currentPath === '/projects' ? 'active' : ''}>
-                <button onClick={() => handleNavigation('/projects')}>
-                  <FaProjectDiagram className="menu-icon green-icon" />
-                  <span>Projekte</span>
-                </button>
-              </li>
-              <li className={currentPath === '/about' ? 'active' : ''}>
-                <button onClick={() => handleNavigation('/about')}>
-                  <FaUser className="menu-icon purple-icon" />
-                  <span>Über mich</span>
-                </button>
-              </li>
-              <li className={currentPath === '/contact' ? 'active' : ''}>
-                <button onClick={() => handleNavigation('/contact')}>
-                  <FaEnvelope className="menu-icon red-icon" />
-                  <span>Kontakt</span>
-                </button>
-              </li>
-            </ul>
+        {/* Mobile Navigation - nur rendern wenn mobile */}
+        {isMobile && (
+          <div className="mobile-menu-container">
+            <div className="mobile-menu-overlay" onClick={() => setIsMobileMenuOpen(false)}></div>
+            <div className="mobile-menu">
+              <ul className="mobile-nav-menu">
+                <li className={currentPath === '/' ? 'active' : ''}>
+                  <button onClick={() => handleNavigation('/')}>
+                    <FaHome className="menu-icon blue-icon" />
+                    <span>Startseite</span>
+                  </button>
+                </li>
+                <li className={currentPath === '/projects' ? 'active' : ''}>
+                  <button onClick={() => handleNavigation('/projects')}>
+                    <FaProjectDiagram className="menu-icon green-icon" />
+                    <span>Projekte</span>
+                  </button>
+                </li>
+                <li className={currentPath === '/about' ? 'active' : ''}>
+                  <button onClick={() => handleNavigation('/about')}>
+                    <FaUser className="menu-icon purple-icon" />
+                    <span>Über mich</span>
+                  </button>
+                </li>
+                <li className={currentPath === '/contact' ? 'active' : ''}>
+                  <button onClick={() => handleNavigation('/contact')}>
+                    <FaEnvelope className="menu-icon red-icon" />
+                    <span>Kontakt</span>
+                  </button>
+                </li>
+              </ul>
+            </div>
           </div>
-        </div>
+        )}
       </div>
     </nav>
   );
