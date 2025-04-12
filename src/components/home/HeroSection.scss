@@ -1,232 +1,256 @@
 // src/components/home/HeroSection.scss
 
 :root {
-    // CSS Variablen für bessere Performance und Wartbarkeit
-    --hero-primary-color: #c8a253;
-    --hero-primary-color-dark: #b0904a;
-    --hero-primary-color-light: #d6b45d;
-    --hero-background-dark: #000;
-    --hero-text-light: #f4f4f4;
-    --hero-transition-speed: 0.3s;
+  // CSS Variablen für bessere Performance und Wartbarkeit
+  --hero-primary-color: #c8a253;
+  --hero-primary-color-dark: #b0904a;
+  --hero-primary-color-light: #d6b45d;
+  --hero-background-dark: #000;
+  --hero-text-light: #f4f4f4;
+  --hero-transition-speed: 0.3s;
 }
 
 .hero-section {
+  position: relative;
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+  overflow: hidden;
+  // will-change entfernt
+
+  .hero-content {
     position: relative;
-    height: 100vh;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
+    text-align: center;
+    z-index: 2;
+    max-width: 1000px;
+    padding: 0 2rem;
     // will-change entfernt
 
-    .hero-content {
+    .animated-title {
+      font-size: clamp(2.5rem, 5vw, 3.5rem);
+      margin-bottom: 1.5rem;
+      background: linear-gradient(
+        to right,
+        var(--hero-primary-color),
+        var(--hero-primary-color-dark),
+        var(--hero-primary-color-light)
+      );
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      opacity: 0;
+      animation: fadeInUp 1s forwards 0.5s;
+      text-shadow: 0 0 10px rgba(200, 162, 83, 0.5);
+    }
+
+    .typewriter-container {
+      height: 2rem;
+      margin-bottom: 2rem;
+
+      .typewriter {
+        font-size: 1.5rem;
+        color: var(--hero-text-light);
+        font-family: "Courier New", monospace;
         position: relative;
-        text-align: center;
-        z-index: 2;
-        max-width: 1000px;
-        padding: 0 2rem;
-        // will-change entfernt
+        display: inline-block;
 
-        .animated-title {
-            font-size: clamp(2.5rem, 5vw, 3.5rem);
-            margin-bottom: 1.5rem;
-            background: linear-gradient(
-                to right, 
-                var(--hero-primary-color), 
-                var(--hero-primary-color-dark), 
-                var(--hero-primary-color-light)
-            );
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            opacity: 0;
-            animation: fadeInUp 1s forwards 0.5s;
-            text-shadow: 0 0 10px rgba(200, 162, 83, 0.5);
+        &::after {
+          content: "|";
+          position: absolute;
+          right: -8px;
+          animation: blink 1s infinite;
         }
-
-        .typewriter-container {
-            height: 2rem;
-            margin-bottom: 2rem;
-
-            .typewriter {
-                font-size: 1.5rem;
-                color: var(--hero-text-light);
-                font-family: 'Courier New', monospace;
-                position: relative;
-                display: inline-block;
-
-                &::after {
-                    content: '|';
-                    position: absolute;
-                    right: -8px;
-                    animation: blink 1s infinite;
-                }
-            }
-        }
-
-        .hero-cta {
-            margin-top: 8rem;
-            display: flex;
-            justify-content: center;
-            gap: 1.5rem;
-            opacity: 0;
-            animation: fadeIn 1s forwards 1.5s;
-
-            @media (max-width: 768px) {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            button {
-                padding: 0.8rem 2rem;
-                font-size: 1.1rem;
-                border-radius: 8px;
-                font-weight: 600;
-                cursor: pointer;
-                transition: all var(--hero-transition-speed) ease;
-
-                &.primary-button {
-                    background-color: var(--hero-primary-color);
-                    color: var(--hero-background-dark);
-                    border: none;
-                    box-shadow: 0 0 15px rgba(200, 162, 83, 0.5);
-
-                    &:hover {
-                        transform: translateY(-3px);
-                        box-shadow: 0 0 25px rgba(200, 162, 83, 0.7);
-                    }
-
-                    &:active {
-                        transform: translateY(-1px);
-                    }
-                }
-
-                &.secondary-button {
-                    background-color: transparent;
-                    color: var(--hero-text-light);
-                    border: 2px solid var(--hero-primary-color);
-
-                    &:hover {
-                        background-color: rgba(200, 162, 83, 0.1);
-                        transform: translateY(-3px);
-                    }
-
-                    &:active {
-                        transform: translateY(-1px);
-                    }
-                }
-            }
-        }
-
-        .social-links {
-            margin-top: 2.5rem;
-            display: flex;
-            justify-content: center;
-            gap: 1.5rem;
-            opacity: 0;
-            animation: fadeIn 1s forwards 2s;
-
-            .social-icon {
-                font-size: 1.5rem;
-                color: var(--hero-text-light);
-                transition: all var(--hero-transition-speed) ease;
-                position: relative;
-
-                &::before {
-                    content: '';
-                    position: absolute;
-                    top: -8px;
-                    left: -8px;
-                    right: -8px;
-                    bottom: -8px;
-                    background-color: rgba(200, 162, 83, 0.2);
-                    border-radius: 50%;
-                    transform: scale(0);
-                    transition: transform 0.3s ease;
-                }
-
-                &:hover {
-                    color: var(--hero-primary-color);
-                    transform: translateY(-3px);
-
-                    &::before {
-                        transform: scale(1);
-                    }
-                }
-            }
-        }
-
-        .scroll-indicator {
-            position: absolute;
-            bottom: -90px;
-            left: 50%;
-            transform: translateX(-50%);
-            color: var(--hero-text-light);
-            font-size: 1.5rem;
-            opacity: 0;
-            animation: fadeIn 1s forwards 2.5s;
-
-            .bounce {
-                animation: bounce 2s infinite;
-            }
-        }
+      }
     }
 
-    .hero-background {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        z-index: -1;
-        background-color: var(--hero-background-dark);
+    .hero-cta {
+      margin-top: 8rem;
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      opacity: 0;
+      animation: fadeIn 1s forwards 1.5s;
 
-        .gradient-overlay {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle at center,
-                    rgba(200, 162, 83, 0.2) 0%,
-                    rgba(0, 0, 0, 0.8) 70%);
+      @media (max-width: 768px) {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      button {
+        padding: 0.8rem 2rem;
+        font-size: 1.1rem;
+        border-radius: 8px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all var(--hero-transition-speed) ease;
+
+        &.primary-button {
+          background-color: var(--hero-primary-color);
+          color: var(--hero-background-dark);
+          border: none;
+          box-shadow: 0 0 15px rgba(200, 162, 83, 0.5);
+
+          &:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 0 25px rgba(200, 162, 83, 0.7);
+          }
+
+          &:active {
+            transform: translateY(-1px);
+          }
         }
 
-        .grid-overlay {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            background-image:
-                linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
-            background-size: 30px 30px;
-            opacity: 0.3;
+        &.secondary-button {
+          background-color: transparent;
+          color: var(--hero-text-light);
+          border: 2px solid var(--hero-primary-color);
+
+          &:hover {
+            background-color: rgba(200, 162, 83, 0.1);
+            transform: translateY(-3px);
+          }
+
+          &:active {
+            transform: translateY(-1px);
+          }
         }
+      }
     }
+
+    .social-links {
+      margin-top: 2.5rem;
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      opacity: 0;
+      animation: fadeIn 1s forwards 2s;
+
+      .social-icon {
+        font-size: 1.5rem;
+        color: var(--hero-text-light);
+        transition: all var(--hero-transition-speed) ease;
+        position: relative;
+
+        &::before {
+          content: "";
+          position: absolute;
+          top: -8px;
+          left: -8px;
+          right: -8px;
+          bottom: -8px;
+          background-color: rgba(200, 162, 83, 0.2);
+          border-radius: 50%;
+          transform: scale(0);
+          transition: transform 0.3s ease;
+        }
+
+        &:hover {
+          color: var(--hero-primary-color);
+          transform: translateY(-3px);
+
+          &::before {
+            transform: scale(1);
+          }
+        }
+      }
+    }
+
+    .scroll-indicator {
+      position: absolute;
+      bottom: -90px;
+      left: 50%;
+      transform: translateX(-50%);
+      color: var(--hero-text-light);
+      font-size: 1.5rem;
+      opacity: 0;
+      animation: fadeIn 1s forwards 2.5s;
+
+      .bounce {
+        animation: bounce 2s infinite;
+      }
+    }
+  }
+
+  .hero-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background-color: var(--hero-background-dark);
+
+    .gradient-overlay {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(
+        circle at center,
+        rgba(200, 162, 83, 0.2) 0%,
+        rgba(0, 0, 0, 0.8) 70%
+      );
+    }
+
+    .grid-overlay {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background-image: linear-gradient(
+          rgba(255, 255, 255, 0.05) 1px,
+          transparent 1px
+        ),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+      background-size: 30px 30px;
+      opacity: 0.3;
+    }
+  }
 }
 
 @keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 @keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(30px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @keyframes blink {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0; }
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
 }
 
 @keyframes bounce {
-    0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
-    40% { transform: translateY(-20px); }
-    60% { transform: translateY(-10px); }
+  0%,
+  20%,
+  50%,
+  80%,
+  100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-20px);
+  }
+  60% {
+    transform: translateY(-10px);
+  }
 }

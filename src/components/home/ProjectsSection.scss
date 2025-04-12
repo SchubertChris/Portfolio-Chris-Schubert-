@@ -1,63 +1,64 @@
 // src/components/home/ProjectsSection.scss
 
 .projects-preview {
-    padding: 8rem 0;
-    background-color: var(--background-dark);
+  padding: 8rem 0;
+  user-select: none;
+  background-color: var(--background-dark);
 
-    .section-container {
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 0 2rem;
+  .section-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+
+  .project-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+
+    @media (max-width: 400px) {
+      grid-template-columns: 1fr;
     }
+  }
 
-    .project-cards {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-        gap: 2rem;
-        margin-top: 3rem;
+  .section-footer {
+    margin-top: 3rem;
+    text-align: center;
 
-        @media (max-width: 400px) {
-            grid-template-columns: 1fr;
-        }
+    .outline-button {
+      padding: 0.8rem 2.5rem;
+      background: none;
+      color: var(--text-light);
+      border: 2px solid var(--text-light);
+      border-radius: 8px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all var(--transition-fast) ease;
+
+      &:hover {
+        border-color: var(--primary);
+        color: var(--primary);
+        box-shadow: 0 0 10px rgba(200, 162, 83, 0.3);
+        transform: translateY(-3px);
+      }
     }
-
-    .section-footer {
-        margin-top: 3rem;
-        text-align: center;
-
-        .outline-button {
-            padding: 0.8rem 2.5rem;
-            background: none;
-            color: var(--text-light);
-            border: 2px solid var(--text-light);
-            border-radius: 8px;
-            font-size: 1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all var(--transition-fast) ease;
-
-            &:hover {
-                border-color: var(--primary);
-                color: var(--primary);
-                box-shadow: 0 0 10px rgba(200, 162, 83, 0.3);
-                transform: translateY(-3px);
-            }
-        }
-    }
+  }
 }
 
 .view-project {
-    padding: 0.7rem 1.5rem;
-    background-color: var(--primary);
-    color: var(--background-dark);
-    border: none;
-    border-radius: 5px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    box-shadow: 0 0 15px var(--primary-glow);
+  padding: 0.7rem 1.5rem;
+  background-color: var(--primary);
+  color: var(--background-dark);
+  border: none;
+  border-radius: 5px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 15px var(--primary-glow);
 
-    &:hover {
-        color: black;
-    }
+  &:hover {
+    color: black;
+  }
 }

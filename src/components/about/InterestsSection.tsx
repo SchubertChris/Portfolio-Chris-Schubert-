@@ -19,32 +19,32 @@ const InterestsSection: React.FC<InterestsSectionProps> = ({ isVisible }) => {
             <div className="interest-icon">
               <img src="/icon-coding.svg" alt="Coding Icon" />
             </div>
-            <h3>Open Source</h3>
-            <p>Ich trage regelmäßig zu Open-Source-Projekten bei und teile mein Wissen mit der Community.</p>
+            <h3>Programmieren & Technologie</h3>
+            <p>Ich bin leidenschaftlich daran interessiert, moderne Technologien zu verstehen und innovative Lösungen zu entwickeln.</p>
           </div>
 
           <div className="interest-card" data-reveal="up" data-reveal-delay="400">
             <div className="interest-icon">
-              <img src="/icon-learning.svg" alt="Learning Icon" />
+              <img src="/icon-finance.svg" alt="Finance Icon" />
             </div>
-            <h3>Kontinuierliches Lernen</h3>
-            <p>Ich bleibe stets auf dem neuesten Stand der Technologien und lerne täglich Neues dazu.</p>
-          </div>
-
-          <div className="interest-card" data-reveal="up" data-reveal-delay="600">
-            <div className="interest-icon">
-              <img src="/icon-design.svg" alt="Design Icon" />
-            </div>
-            <h3>UI/UX Design</h3>
-            <p>Die Schnittstelle zwischen Design und Entwicklung fasziniert mich besonders.</p>
+            <h3>Krypto & Blockchain</h3>
+            <p>Dezentrale Finanzsysteme und Blockchain-Technologien sind für mich ein spannendes und zukunftsweisendes Feld.</p>
           </div>
 
           <div className="interest-card" data-reveal="up" data-reveal-delay="800">
             <div className="interest-icon">
-              <img src="/icon-hiking.svg" alt="Hiking Icon" />
+              <img src="/icon-cooking.svg" alt="Cooking Icon" />
             </div>
-            <h3>Wandern & Natur</h3>
-            <p>Abseits des Computers finde ich Inspiration und Erholung in der Natur.</p>
+            <h3>Kochen & Kulinarik</h3>
+            <p>Abseits der Technik finde ich beim Kochen und in der Kulinarik kreative Entspannung und Freude.</p>
+          </div>
+
+          <div className="interest-card" data-reveal="up" data-reveal-delay="1000">
+            <div className="interest-icon">
+              <img src="/icon-selfgrowth.svg" alt="Self Growth Icon" />
+            </div>
+            <h3>Persönliche Weiterentwicklung</h3>
+            <p>Ich setze mich ständig mit meiner eigenen Weiterentwicklung auseinander, sei es durch Lesen, Lernen oder Reflexion.</p>
           </div>
         </div>
       </div>

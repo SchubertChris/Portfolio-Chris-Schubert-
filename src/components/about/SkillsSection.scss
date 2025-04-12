@@ -4,6 +4,7 @@
     padding: 8rem 0;
     background-color: var(--background-dark);
     position: relative;
+    user-select: none;
 
     .section-container {
         max-width: 1200px;
@@ -132,6 +133,7 @@
             flex-direction: column;
             height: 220px;
             overflow: hidden;
+            z-index: 10;
         }
 
         p {
@@ -163,6 +165,8 @@
             color: var(--text-light);
             border-radius: 30px;
             white-space: nowrap;
+            user-select: none;
+            cursor: default;
 
             &:hover {
                 background-color: rgba(200, 162, 83, 0.2);

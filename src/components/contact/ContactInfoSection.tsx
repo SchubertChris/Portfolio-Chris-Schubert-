@@ -32,13 +32,21 @@ const ContactInfoSection: React.FC = () => {
             </p>
           </div>
 
-          <div className="contact-card" data-reveal="up" data-reveal-delay="400">
+            <div className="contact-card" data-reveal="up" data-reveal-delay="400">
             <div className="icon">
               <FaMapMarkerAlt />
             </div>
             <h3>Standort</h3>
-            <p>Potsdam, Deutschland</p>
-          </div>
+            <p>
+              <a
+              href="https://www.google.com/maps?q=Potsdam,+Deutschland"
+              target="_blank"
+              rel="noopener noreferrer"
+              >
+              Potsdam, Deutschland
+              </a>
+            </p>
+            </div>
         </div>
       </div>
     </div>

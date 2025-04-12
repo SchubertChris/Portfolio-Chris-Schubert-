@@ -42,7 +42,7 @@
   }
 
   .footer-section {
-    .MailTo {
+    .MailTo, .location-link {
       transition: color 0.3s ease, text-decoration 0.3s ease;
       color: var(--text-light);
       &:hover {
@@ -154,6 +154,11 @@
         box-shadow: 0 0 15px var(--primary-glow);
       }
     }
+  }
+  .FooterLogo{
+    margin-top: 7px;
+    width: 20px;
+    height: 20px;
   }
 }
 

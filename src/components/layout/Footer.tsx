@@ -1,6 +1,6 @@
 import React, { memo } from 'react';
 import { Link } from 'react-router-dom';
-import { FaGithub, FaLinkedin, FaInstagram, FaEnvelope, FaArrowUp } from 'react-icons/fa';
+import { FaGithub, FaLinkedin, FaInstagram, FaEnvelope, FaArrowUp, FaMapMarkerAlt } from 'react-icons/fa';
 import '../../styles/layout/Footer.scss';
 
 const Footer: React.FC = () => {
@@ -36,7 +36,11 @@ const Footer: React.FC = () => {
               <FaEnvelope className="footer-icon" /> schubert_chris@rocketmail.com
             </a>
             </p>
-          <p>Potsdam, Deutschland</p>
+            <p>
+            <a href="https://www.google.com/maps?q=Potsdam,+Deutschland" target="_blank" rel="noopener noreferrer" className="location-link">
+              <FaMapMarkerAlt className="footer-icon" /> Potsdam, Deutschland
+            </a>
+            </p>
         </div>
         
         <div className="footer-section">
@@ -56,7 +60,7 @@ const Footer: React.FC = () => {
       </div>
       
       <div className="footer-bottom">
-        <p>&copy; {new Date().getFullYear()} Chris Schubert. Alle Rechte vorbehalten.</p>
+        <p>&copy; {new Date().getFullYear()} Chris Schubert <img className='FooterLogo' src="./csGold.webp" alt="CandleScope" /></p>
         <button className="scroll-top-button" onClick={scrollToTop} aria-label="Zum Seitenanfang scrollen">
           <FaArrowUp />
         </button>

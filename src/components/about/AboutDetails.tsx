@@ -27,28 +27,26 @@ const AboutDetails: React.FC<AboutDetailsProps> = ({ isVisible }) => {
             </div>
           </div>
           <div className="about-text" data-reveal="right">
-            <p>Herzlich willkommen auf meiner Portfolio-Seite! Ich bin ein <span className="highlight">Frontend-Entwickler</span> mit über 5 Jahren Erfahrung in der Webentwicklung.</p>
-
-            <p>Meine Reise in der Programmierung begann während meines Informatikstudiums, als ich entdeckte, wie faszinierend es ist, Benutzeroberflächen zu gestalten, die nicht nur funktional, sondern auch ästhetisch ansprechend sind.</p>
-
+            <p>Hey, schön, dass du hier bist! Schon als Kind haben mich Computer und Technik begeistert – heute lebe ich diese Leidenschaft als <span className="highlight">Frontend-Entwickler</span> aus.</p>
+            <p>Meine Reise begann schon mit 12 Jahren, als ich mich intensiv mit Hard- und Software beschäftigte. Während meines Informatikstudiums entdeckte ich meine Leidenschaft für Benutzeroberflächen, die nicht nur funktional, sondern auch ästhetisch ansprechend sind.</p>
             <p>Heute spezialisiere ich mich auf die Entwicklung von <span className="highlight">modernen Webapplikationen</span> mit Fokus auf Performance, Benutzerfreundlichkeit und elegantes Design. Ich arbeite hauptsächlich mit dem <span className="highlight">React</span>-Ökosystem und setze auf <span className="highlight">TypeScript</span> für typsichere und wartbare Codebases.</p>
 
             <div className="about-stats">
               <div className="stat-item">
                 <div className="stat-number">
-                  <CountUpAnimation end={5} suffix="+" />
+                  <CountUpAnimation end={15} suffix="+" />
                 </div>
                 <div className="stat-label">Jahre Erfahrung</div>
               </div>
               <div className="stat-item">
                 <div className="stat-number">
-                  <CountUpAnimation end={50} suffix="+" delay={300} />
+                  <CountUpAnimation end={5} suffix="+" delay={300} />
                 </div>
                 <div className="stat-label">Projekte</div>
               </div>
               <div className="stat-item">
                 <div className="stat-number">
-                  <CountUpAnimation end={20} suffix="+" delay={600} />
+                  <CountUpAnimation end={2} suffix="+" delay={600} />
                 </div>
                 <div className="stat-label">Zufriedene Kunden</div>
               </div>
