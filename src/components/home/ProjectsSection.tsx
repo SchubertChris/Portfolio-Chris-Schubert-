@@ -1,8 +1,7 @@
-// src/components/home/ProjectsSection.tsx
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import ProjectCard from './ProjectCard';
-import './ProjectsSection.scss'; // Importiere die CSS-Datei für das Styling
+import './ProjectsSection.scss';
 
 interface ProjectsSectionProps {
     isVisible: boolean;
@@ -10,7 +9,6 @@ interface ProjectsSectionProps {
 
 const ProjectsSection: React.FC<ProjectsSectionProps> = ({ isVisible }) => {
     const navigate = useNavigate();
-
     return (
         <div id="projects" className={`projects-preview section-animate ${isVisible ? 'visible' : ''}`}>
             <div className="section-container">
@@ -22,6 +20,7 @@ const ProjectsSection: React.FC<ProjectsSectionProps> = ({ isVisible }) => {
                         description="Eine moderne Portfolio-Website mit React, TypeScript und SCSS."
                         tags={["React", "TypeScript", "SCSS"]}
                         imageUrl="/project-1.jpg"
+                        tilt={15} // Stärkere Neigung nach rechts um Y-Achse
                     />
                     <ProjectCard
                         id={2}
@@ -29,6 +28,7 @@ const ProjectsSection: React.FC<ProjectsSectionProps> = ({ isVisible }) => {
                         description="Ein interaktives Dashboard mit Datenvisualisierung und benutzerdefinierten Charts."
                         tags={["React", "D3.js", "API"]}
                         imageUrl="/project-2.jpg"
+                        tilt={0} // Keine Neigung (gerade)
                     />
                     <ProjectCard
                         id={3}
@@ -36,6 +36,7 @@ const ProjectsSection: React.FC<ProjectsSectionProps> = ({ isVisible }) => {
                         description="Eine vollständige E-Commerce-Lösung mit Warenkorb und Zahlungsabwicklung."
                         tags={["React", "Node.js", "MongoDB"]}
                         imageUrl="/project-3.jpg"
+                        tilt={-15} // Stärkere Neigung nach links um Y-Achse
                     />
                 </div>
                 <div className="section-footer" data-reveal="up" data-reveal-delay="400">

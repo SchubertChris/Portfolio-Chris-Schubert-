@@ -1,7 +1,5 @@
-// src/components/home/ProjectCard.tsx
 import React, { useRef, useState } from 'react';
-import '../../styles/shared/ProjectCard.scss'; // Importiere die CSS-Datei für das Styling
-
+import '../../styles/shared/ProjectCard.scss';
 
 interface ProjectCardProps {
     id: number;
@@ -9,32 +7,34 @@ interface ProjectCardProps {
     description: string;
     tags: string[];
     imageUrl: string;
+    tilt?: number; // Neue Prop für die Neigung
 }
 
-const ProjectCard: React.FC<ProjectCardProps> = ({ title, description, tags, imageUrl }) => {
+const ProjectCard: React.FC<ProjectCardProps> = ({ 
+    title, 
+    description, 
+    tags, 
+    imageUrl, 
+    tilt = 0 // Standardwert 0 bedeutet keine Neigung
+}) => {
     const cardRef = useRef<HTMLDivElement>(null);
     const [rotateX, setRotateX] = useState(0);
-    const [rotateY, setRotateY] = useState(0);
+    const [rotateY, setRotateY] = useState(tilt); // Startwert ist der übergebene Tilt-Wert
     const [scale, setScale] = useState(1);
 
     const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
         if (!cardRef.current) return;
-
         const card = cardRef.current;
         const rect = card.getBoundingClientRect();
-
         // Berechnung der Mausposition relativ zur Karte
         const x = e.clientX - rect.left;
         const y = e.clientY - rect.top;
-
         // Normalisieren der Position (0 bis 1)
         const normalizedX = x / rect.width;
         const normalizedY = y / rect.height;
-
         // Umrechnung in Rotationswinkel (-10 bis 10 Grad)
         const rotX = 10 - normalizedY * 20;
-        const rotY = normalizedX * 20 - 10;
-
+        const rotY = tilt + (normalizedX * 20 - 10); // Ursprüngliche Neigung + dynamische Mausbewegung
         // CSS-Variablen setzen
         setRotateX(rotX);
         setRotateY(rotY);
@@ -42,9 +42,9 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ title, description, tags, ima
     };
 
     const handleMouseLeave = () => {
-        // Zurücksetzen auf Ausgangswerte
+        // Zurücksetzen auf Ausgangswerte mit ursprünglicher Neigung
         setRotateX(0);
-        setRotateY(0);
+        setRotateY(tilt);
         setScale(1);
     };
 
