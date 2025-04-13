@@ -13,7 +13,46 @@
     justify-content: center;
     z-index: 1000;
     padding: 2rem;
-    // overflow-y: auto; -> Entfernt, da es Probleme verursacht
+
+    @media (max-width: 768px) {
+        padding: 1rem;
+
+        .project-modal {
+            margin-top: 10vh;
+            max-width: 90%;
+            max-height: 50vh;
+
+            .modal-details {
+                padding: 1rem;
+
+                h2 {
+                    font-size: 1.5rem;
+                }
+
+                .modal-description {
+                    font-size: 0.9rem;
+                }
+
+                .tech-section h3 {
+                    font-size: 1rem;
+                }
+
+                .tech-tags .tech-tag {
+                    font-size: 0.8rem;
+                    padding: 0.3rem 0.7rem;
+                }
+
+                .modal-links a {
+                    padding: 0.6rem 1rem;
+                    font-size: 0.9rem;
+
+                    svg {
+                        font-size: 1rem;
+                    }
+                }
+            }
+        }
+    }
 }
 
 .project-modal {

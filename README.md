@@ -1,336 +1,387 @@
-# 🚀 Project Structure & Styling Guide
+# 🚀 Portfolio Chris Schubert
 
-## 📊 Overview
+<div align="center">
+  <img src="./public/Profilbild2.webp" alt="Portfolio Preview" width="300px" />
+</div>
 
-### 🌈 Project Highlights
-- **Framework**: React + TypeScript
-- **Styling**: SCSS with Advanced CSS Techniques
-- **Design**: Modern, Responsive, Animated Interfaces
+## 📋 Inhaltsverzeichnis
 
----
+- [Übersicht](#-übersicht)
+- [Features](#-features)
+- [Technologie-Stack](#-technologie-stack)
+- [Projektstruktur](#-projektstruktur)
+- [Installation](#-installation)
+- [Entwicklung starten](#-entwicklung-starten)
+- [Deployment](#-deployment)
+- [Komponenten](#-komponenten)
 
-## 📂 Project Architecture
+## 🔍 Übersicht
 
-### Directory Structure
+Dieses Portfolio ist eine moderne, responsive Single-Page-Anwendung, die mit React, TypeScript und SCSS entwickelt wurde. Die Seite präsentiert meine Projekte, Fähigkeiten und beruflichen Erfahrungen in einer visuell ansprechenden und benutzerfreundlichen Weise.
+
+## ✨ Features
+
+- 🎨 Modernes, responsives Design
+- 🧩 Modularer Komponentenaufbau
+- 🔄 Interaktive UI-Elemente mit Animationen
+- 📱 Vollständig responsive auf allen Geräten
+- ⚡ Optimiert für Geschwindigkeit und Performance
+- 📊 Interaktive Skill-Visualisierungen
+- 📝 Dynamische Projektfilterung und -anzeige
+- 📬 Kontaktformular
+- 🔄 Nahtlose Seitenübergänge
+
+## 🛠 Technologie-Stack
+
+<div style="display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 20px;">
+  <img src="https://img.shields.io/badge/React-18-61DAFB?style=for-the-badge&logo=react&logoColor=white" alt="React" />
+  <img src="https://img.shields.io/badge/TypeScript-5-3178C6?style=for-the-badge&logo=typescript&logoColor=white" alt="TypeScript" />
+  <img src="https://img.shields.io/badge/SCSS-Modules-CC6699?style=for-the-badge&logo=sass&logoColor=white" alt="SCSS" />
+  <img src="https://img.shields.io/badge/Vite-Build%20Tool-646CFF?style=for-the-badge&logo=vite&logoColor=white" alt="Vite" />
+  <img src="https://img.shields.io/badge/GSAP-Animationen-88CE02?style=for-the-badge&logo=greensock&logoColor=white" alt="GSAP" />
+  <img src="https://img.shields.io/badge/Vercel-Deployment-000000?style=for-the-badge&logo=vercel&logoColor=white" alt="Vercel" />
+</div>
+
+- **Frontend Framework**: React mit TypeScript
+- **Styling**: SCSS mit modularem Aufbau
+- **Build-Tool**: Vite
+- **Animationen**: GSAP (GreenSock Animation Platform)
+- **Deployment**: Vercel
+- **Weitere Tools**:
+  - Particle Effekte
+  - CountUp Animationen
+  - Responsive Design mit CSS Grid und Flexbox
+  - Komponententests mit React Testing Library
+
+## 📂 Projektstruktur
+
+Die Anwendung ist nach Funktionalität und Seitenkomponenten strukturiert:
+
 ```
-📁 project-root/
-│
-├── 📂 public/
-│   └── 🖼️ assets/
-│       ├── csGold.png
-│       └── JS.png
-│
-├── 📂 src/
-│   ├── 🖼️ assets/
-│   │   └── REACTDASHBOARD.png
-│   │
-│   ├── 🧩 components/
-│   │   └── 🗂️ layout/
-│   │       ├── Footer.tsx
-│   │       └── Navbar.tsx
-│   │
-│   ├── 📄 pages/
-│   │   ├── About.tsx
-│   │   ├── Contact.tsx
-│   │   ├── Home.tsx
-│   │   └── Projects.tsx
-│   │
-│   ├── 🎨 styles/
-│   │   └── index.ts
-│   │
-│   └── 📝 types/
-│       └── index.ts
-│
-└── 🎨 styles/
-    └── About.scss
-```
-
----
-
-## 🎨 Styling Breakdown
-
-### CSS Approach: Advanced Techniques
-
-#### 1. Flexbox Mastery
-```scss
-.about-image {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-```
-
-#### 2. Responsive Image Handling
-```scss
-.image-frame {
-  position: relative;
-  width: 300px;
-  height: 300px;
-}
-
-img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-```
-
-#### 3. Neon Border Magic
-```scss
-.neon-border {
-  position: absolute;
-  border: 2px solid transparent;
-  border-radius: 15px;
-  animation: neonPulse 2s infinite alternate;
-}
-
-@keyframes neonPulse {
-  from { box-shadow: 0 0 15px var(--primary-glow); }
-  to { box-shadow: 0 0 25px var(--primary-glow); }
-}
-```
-
----
-
-## 🛠 Development Setup
-
-### Prerequisites
-- Node.js (v16+)
-- npm or Yarn
-
-### Installation Steps
-1. Clone the repository
-   ```bash
-   git clone https://github.com/yourusername/yourproject.git
-   ```
-
-2. Install dependencies
-   ```bash
-   npm install
-   # or
-   yarn install
-   ```
-
-3. Start development server
-   ```bash
-   npm run dev
-   # or
-   yarn dev
-   ```
-
----
-
-## 🌟 Key Features
-
-- [x] Responsive Design
-- [x] Modern CSS Techniques
-- [x] TypeScript Integration
-- [x] Modular Component Structure
-- [x] Animated UI Elements
-
----
-
-## 📈 Performance Optimization
-
-### CSS Best Practices
-- Minimal use of global styles
-- Leveraging Flexbox and Grid
-- Efficient animations
-- Responsive design principles
-
----
-
-## 🤝 Contributing
-
-### Guidelines
-1. Fork the repository
-2. Create your feature branch
-3. Commit your changes
-4. Push to the branch
-5. Create a Pull Request
-
----
-
-## 📜 License
-
-[MIT License](LICENSE) - Feel free to use and modify
-
----
-
-## 🔗 Connect
-
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-blue?style=for-the-badge&logo=linkedin)](YOUR_LINKEDIN_URL)
-[![Twitter](https://img.shields.io/badge/Twitter-black?style=for-the-badge&logo=twitter)](YOUR_TWITTER_URL)
-
-**Happy Coding! 🚀✨**
-
-
-
-____________________________________________________________
-
-
-# 🚀 Projektstruktur & Styling-Leitfaden
-
-## 📊 Überblick
-
-### 🌈 Projekt-Highlights
-- **Framework**: React + TypeScript
-- **Styling**: SCSS mit fortschrittlichen CSS-Techniken
-- **Design**: Modern, responsiv, animiert
-
----
-
-## 📂 Projektarchitektur
-
-### Verzeichnisstruktur
-```
-📁 projekt-root/
-│
-├── 📂 public/
-│   └── 🖼️ assets/
-│       ├── csGold.png
-│       └── JS.png
-│
-├── 📂 src/
-│   ├── 🖼️ assets/
-│   │   └── REACTDASHBOARD.png
-│   │
-│   ├── 🧩 components/
-│   │   └── 🗂️ layout/
-│   │       ├── Footer.tsx
-│   │       └── Navbar.tsx
-│   │
-│   ├── 📄 pages/
-│   │   ├── About.tsx
-│   │   ├── Contact.tsx
-│   │   ├── Home.tsx
-│   │   └── Projects.tsx
-│   │
-│   ├── 🎨 styles/
-│   │   └── index.ts
-│   │
-│   └── 📝 types/
-│       └── index.ts
-│
-└── 🎨 styles/
-    └── About.scss
+src/
+📂 components/           # Wiederverwendbare Komponenten
+ ┣ 📂 about/            # About-Seitenkomponenten
+ ┃ ┣ ⚛️ AboutDetails.tsx
+ ┃ ┣ ⚛️ AboutHero.tsx
+ ┃ ┣ ⚛️ InterestsSection.tsx
+ ┃ ┣ ⚛️ SkillsSection.tsx
+ ┃ ┣ ⚛️ TimelineItem.tsx
+ ┃ ┗ ⚛️ TimelineSection.tsx
+ ┣ 📂 contact/          # Kontakt-Seitenkomponenten
+ ┃ ┣ ⚛️ ContactForm.tsx
+ ┃ ┣ ⚛️ ContactHero.tsx
+ ┃ ┗ ⚛️ ContactInfoSection.tsx
+ ┣ 📂 home/             # Home-Seitenkomponenten
+ ┃ ┣ ⚛️ AboutSection.tsx
+ ┃ ┣ ⚛️ HeroSection.tsx
+ ┃ ┣ ⚛️ ProjectCard.tsx
+ ┃ ┣ ⚛️ ProjectsSection.tsx
+ ┃ ┣ ⚛️ SkillsSection.tsx
+ ┃ ┗ ⚛️ TechSymbols.tsx
+ ┣ 📂 layout/           # Layout-Komponenten
+ ┃ ┣ ⚛️ Footer.tsx
+ ┃ ┣ ⚛️ Layout.tsx
+ ┃ ┗ ⚛️ Navbar.tsx
+ ┣ 📂 projects/         # Projekt-Seitenkomponenten
+ ┃ ┣ ⚛️ ProjectCard.tsx
+ ┃ ┣ ⚛️ ProjectFilter.tsx
+ ┃ ┣ ⚛️ ProjectHero.tsx
+ ┃ ┗ ⚛️ ProjectModal.tsx
+ ┣ 📂 shared/           # Geteilte Komponenten
+ ┃ ┣ ⚛️ ContactCTA.tsx
+ ┃ ┗ ⚛️ Seo.tsx
+ ┗ 📂 ui/               # UI-Elemente
+   ┣ ⚛️ CountUpAnimation.tsx
+   ┣ ⚛️ NeonButtonMitTooltip.tsx
+   ┣ ⚛️ ParticleBackground.tsx
+   ┣ ⚛️ ScrollToTop.tsx
+   ┣ ⚛️ ScrollToTopOnRouteChange.tsx
+   ┗ ⚛️ SkillBar.tsx
+📂 data/                 # Statische Daten
+ ┗ 📊 projects.data.ts
+📂 pages/                # Hauptseitenkomponenten
+ ┣ ⚛️ About.tsx
+ ┣ ⚛️ Contact.tsx
+ ┣ ⚛️ Home.tsx
+ ┗ ⚛️ Projects.tsx
+📂 styles/               # SCSS-Styles
+ ┣ 📂 abstracts/        # Variablen, Mixins
+ ┃ ┣ 🎨 _global.scss
+ ┃ ┣ 🎨 _mixins.scss
+ ┃ ┗ 🎨 _variables.scss
+ ┣ 📂 base/             # Basisstyles
+ ┃ ┣ 🎨 _animations.scss
+ ┃ ┣ 🎨 _reset.scss
+ ┃ ┗ 🎨 _typography.scss
+ ┣ 📂 layout/           # Layout-Styles
+ ┃ ┣ 🎨 Footer.scss
+ ┃ ┣ 🎨 Layout.scss
+ ┃ ┗ 🎨 Navbar.scss
+ ┣ 📂 pages/            # Seitenspezifische Styles
+ ┃ ┣ 🎨 About.scss
+ ┃ ┣ 🎨 Contact.scss
+ ┃ ┣ 🎨 Home.scss
+ ┃ ┗ 🎨 Projects.scss
+ ┣ 📂 shared/           # Geteilte Styles
+ ┃ ┣ 🎨 ContactCTA.scss
+ ┃ ┗ 🎨 ProjectCard.scss
+ ┗ 📂 utilities/        # Hilfsstyles
+   ┣ 🎨 _NeonButtonMitTooltip.scss
+   ┗ 🎨 _ParticleBackground.scss
+📂 types/                # TypeScript-Typdefinitionen
+ ┗ 📜 index.ts
 ```
 
----
+## 🚀 Installation
 
-## 🎨 Styling-Analyse
+```bash
+# Repository klonen
+git clone https://github.com/SchubertChris/portfolio-chris-schubert.git
+cd portfolio-chris-schubert
 
-### CSS-Ansatz: Fortgeschrittene Techniken
-
-#### 1. Flexbox-Meisterschaft
-```scss
-.about-image {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
+# Abhängigkeiten installieren
+npm install
 ```
 
-#### 2. Responsives Bilderhandling
-```scss
-.image-frame {
-  position: relative;
-  width: 300px;
-  height: 300px;
-}
+## 💻 Entwicklung starten
 
-img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
+```bash
+# Entwicklungsserver starten
+npm run dev
+
+# Build für Produktion erstellen
+npm run build
+
+# Build lokal testen
+npm run preview
 ```
 
-#### 3. Neon-Border-Magie
-```scss
-.neon-border {
-  position: absolute;
-  border: 2px solid transparent;
-  border-radius: 15px;
-  animation: neonPulse 2s infinite alternate;
-}
+## 🚢 Deployment
 
-@keyframes neonPulse {
-  from { box-shadow: 0 0 15px var(--primary-glow); }
-  to { box-shadow: 0 0 25px var(--primary-glow); }
-}
+Das Projekt wird automatisch auf Vercel deployt. Jeder Push auf den Main-Branch löst ein neues Deployment aus.
+
+Konfiguration befindet sich in:
+- `.github/workflows/deploy.yml` für CI/CD-Workflow
+- `vercel.json` für Vercel-spezifische Konfiguration
+
+## 🧩 Komponenten
+
+### Hauptseiten
+
+- **Home**: Landing Page mit Hero-Sektion, Kurzvorstellung, Projektgalerie und Skills
+- **About**: Detaillierte Informationen zu meinem Hintergrund, Fähigkeiten, Interessen und Zeitachse
+- **Projects**: Umfassende Projektgalerie mit Filtern und detaillierten Projektansichten
+- **Contact**: Kontaktformular und Kontaktinformationen
+
+### UI-Komponenten
+
+- **ParticleBackground**: Interaktiver Partikelhintergrund für visuelles Interesse
+- **SkillBar**: Visualisierung von Fähigkeiten mit animierten Fortschrittsbalken
+- **CountUpAnimation**: Animierte Zahlen für die Darstellung von Statistiken
+- **NeonButtonMitTooltip**: Stilisierte Buttons mit Hover-Effekten und Tooltips
+- **ScrollToTop**: Button zum einfachen Zurückscrollen zum Seitenanfang
+
+### Besondere Features
+
+- **Modularer SCSS-Aufbau**: Styles sind in logische Module unterteilt
+- **Responsive Design**: Optimales Erscheinungsbild auf allen Geräten
+- **Performanceoptimierung**: Lazy Loading, Code-Splitting und optimierte Assets
+- **Zugänglichkeit**: Semantisches HTML und ARIA-Attribute für bessere Zugänglichkeit
+
+---
+
+# English Version
+
+==================
+ENGLISH
+==================
+
+# 🚀 Portfolio Chris Schubert
+
+<div align="center">
+  <img src="./public/Profilbild2.webp" alt="Portfolio Preview" width="300px" />
+</div>
+
+## 📋 Table of Contents
+
+- [Overview](#-overview)
+- [Features](#-features)
+- [Technology Stack](#-technology-stack)
+- [Project Structure](#-project-structure)
+- [Installation](#-installation)
+- [Development](#-development)
+- [Deployment](#-deployment)
+- [Components](#-components)
+
+## 🔍 Overview
+
+This portfolio is a modern, responsive single-page application developed with React, TypeScript, and SCSS. The site showcases my projects, skills, and professional experience in a visually appealing and user-friendly manner.
+
+## ✨ Features
+
+- 🎨 Modern, responsive design
+- 🧩 Modular component architecture
+- 🔄 Interactive UI elements with animations
+- 📱 Fully responsive on all devices
+- ⚡ Optimized for speed and performance
+- 📊 Interactive skill visualizations
+- 📝 Dynamic project filtering and display
+- 📬 Contact form
+- 🔄 Seamless page transitions
+
+## 🛠 Technology Stack
+
+<div style="display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 20px;">
+  <img src="https://img.shields.io/badge/React-18-61DAFB?style=for-the-badge&logo=react&logoColor=white" alt="React" />
+  <img src="https://img.shields.io/badge/TypeScript-5-3178C6?style=for-the-badge&logo=typescript&logoColor=white" alt="TypeScript" />
+  <img src="https://img.shields.io/badge/SCSS-Modules-CC6699?style=for-the-badge&logo=sass&logoColor=white" alt="SCSS" />
+  <img src="https://img.shields.io/badge/Vite-Build%20Tool-646CFF?style=for-the-badge&logo=vite&logoColor=white" alt="Vite" />
+  <img src="https://img.shields.io/badge/GSAP-Animations-88CE02?style=for-the-badge&logo=greensock&logoColor=white" alt="GSAP" />
+  <img src="https://img.shields.io/badge/Vercel-Deployment-000000?style=for-the-badge&logo=vercel&logoColor=white" alt="Vercel" />
+</div>
+
+- **Frontend Framework**: React with TypeScript
+- **Styling**: SCSS with modular architecture
+- **Build Tool**: Vite
+- **Animations**: GSAP (GreenSock Animation Platform)
+- **Deployment**: Vercel
+- **Additional Tools**:
+  - Particle effects
+  - CountUp animations
+  - Responsive design with CSS Grid and Flexbox
+  - Component testing with React Testing Library
+
+## 📂 Project Structure
+
+The application is structured by functionality and page components:
+
+```
+src/
+📂 components/           # Reusable components
+ ┣ 📂 about/            # About page components
+ ┃ ┣ ⚛️ AboutDetails.tsx
+ ┃ ┣ ⚛️ AboutHero.tsx
+ ┃ ┣ ⚛️ InterestsSection.tsx
+ ┃ ┣ ⚛️ SkillsSection.tsx
+ ┃ ┣ ⚛️ TimelineItem.tsx
+ ┃ ┗ ⚛️ TimelineSection.tsx
+ ┣ 📂 contact/          # Contact page components
+ ┃ ┣ ⚛️ ContactForm.tsx
+ ┃ ┣ ⚛️ ContactHero.tsx
+ ┃ ┗ ⚛️ ContactInfoSection.tsx
+ ┣ 📂 home/             # Home page components
+ ┃ ┣ ⚛️ AboutSection.tsx
+ ┃ ┣ ⚛️ HeroSection.tsx
+ ┃ ┣ ⚛️ ProjectCard.tsx
+ ┃ ┣ ⚛️ ProjectsSection.tsx
+ ┃ ┣ ⚛️ SkillsSection.tsx
+ ┃ ┗ ⚛️ TechSymbols.tsx
+ ┣ 📂 layout/           # Layout components
+ ┃ ┣ ⚛️ Footer.tsx
+ ┃ ┣ ⚛️ Layout.tsx
+ ┃ ┗ ⚛️ Navbar.tsx
+ ┣ 📂 projects/         # Project page components
+ ┃ ┣ ⚛️ ProjectCard.tsx
+ ┃ ┣ ⚛️ ProjectFilter.tsx
+ ┃ ┣ ⚛️ ProjectHero.tsx
+ ┃ ┗ ⚛️ ProjectModal.tsx
+ ┣ 📂 shared/           # Shared components
+ ┃ ┣ ⚛️ ContactCTA.tsx
+ ┃ ┗ ⚛️ Seo.tsx
+ ┗ 📂 ui/               # UI elements
+   ┣ ⚛️ CountUpAnimation.tsx
+   ┣ ⚛️ NeonButtonMitTooltip.tsx
+   ┣ ⚛️ ParticleBackground.tsx
+   ┣ ⚛️ ScrollToTop.tsx
+   ┣ ⚛️ ScrollToTopOnRouteChange.tsx
+   ┗ ⚛️ SkillBar.tsx
+📂 data/                 # Static data
+ ┗ 📊 projects.data.ts
+📂 pages/                # Main page components
+ ┣ ⚛️ About.tsx
+ ┣ ⚛️ Contact.tsx
+ ┣ ⚛️ Home.tsx
+ ┗ ⚛️ Projects.tsx
+📂 styles/               # SCSS styles
+ ┣ 📂 abstracts/        # Variables, mixins
+ ┃ ┣ 🎨 _global.scss
+ ┃ ┣ 🎨 _mixins.scss
+ ┃ ┗ 🎨 _variables.scss
+ ┣ 📂 base/             # Base styles
+ ┃ ┣ 🎨 _animations.scss
+ ┃ ┣ 🎨 _reset.scss
+ ┃ ┗ 🎨 _typography.scss
+ ┣ 📂 layout/           # Layout styles
+ ┃ ┣ 🎨 Footer.scss
+ ┃ ┣ 🎨 Layout.scss
+ ┃ ┗ 🎨 Navbar.scss
+ ┣ 📂 pages/            # Page-specific styles
+ ┃ ┣ 🎨 About.scss
+ ┃ ┣ 🎨 Contact.scss
+ ┃ ┣ 🎨 Home.scss
+ ┃ ┗ 🎨 Projects.scss
+ ┣ 📂 shared/           # Shared styles
+ ┃ ┣ 🎨 ContactCTA.scss
+ ┃ ┗ 🎨 ProjectCard.scss
+ ┗ 📂 utilities/        # Utility styles
+   ┣ 🎨 _NeonButtonMitTooltip.scss
+   ┗ 🎨 _ParticleBackground.scss
+📂 types/                # TypeScript type definitions
+ ┗ 📜 index.ts
 ```
 
----
+## 🚀 Installation
 
-## 🛠 Entwicklungs-Setup
+```bash
+# Clone the repository
+git clone https://github.com/SchubertChris/portfolio-chris-schubert.git
+cd portfolio-chris-schubert
 
-### Voraussetzungen
-- Node.js (v16+)
-- npm oder Yarn
+# Install dependencies
+npm install
+```
 
-### Installationsschritte
-1. Repository klonen
-   ```bash
-   git clone https://github.com/benutzername/deinprojekt.git
-   ```
+## 💻 Development
 
-2. Abhängigkeiten installieren
-   ```bash
-   npm install
-   # oder
-   yarn install
-   ```
+```bash
+# Start the development server
+npm run dev
 
-3. Entwicklungsserver starten
-   ```bash
-   npm run dev
-   # oder
-   yarn dev
-   ```
+# Build for production
+npm run build
 
----
+# Preview the production build locally
+npm run preview
+```
 
-## 🌟 Kernfunktionen
+## 🚢 Deployment
 
-- [x] Responsives Design
-- [x] Moderne CSS-Techniken
-- [x] TypeScript-Integration
-- [x] Modulare Komponentenstruktur
-- [x] Animierte UI-Elemente
+The project is automatically deployed to Vercel. Each push to the main branch triggers a new deployment.
 
----
+Configuration can be found in:
+- `.github/workflows/deploy.yml` for CI/CD workflow
+- `vercel.json` for Vercel-specific configuration
 
-## 📈 Leistungsoptimierung
+## 🧩 Components
 
-### CSS-Best Practices
-- Minimaler Einsatz globaler Styles
-- Nutzung von Flexbox und Grid
-- Effiziente Animationen
-- Responsive Designprinzipien
+### Main Pages
 
----
+- **Home**: Landing page with hero section, brief introduction, project gallery, and skills
+- **About**: Detailed information about my background, skills, interests, and timeline
+- **Projects**: Comprehensive project gallery with filters and detailed project views
+- **Contact**: Contact form and contact information
 
-## 🤝 Mitarbeit
+### UI Components
 
-### Richtlinien
-1. Repository forken
-2. Feature-Branch erstellen
-3. Änderungen committen
-4. Branch pushen
-5. Pull Request erstellen
+- **ParticleBackground**: Interactive particle background for visual interest
+- **SkillBar**: Visualization of skills with animated progress bars
+- **CountUpAnimation**: Animated numbers for displaying statistics
+- **NeonButtonMitTooltip**: Stylized buttons with hover effects and tooltips
+- **ScrollToTop**: Button to easily scroll back to the top of the page
 
----
+### Special Features
 
-## 📜 Lizenz
-
-[MIT-Lizenz](LICENSE) - Frei zur Nutzung und Modifikation
-
----
-
-## 🔗 Kontakt
-
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-blue?style=for-the-badge&logo=linkedin)](DEINE_LINKEDIN_URL)
-[![Twitter](https://img.shields.io/badge/Twitter-black?style=for-the-badge&logo=twitter)](DEINE_TWITTER_URL)
-
-**Viel Spaß beim Coden! 🚀✨**
+- **Modular SCSS Architecture**: Styles are divided into logical modules
+- **Responsive Design**: Optimal appearance on all devices
+- **Performance Optimization**: Lazy loading, code splitting, and optimized assets
+- **Accessibility**: Semantic HTML and ARIA attributes for better accessibility
