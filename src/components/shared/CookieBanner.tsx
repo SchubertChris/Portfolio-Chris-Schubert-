@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import '../../styles/shared/CookieBanner.scss';
 
 // Konstante für den Entwicklungsmodus - umschalten für Tests
-const DEV_MODE = true; // Auf false setzen, wenn das Feature live geht
+const DEV_MODE = false; // Auf false setzen, wenn das Feature live geht
 
 const CookieBanner: React.FC = () => {
   const [visible, setVisible] = useState(false);
