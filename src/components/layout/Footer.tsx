@@ -26,6 +26,7 @@ const Footer: React.FC = () => {
             <li><Link to="/projects">Projekte</Link></li>
             <li><Link to="/about">Über mich</Link></li>
             <li><Link to="/contact">Kontakt</Link></li>
+            <li><Link to="/rechtliches">Rechtliches</Link></li>
           </ul>
         </div>
         

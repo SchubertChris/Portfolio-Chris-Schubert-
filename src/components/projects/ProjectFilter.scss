@@ -2,7 +2,8 @@
 
 .projects-filter-section {
     padding: 2rem 0;
-    background-color: var(--background-dark-lighter);
+    background: radial-gradient(circle, var(--primary) -180%, var(--background-dark) 60%);
+
     position: sticky;
     top: var(--navbar-height, 80px);
     z-index: 10;
@@ -62,6 +63,7 @@
         display: flex;
         flex-wrap: wrap;
         gap: 0.8rem;
+        justify-content: center; // Zentriert die Buttons im Handy-Modus
 
         .filter-button {
             padding: 0.5rem 1rem;

@@ -147,6 +147,44 @@
           color: #ff5a5a;
           margin-top: 0.5rem;
         }
+        
+        &.consent-group {
+          margin-top: 2rem;
+          
+          .checkbox-container {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            
+            input[type="checkbox"] {
+              width: auto;
+              margin-top: 4px;
+              
+              &.error {
+                outline: 2px solid red;
+              }
+            }
+            
+            .consent-label {
+              font-size: 0.9rem;
+              color: var(--text-light-muted);
+              line-height: 1.4;
+              margin-bottom: 0;
+              
+              a {
+                color: var(--primary);
+                text-decoration: none;
+                transition: all 0.3s ease;
+                
+                &:hover {
+                  text-decoration: underline;
+                  color: var(--primary-light);
+                  text-shadow: 0 0 5px var(--primary-light-glow);
+                }
+              }
+            }
+          }
+        }
       }
 
       .form-actions {

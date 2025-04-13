@@ -1,12 +1,13 @@
 // src/components/contact/ContactForm.tsx
 import React, { useState, useRef } from 'react';
-import './ContactForm.scss'; // Importiere die CSS-Datei für das Styling
+import './ContactForm.scss';
 
 interface FormData {
   name: string;
   email: string;
   subject: string;
   message: string;
+  dataConsent: boolean; // Neue Dateneinwilligung
 }
 
 interface FormErrors {
@@ -14,14 +15,19 @@ interface FormErrors {
   email?: string;
   subject?: string;
   message?: string;
+  dataConsent?: string; // Neuer Fehler für fehlende Einwilligung
 }
 
 const ContactForm: React.FC = () => {
+  // FormSubmit-Schlüssel oder E-Mail-Adresse
+  const FORM_SUBMIT_ENDPOINT = 'https://formsubmit.co/5bb6750a03b288a6dfc466dc71553707';
+  
   const [formData, setFormData] = useState<FormData>({
     name: '',
     email: '',
     subject: '',
     message: '',
+    dataConsent: false // Standardmäßig nicht akzeptiert
   });
 
   const [errors, setErrors] = useState<FormErrors>({});
@@ -32,12 +38,22 @@ const ContactForm: React.FC = () => {
   const formRef = useRef<HTMLFormElement>(null);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { name, value } = e.target;
-    setFormData(prev => ({ ...prev, [name]: value }));
+    const { name, value, type } = e.target as HTMLInputElement;
+    
+    if (type === 'checkbox') {
+      setFormData(prev => ({ 
+        ...prev, 
+        [name]: (e.target as HTMLInputElement).checked 
+      }));
+    } else {
+      setFormData(prev => ({ ...prev, [name]: value }));
+    }
 
     // Echtzeit-Validierung bei Benutzereingabe
     if (errors[name as keyof FormErrors]) {
-      validateField(name as keyof FormData, value);
+      validateField(name as keyof FormData, type === 'checkbox' 
+        ? String((e.target as HTMLInputElement).checked) 
+        : value);
     }
   };
 
@@ -87,6 +103,13 @@ const ContactForm: React.FC = () => {
           isValid = false;
         }
         break;
+        
+      case 'dataConsent':
+        if (value !== 'true') {
+          errorMessage = 'Sie müssen der Datenverarbeitung zustimmen, um das Formular zu senden';
+          isValid = false;
+        }
+        break;
     }
 
     setErrors(prev => ({ ...prev, [field]: errorMessage }));
@@ -94,13 +117,16 @@ const ContactForm: React.FC = () => {
   };
 
   const validateForm = (): boolean => {
-    const fields = ['name', 'email', 'subject', 'message'] as const;
+    const fields = ['name', 'email', 'subject', 'message', 'dataConsent'] as const;
     let isValid = true;
 
     const newErrors: FormErrors = {};
 
     fields.forEach(field => {
-      const fieldIsValid = validateField(field, formData[field]);
+      const fieldIsValid = validateField(field, field === 'dataConsent' 
+        ? String(formData[field]) 
+        : formData[field]
+      );
       if (!fieldIsValid) {
         isValid = false;
         newErrors[field] = errors[field] || `${field} ist ungültig`;
@@ -128,29 +154,19 @@ const ContactForm: React.FC = () => {
     setSubmitMessage('');
 
     try {
-      // EmailJS-Konfiguration - mit Ihren eigenen Daten ersetzen
-      const serviceID = 'YOUR_EMAILJS_SERVICE_ID'; // z.B. 'gmail'
-      const templateID = 'YOUR_EMAILJS_TEMPLATE_ID'; // z.B. 'contact_form'
-      const userID = 'YOUR_EMAILJS_USER_ID'; // Ihr öffentlicher Schlüssel
+      const formElement = formRef.current;
+      if (!formElement) throw new Error('Formular nicht gefunden');
 
-      // Hier wird die E-Mail an Ihre Adresse gesendet
-      const response = await fetch('https://api.emailjs.com/api/v1.0/email/send', {
+      // Option 1: FormData direkt senden
+      const formDataToSend = new FormData(formElement);
+      
+      // Die Anfrage an FormSubmit senden
+      const response = await fetch(FORM_SUBMIT_ENDPOINT, {
         method: 'POST',
+        body: formDataToSend,
         headers: {
-          'Content-Type': 'application/json',
+          'Accept': 'application/json',
         },
-        body: JSON.stringify({
-          service_id: serviceID,
-          template_id: templateID,
-          user_id: userID,
-          template_params: {
-            to_email: 'schubert_chris@rocketmail.com', // Ihre E-Mail-Adresse
-            from_name: formData.name,
-            from_email: formData.email,
-            subject: formData.subject,
-            message: formData.message
-          }
-        }),
       });
 
       if (response.ok) {
@@ -162,7 +178,8 @@ const ContactForm: React.FC = () => {
           name: '',
           email: '',
           subject: '',
-          message: ''
+          message: '',
+          dataConsent: false
         });
 
         // Zu Erfolgsmeldung scrollen
@@ -214,7 +231,18 @@ const ContactForm: React.FC = () => {
               </div>
             )}
 
-            <form ref={formRef} onSubmit={handleSubmit}>
+            <form ref={formRef} onSubmit={handleSubmit} action={FORM_SUBMIT_ENDPOINT} method="POST">
+              {/* FormSubmit Anti-Spam Schutz */}
+              <input type="text" name="_honey" style={{ display: 'none' }} />
+              {/* Verhindern der Weiterleitung */}
+              <input type="hidden" name="_captcha" value="false" />
+              {/* Format der E-Mail */}
+              <input type="hidden" name="_template" value="table" />
+              {/* Betreff der E-Mail */}
+              <input type="hidden" name="_subject" value="Neue Kontaktanfrage von der Portfolio-Website" />
+              {/* Erfolgsseite nach dem Absenden (optional) */}
+              {/* <input type="hidden" name="_next" value="https://deine-website.de/erfolg" /> */}
+
               <div className="form-group">
                 <label htmlFor="name">Name</label>
                 <input
@@ -277,6 +305,26 @@ const ContactForm: React.FC = () => {
                   disabled={isSubmitting}
                 ></textarea>
                 {errors.message && <div className="error-message">{errors.message}</div>}
+              </div>
+
+              <div className="form-group consent-group">
+                <div className="checkbox-container">
+                  <input
+                    type="checkbox"
+                    id="dataConsent"
+                    name="dataConsent"
+                    checked={formData.dataConsent}
+                    onChange={handleChange}
+                    onBlur={() => validateField('dataConsent', String(formData.dataConsent))}
+                    className={errors.dataConsent ? 'error' : ''}
+                    disabled={isSubmitting}
+                  />
+                  <label htmlFor="dataConsent" className="consent-label">
+                    Ich stimme zu, dass meine Angaben zur Kontaktaufnahme und für Rückfragen gespeichert werden. 
+                    Weitere Informationen finden Sie in der <a href="/rechtliches?tab=datenschutz" target="_blank" rel="noopener noreferrer">Datenschutzerklärung</a>.
+                  </label>
+                </div>
+                {errors.dataConsent && <div className="error-message">{errors.dataConsent}</div>}
               </div>
 
               <div className="form-actions">

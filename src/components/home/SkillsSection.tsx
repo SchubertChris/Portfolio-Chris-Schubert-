@@ -28,7 +28,7 @@ const SkillsSection: React.FC<SkillsSectionProps> = ({ isVisible }) => {
                             <li>
                                 <span className="skill-name">JavaScript</span>
                                 <div className="skill-bar">
-                                    <div className="skill-level" style={{ width: '85%' }}></div>
+                                    <div className="skill-level" style={{ width: '55%' }}></div>
                                 </div>
                             </li>
                             <li>
@@ -40,7 +40,7 @@ const SkillsSection: React.FC<SkillsSectionProps> = ({ isVisible }) => {
                             <li>
                                 <span className="skill-name">HTML/CSS/SCSS</span>
                                 <div className="skill-bar">
-                                    <div className="skill-level" style={{ width: '95%' }}></div>
+                                    <div className="skill-level" style={{ width: '90%' }}></div>
                                 </div>
                             </li>
                         </ul>
@@ -55,25 +55,25 @@ const SkillsSection: React.FC<SkillsSectionProps> = ({ isVisible }) => {
                             <li>
                                 <span className="skill-name">Node.js</span>
                                 <div className="skill-bar">
-                                    <div className="skill-level" style={{ width: '75%' }}></div>
+                                    <div className="skill-level" style={{ width: '50%' }}></div>
                                 </div>
                             </li>
                             <li>
                                 <span className="skill-name">Express</span>
                                 <div className="skill-bar">
-                                    <div className="skill-level" style={{ width: '70%' }}></div>
+                                    <div className="skill-level" style={{ width: '40%' }}></div>
                                 </div>
                             </li>
                             <li>
                                 <span className="skill-name">MongoDB</span>
                                 <div className="skill-bar">
-                                    <div className="skill-level" style={{ width: '65%' }}></div>
+                                    <div className="skill-level" style={{ width: '40%' }}></div>
                                 </div>
                             </li>
                             <li>
                                 <span className="skill-name">RESTful APIs</span>
                                 <div className="skill-bar">
-                                    <div className="skill-level" style={{ width: '80%' }}></div>
+                                    <div className="skill-level" style={{ width: '50%' }}></div>
                                 </div>
                             </li>
                         </ul>
@@ -100,13 +100,13 @@ const SkillsSection: React.FC<SkillsSectionProps> = ({ isVisible }) => {
                             <li>
                                 <span className="skill-name">UI/UX Design</span>
                                 <div className="skill-bar">
-                                    <div className="skill-level" style={{ width: '70%' }}></div>
+                                    <div className="skill-level" style={{ width: '90%' }}></div>
                                 </div>
                             </li>
                             <li>
                                 <span className="skill-name">Responsive Design</span>
                                 <div className="skill-bar">
-                                    <div className="skill-level" style={{ width: '90%' }}></div>
+                                    <div className="skill-level" style={{ width: '85%' }}></div>
                                 </div>
                             </li>
                         </ul>

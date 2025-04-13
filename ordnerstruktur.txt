@@ -8,7 +8,6 @@
 ./ordnerstruktur.txt
 ./package.json
 ./package-lock.json
-./project_files.txt
 ./public
 ./public/csGold.webp
 ./public/Placeholder.webp
@@ -88,6 +87,7 @@
 ./src/pages/Contact.tsx
 ./src/pages/Home.tsx
 ./src/pages/Projects.tsx
+./src/pages/Rechtliches.tsx
 ./src/styles
 ./src/styles/abstracts
 ./src/styles/abstracts/_global.scss
@@ -106,6 +106,7 @@
 ./src/styles/pages/Contact.scss
 ./src/styles/pages/Home.scss
 ./src/styles/pages/Projects.scss
+./src/styles/pages/Rechtliches.scss
 ./src/styles/shared
 ./src/styles/shared/ContactCTA.scss
 ./src/styles/shared/ProjectCard.scss

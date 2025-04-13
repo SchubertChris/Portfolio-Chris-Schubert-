@@ -3,7 +3,7 @@
 .projects-preview {
   padding: 8rem 0;
   user-select: none;
-  background-color: var(--background-dark);
+  background: radial-gradient(circle, var(--primary) -180%, var(--background-dark) 60%);
 
   .section-container {
     max-width: 1200px;
