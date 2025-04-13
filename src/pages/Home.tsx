@@ -18,7 +18,7 @@ const Home: React.FC = () => {
     skills: false
   });
 
-  // Überprüfen, ob Elemente im Viewport sin
+  // Überprüfen, ob Elemente im Viewport sind
   useEffect(() => {
     const handleScroll = () => {
       const sections = document.querySelectorAll('.section-animate');
