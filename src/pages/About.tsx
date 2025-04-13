@@ -49,7 +49,7 @@ const About: React.FC = () => {
     <div className="about-page">
       {/* SEO-Komponente für die About-Seite */}
       <Seo 
-        title="Über mich – Chris Schubert Webdesign & React Entwicklung"
+        title="Über mich – CS-Designcode"
         description="Erfahren Sie mehr über Chris Schubert, einen Webdesigner und React Entwickler aus Potsdam mit einer Leidenschaft für UI Design und Frontend-Entwicklung."
         keywords="Über mich, Chris Schubert, Webdesign, React, UI Design, Frontend, Potsdam, Entwickler"
         image="https://deine-domain.de/assets/about-og-image.jpg"  // Beispielbild für OG-Image

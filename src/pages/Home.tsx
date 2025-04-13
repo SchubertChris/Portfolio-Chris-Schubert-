@@ -47,7 +47,7 @@ const Home: React.FC = () => {
     <div className="home-page">
       {/* SEO-Komponente für die Home-Seite */}
       <Seo
-        title="Chris Schubert – Webdesign & React Entwicklung in Potsdam"
+        title="Chris Schubert – CS-Designcode"
         description="Willkommen auf dem Portfolio von Chris Schubert. Webdesign, UI Design und React Entwicklung aus Potsdam."
         keywords="Chris Schubert, Webdesign, React, UI Design, Frontend, Potsdam, Portfolio"
         image="https://deine-domain.de/assets/home-og-image.jpg"

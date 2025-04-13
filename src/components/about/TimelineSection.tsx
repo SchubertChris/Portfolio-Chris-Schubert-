@@ -43,7 +43,7 @@ const TimelineSection: React.FC<TimelineSectionProps> = ({ isVisible }) => {
           />
 
           <TimelineItem
-            year="04/2021 - 12/2023"
+            year="04/2021 - 06/2023"
             title="Vorstandsfahrer / Allrounder"
             description="BBU - Verband Berlin Brandenburgischer Wohnungsunternehmen in Berlin. Organisation der Logistik, Koordination komplexer Terminabläufe und eigenverantwortliches Handeln."
             icon={<FaCar />}
@@ -51,7 +51,7 @@ const TimelineSection: React.FC<TimelineSectionProps> = ({ isVisible }) => {
           />
 
           <TimelineItem
-            year="01/2024 - 05/2024"
+            year="07/2023 - 05/2024"
             title="Berufliche Neuorientierung"
             description="Weiterbildung im IT-Bereich und Vorbereitung auf den Einstieg in die Softwareentwicklung. Selbststudium moderner Webtechnologien und Programmiersprachen."
             icon={<FaLaptopCode />}

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import '../styles/pages/Rechtliches.scss';
+import Seo from '../components/shared/Seo';
 
 const Rechtliches: React.FC = () => {
   const [activeTab, setActiveTab] = useState<'impressum' | 'datenschutz' | 'cookies'>('impressum');
@@ -18,6 +19,14 @@ const Rechtliches: React.FC = () => {
 
   return (
     <div className="rechtliches-section">
+            {/* SEO-Komponente für die Rechtliches-Seite */}
+                  <Seo
+                title="Rechtliches - CS-Designcode"
+                description="Rechtliche Informationen zu CS-Designcode. Impressum, Datenschutzerklärung und Cookie-Richtlinie."
+                keywords="Rechtliches, Impressum, Datenschutzerklärung, Cookie-Richtlinie, CS-Designcode"
+                image="https://deine-domain.de/assets/legal-og-image.jpg"
+                url="https://deine-domain.de/rechtliches"
+                />
       <div className="section-container">
         <h1 className="page-title">Rechtliches</h1>
         

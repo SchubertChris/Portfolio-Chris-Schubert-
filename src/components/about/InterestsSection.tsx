@@ -1,5 +1,6 @@
 // src/components/about/InterestsSection.tsx
 import React from 'react';
+import { FaCode, FaBitcoin, FaUtensils, FaUserGraduate } from 'react-icons/fa'; // Importiere passende Icons
 import './InterestsSection.scss'; // Importiere die CSS-Datei für das Styling 
 
 interface InterestsSectionProps {
@@ -17,7 +18,7 @@ const InterestsSection: React.FC<InterestsSectionProps> = ({ isVisible }) => {
         <div className="interests-container">
           <div className="interest-card" data-reveal="up" data-reveal-delay="200">
             <div className="interest-icon">
-              <img src="/icon-coding.svg" alt="Coding Icon" />
+              <FaCode size={40} />
             </div>
             <h3>Programmieren & Technologie</h3>
             <p>Ich bin leidenschaftlich daran interessiert, moderne Technologien zu verstehen und innovative Lösungen zu entwickeln.</p>
@@ -25,7 +26,7 @@ const InterestsSection: React.FC<InterestsSectionProps> = ({ isVisible }) => {
 
           <div className="interest-card" data-reveal="up" data-reveal-delay="400">
             <div className="interest-icon">
-              <img src="/icon-finance.svg" alt="Finance Icon" />
+              <FaBitcoin size={40} />
             </div>
             <h3>Krypto & Blockchain</h3>
             <p>Dezentrale Finanzsysteme und Blockchain-Technologien sind für mich ein spannendes und zukunftsweisendes Feld.</p>
@@ -33,7 +34,7 @@ const InterestsSection: React.FC<InterestsSectionProps> = ({ isVisible }) => {
 
           <div className="interest-card" data-reveal="up" data-reveal-delay="800">
             <div className="interest-icon">
-              <img src="/icon-cooking.svg" alt="Cooking Icon" />
+              <FaUtensils size={40} />
             </div>
             <h3>Kochen & Kulinarik</h3>
             <p>Abseits der Technik finde ich beim Kochen und in der Kulinarik kreative Entspannung und Freude.</p>
@@ -41,7 +42,7 @@ const InterestsSection: React.FC<InterestsSectionProps> = ({ isVisible }) => {
 
           <div className="interest-card" data-reveal="up" data-reveal-delay="1000">
             <div className="interest-icon">
-              <img src="/icon-selfgrowth.svg" alt="Self Growth Icon" />
+              <FaUserGraduate size={40} />
             </div>
             <h3>Persönliche Weiterentwicklung</h3>
             <p>Ich setze mich ständig mit meiner eigenen Weiterentwicklung auseinander, sei es durch Lesen, Lernen oder Reflexion.</p>

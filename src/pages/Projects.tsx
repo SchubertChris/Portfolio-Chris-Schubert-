@@ -68,7 +68,7 @@ const Projects: React.FC = () => {
     <div className="projects-page">
       {/* SEO-Komponente für die Projects-Seite */}
       <Seo
-        title="Projekte von Chris Schubert – Webdesign & React Entwicklung"
+        title="Projekte von CS-Designcode"
         description="Entdecke die Projekte von Chris Schubert. Webdesign, UI/UX-Design und React-Projekte, die innovative Lösungen bieten."
         keywords="Projekte, Webdesign, React, UI Design, Frontend Entwicklung, Portfolio"
         image="https://deine-domain.de/assets/projects-og-image.jpg"
