@@ -60,7 +60,7 @@ const Footer: React.FC = () => {
       </div>
       
       <div className="footer-bottom">
-        <p>&copy; {new Date().getFullYear()} Chris Schubert <img className='FooterLogo' src="./csGold.webp" alt="CandleScope" /></p>
+        <p>&copy; Chris Schubert <img className='FooterLogo' src="./csGold.webp" alt="CandleScope" /></p>
         <button className="scroll-top-button" onClick={scrollToTop} aria-label="Zum Seitenanfang scrollen">
           <FaArrowUp />
         </button>

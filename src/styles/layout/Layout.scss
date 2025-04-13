@@ -1,5 +1,3 @@
-// Layout.scss
-
 // Variables
 $bg-color: #000;
 $text-color: #fff;
@@ -7,6 +5,7 @@ $transition-duration: 0.3s;
 
 .main-content {
   flex: 1;
+  min-height: calc(100vh - var(--navbar-height) - var(--footer-height, 300px));
 }
 
 // Loader Styles
@@ -14,33 +13,20 @@ $transition-duration: 0.3s;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  height: calc(100vh - var(--navbar-height));
   width: 100%;
   position: fixed;
-  top: 0;
+  top: var(--navbar-height);
   left: 0;
-  background-color: var(--bg-color, $bg-color);
+  background-color: var(--background-dark, $bg-color);
   z-index: 999;
   transition: opacity $transition-duration ease-in-out;
-
+  
   .loader {
     font-size: 1.5rem;
-    color: var(--text-color, $text-color);
+    color: var(--text-light, $text-color);
   }
 }
 
-// Navbar Styles
-.navbar {
-  background-color: var(--bg-color, $bg-color);
-  padding: 10px 20px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
 
-// Footer Styles
-.footer {
-  background-color: var(--bg-color, $bg-color);
-  padding: 10px 20px;
-  text-align: center;
-  font-size: 0.9rem;
-  color: var(--text-color, $text-color);
-}
+// Footer Styles im Layout.scss entfernt, da bereits in Footer.scss definiert

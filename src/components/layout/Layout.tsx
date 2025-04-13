@@ -1,4 +1,3 @@
-// src/components/layout/Layout.tsx
 import React, { lazy, Suspense, useEffect } from 'react';
 import { Routes, Route, useLocation } from 'react-router-dom';
 import Navbar from './Navbar';
@@ -6,22 +5,9 @@ import Footer from './Footer';
 import '../../styles/layout/Layout.scss';
 import ScrollToTopOnRouteChange from '../ui/ScrollToTopOnRouteChange';
 
-// Verbesserte Loader-Komponente mit Stil
+// Verbesserte Loader-Komponente mit Stil und korrekter Größe
 const Loader = () => (
-  <div className="page-loader-container" 
-       style={{
-         display: 'flex',
-         justifyContent: 'center',
-         alignItems: 'center',
-         height: '100vh',
-         width: '100%',
-         position: 'fixed',
-         top: 0,
-         left: 0,
-         backgroundColor: 'var(--bg-color,rgb(0, 0, 0))',
-         zIndex: 999,
-         transition: 'opacity 0.3s ease-in-out'
-       }}>
+  <div className="page-loader-container">
     <div className="loader">Lädt...</div>
   </div>
 );
@@ -31,7 +17,6 @@ const Home = lazy(() => {
   // Hinweis für den Browser, dass diese Ressource wichtig ist
   return import('../../pages/Home');
 });
-
 const Projects = lazy(() => import('../../pages/Projects'));
 const About = lazy(() => import('../../pages/About'));
 const Contact = lazy(() => import('../../pages/Contact'));
@@ -46,17 +31,17 @@ const usePrefetchRoutes = () => {
       import('../../pages/About');
       import('../../pages/Contact');
     }, 2000); // 2 Sekunden Verzögerung nach dem Laden der Hauptseite
-    
+   
     return () => clearTimeout(timer);
   }, []);
 };
 
 const Layout: React.FC = () => {
   const location = useLocation();
-  
+ 
   // Route-Präfetching aktivieren
   usePrefetchRoutes();
-  
+ 
   return (
     <div className="app">
       <Navbar />

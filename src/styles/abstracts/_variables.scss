@@ -1,6 +1,5 @@
 // src/styles/variables.scss
 @use "sass:color";
-
 // Analoge Farbpalette basierend auf #c8a253 (Gold)
 $primary: #c8a253;
 $primary-dark: color.adjust($primary, $lightness: -15%); // Dunkleres Gold
@@ -24,7 +23,6 @@ $red-glow: rgba(125, 1, 1, 0.8);
 $green: rgb(0, 255, 0);
 $green-glow: rgba(0, 125, 1, 0.8);
 $purple: rgb(186, 85, 211);
-
 // Dunkles Theme
 $background-dark: #121212;
 $background-dark-lighter: #1e1e1e;
@@ -59,6 +57,9 @@ $breakpoint-sm: 576px;
 $breakpoint-md: 768px;
 $breakpoint-lg: 992px;
 $breakpoint-xl: 1200px;
+// Layout-Höhen für konsistentes Layout und Vermeidung von Shifts
+$navbar-height: 120px; // Angepasst auf 60px für Konsistenz
+$footer-height: 300px; // Angepasst für die tatsächliche Footer-Höhe
 
 // CSS-Variablen für Verwendung in HTML/JS
 :root {
@@ -68,14 +69,12 @@ $breakpoint-xl: 1200px;
   --primary-light: #{$primary-light};
   --primary-analog1: #{$primary-analog1};
   --primary-analog2: #{$primary-analog2};
-
   // Glow-Varianten
   --primary-glow: #{$primary-glow};
   --primary-dark-glow: #{$primary-dark-glow};
   --primary-light-glow: #{$primary-light-glow};
   --primary-analog1-glow: #{$primary-analog1-glow};
   --primary-analog2-glow: #{$primary-analog2-glow};
-
   --blue: #{$blue};
   --blue-glow: #{$blue-glow};
   --yellow: #{$yellow};
@@ -85,18 +84,15 @@ $breakpoint-xl: 1200px;
   --green: #{$green};
   --green-glow: #{$green-glow};
   --purple: #{$purple};
-
   --background-dark: #{$background-dark};
   --background-dark-lighter: #{$background-dark-lighter};
   --background-dark-accent: #{$background-dark-accent};
   --text-light: #{$text-light};
   --text-light-muted: #{$text-light-muted};
-
   // Typografie
   --font-family-primary: #{$font-family-primary};
   --font-family-secondary: #{$font-family-secondary};
   --font-family-code: #{$font-family-code};
-
   // Komponenten
   --card-width: #{$card-width};
   --card-height: #{$card-height};
@@ -104,13 +100,11 @@ $breakpoint-xl: 1200px;
   --button-height: #{$button-height};
   --nav-item-width: #{$nav-item-width};
   --nav-item-height: #{$nav-item-height};
-
   // Animation
   --transition-fast: #{$transition-fast};
   --transition-slow: #{$transition-slow};
   --cubic-bezier: #{$cubic-bezier};
-
-  // Navbar-Höhe (wird in App.scss verwendet)
-  --navbar-height: 120px;
-  --footer-height: 60px;
+  // Konsistente Höhenwerte ohne !important
+  --navbar-height: #{$navbar-height};
+  --footer-height: #{$footer-height};
 }

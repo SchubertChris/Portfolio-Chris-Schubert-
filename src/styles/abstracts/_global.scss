@@ -60,6 +60,11 @@ p {
 img {
   max-width: 100%;
   height: auto;
+  display: block; // Verhindert unerwünschte Abstände unter Bildern
+}
+
+img:not([src]) {
+  visibility: hidden; // Versteckt Bilder ohne Quelle
 }
 
 // Container und Layout-Klassen
