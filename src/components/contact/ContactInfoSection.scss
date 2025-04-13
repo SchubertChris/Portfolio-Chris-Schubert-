@@ -1,10 +1,8 @@
 // src/components/contact/ContactInfoSection.scss
-
 .contact-info-section {
     padding: 4rem 0;
     background-color: var(--background-dark-lighter);
     position: relative;
-
     &::before {
         content: '';
         position: absolute;
@@ -17,24 +15,20 @@
             radial-gradient(circle at 80% 70%, rgba(200, 162, 83, 0.1) 0%, transparent 30%);
         pointer-events: none;
     }
-
     .section-container {
         max-width: 1200px;
         margin: 0 auto;
         padding: 0 2rem;
     }
-
     .contact-cards {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
         gap: 2rem;
         margin-top: 2rem;
-
         @media (max-width: 768px) {
             grid-template-columns: 1fr;
         }
     }
-
     .contact-card {
         background-color: var(--background-dark);
         padding: 2rem;
@@ -45,7 +39,8 @@
         position: relative;
         overflow: hidden;
         will-change: transform, box-shadow;
-
+        cursor: pointer; /* Zeigt an, dass das Element klickbar ist */
+        
         &::before {
             content: '';
             position: absolute;
@@ -57,25 +52,20 @@
             opacity: 0;
             transition: opacity 0.3s ease;
         }
-
         &:hover {
             transform: translateY(-10px);
             box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
-
             &::before {
                 opacity: 1;
             }
-
             .icon {
                 background-color: var(--primary);
                 color: var(--background-dark);
-
                 &::after {
                     opacity: 1;
                 }
             }
         }
-
         .icon {
             width: 70px;
             height: 70px;
@@ -90,7 +80,6 @@
             transition: all 0.3s ease;
             position: relative;
             will-change: background-color, transform;
-
             &::after {
                 content: '';
                 position: absolute;
@@ -102,40 +91,25 @@
                 animation: pulseRing 2s infinite;
             }
         }
-
         h3 {
             font-size: 1.4rem;
             color: var(--text-light);
             margin-bottom: 1rem;
         }
-
         p {
             color: var(--text-light-muted);
-
-            a {
-                color: var(--text-light-muted);
-                text-decoration: none;
-                transition: color 0.3s ease;
-
-                &:hover {
-                    color: var(--primary);
-                }
-            }
         }
     }
 }
-
 @keyframes pulseRing {
     0% {
         transform: scale(1);
         opacity: 0.3;
     }
-
     50% {
         transform: scale(1.1);
         opacity: 0.5;
     }
-
     100% {
         transform: scale(1);
         opacity: 0.3;

@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useCallback, memo, useState } from 'react';
+import React, { useEffect, useRef, useCallback, memo } from 'react';
 import { FaGithub, FaExternalLinkAlt } from 'react-icons/fa';
 import { ProjectData } from '../../types';
 import './ProjectModal.scss';
@@ -10,7 +10,6 @@ interface ProjectModalProps {
 
 const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) => {
     const modalRef = useRef<HTMLDivElement>(null);
-    const [scrollPosition, setScrollPosition] = useState<number>(0);
 
     // Optimierte Event-Handler mit useCallback
     const handleClickOutside = useCallback((event: MouseEvent) => {
@@ -25,41 +24,38 @@ const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) => {
         }
     }, [onClose]);
 
+    // Verbesserte Methode zum Sperren des Scrollens
     useEffect(() => {
-        // Speichere aktuelle Scroll-Position
-        if (project) {
-            const currentScrollPos = window.pageYOffset || document.documentElement.scrollTop;
-            setScrollPosition(currentScrollPos);
-        }
+        if (!project) return;
 
+        // Aktuelle Scrollposition ermitteln
+        const scrollY = window.scrollY;
+        
+        // Body fixieren ohne Position zu ändern
+        document.body.style.position = 'fixed';
+        document.body.style.top = `-${scrollY}px`;
+        document.body.style.width = '100%';
+        document.body.style.overflow = 'hidden';
+        
         // Event-Listener hinzufügen
         document.addEventListener('mousedown', handleClickOutside);
         document.addEventListener('keydown', handleEscKey);
         
-        // Scroll sperren - nur wenn ein Projekt vorhanden ist
-        if (project) {
-            // Speichere die aktuelle Scrollposition im Datensatz
-            document.body.style.overflow = 'hidden';
-            document.body.style.position = 'fixed';
-            document.body.style.top = `-${scrollPosition}px`;
-            document.body.style.width = '100%';
-        }
-
         return () => {
-            // Cleanup
+            // Cleanup beim Schließen
             document.removeEventListener('mousedown', handleClickOutside);
             document.removeEventListener('keydown', handleEscKey);
             
-            // Scroll wieder freigeben und zur alten Position scrollen
-            if (project) {
-                document.body.style.overflow = '';
-                document.body.style.position = '';
-                document.body.style.top = '';
-                document.body.style.width = '';
-                window.scrollTo(0, scrollPosition);
-            }
+            // Scroll-Verhalten wiederherstellen
+            document.body.style.position = '';
+            document.body.style.top = '';
+            document.body.style.width = '';
+            document.body.style.overflow = '';
+            
+            // Zur ursprünglichen Position zurückspringen
+            window.scrollTo(0, scrollY);
         };
-    }, [project, handleClickOutside, handleEscKey, scrollPosition]);
+    }, [project, handleClickOutside, handleEscKey]);
 
     // Frühes Return wenn kein Projekt
     if (!project) return null;
