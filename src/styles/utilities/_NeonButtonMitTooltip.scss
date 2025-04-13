@@ -45,67 +45,67 @@
   
   // Farb-spezifische Hover-Effekte
   &.btn-blue:hover {
-    box-shadow: 0 0 20px var(--blue-glow),
+    box-shadow: 0 0 40px var(--blue-glow),
                 inset 0 0 10px var(--blue-glow);
     border-color: var(--blue);
   }
   
   &.btn-green:hover {
-    box-shadow: 0 0 20px var(--green-glow),
+    box-shadow: 0 0 40px var(--green-glow),
                 inset 0 0 10px var(--green-glow);
     border-color: var(--green);
   }
   
   &.btn-purple:hover {
-    box-shadow: 0 0 20px rgba(238, 130, 238, 0.8),
+    box-shadow: 0 0 40px var(--purple),
                 inset 0 0 10px rgba(186, 85, 186, 0.8);
     border-color: rgb(238, 130, 238);
   }
   
   &.btn-red:hover {
-    box-shadow: 0 0 20px var(--red-glow),
+    box-shadow: 0 0 40px var(--red-glow),
                 inset 0 0 10px var(--red-glow);
     border-color: var(--red);
   }
   
   &.btn-yellow:hover {
-    box-shadow: 0 0 20px var(--yellow-glow),
+    box-shadow: 0 0 40px var(--yellow-glow),
                 inset 0 0 10px var(--yellow-glow);
     border-color: var(--yellow);
   }
   
   &.btn-orange:hover {
-    box-shadow: 0 0 20px var(--primary-analog1-glow),
+    box-shadow: 0 0 40px var(--primary-analog1-glow),
                 inset 0 0 10px var(--primary-analog1-glow);
     border-color: var(--primary-analog1);
   }
   
   &.btn-gold:hover {
-    box-shadow: 0 0 20px var(--primary-glow),
+    box-shadow: 0 0 40px var(--primary-glow),
                 inset 0 0 10px var(--primary-glow);
     border-color: var(--primary);
   }
   
   &.btn-indigo:hover {
-    box-shadow: 0 0 20px rgba(75, 0, 130, 0.8),
+    box-shadow: 0 0 40px rgba(75, 0, 130, 0.8),
                 inset 0 0 10px rgba(75, 0, 130, 0.8);
     border-color: rgb(138, 43, 226);
   }
   
   &.btn-pink:hover {
-    box-shadow: 0 0 20px rgba(219, 112, 147, 0.8),
+    box-shadow: 0 0 40px rgba(219, 112, 147, 0.8),
                 inset 0 0 10px rgba(219, 112, 147, 0.8);
     border-color: rgb(255, 20, 147);
   }
   
   &.btn-lightpink:hover {
-    box-shadow: 0 0 20px rgba(255, 182, 193, 0.8),
+    box-shadow: 0 0 40px rgba(255, 182, 193, 0.8),
                 inset 0 0 10px rgba(255, 182, 193, 0.8);
     border-color: rgb(255, 192, 203);
   }
   
   &.btn-gray:hover {
-    box-shadow: 0 0 20px rgba(96, 96, 96, 0.8),
+    box-shadow: 0 0 40px rgba(96, 96, 96, 0.8),
                 inset 0 0 10px rgba(96, 96, 96, 0.8);
     border-color: rgb(128, 128, 128);
   }

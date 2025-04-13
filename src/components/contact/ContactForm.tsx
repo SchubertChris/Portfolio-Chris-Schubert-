@@ -304,7 +304,7 @@ const ContactForm: React.FC = () => {
 
           <div className="contact-image" data-reveal="right">
             <div className="image-container">
-              <img src="/Profilbild.webp" alt="Kontakt" />
+              <img src="/Profilbild2.webp" alt="Kontakt" />
               <div className="neon-border"></div>
             </div>
           </div>

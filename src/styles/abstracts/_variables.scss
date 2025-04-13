@@ -23,6 +23,8 @@ $red: rgb(255, 0, 0);
 $red-glow: rgba(125, 1, 1, 0.8);
 $green: rgb(0, 255, 0);
 $green-glow: rgba(0, 125, 1, 0.8);
+$purple: rgb(186, 85, 211);
+
 // Dunkles Theme
 $background-dark: #121212;
 $background-dark-lighter: #1e1e1e;
@@ -82,6 +84,7 @@ $breakpoint-xl: 1200px;
   --red-glow: #{$red-glow};
   --green: #{$green};
   --green-glow: #{$green-glow};
+  --purple: #{$purple};
 
   --background-dark: #{$background-dark};
   --background-dark-lighter: #{$background-dark-lighter};

@@ -1,5 +1,4 @@
 // src/styles/pages/Projects.scss
-
 // Projekte Seite Hauptstil
 .projects-page {
   overflow-x: hidden;
@@ -38,42 +37,51 @@
     opacity: 0;
     transform: translateY(30px) scale(0.95);
   }
-
   to {
     opacity: 1;
     transform: translateY(0) scale(1);
   }
 }
 
-// Projects Grid Sektion - nur grundlegende Layout-Stile
+// Projects Grid Sektion - komplette Stile inklusive vorheriger Inline-Styles
 .projects-grid-section {
   padding: 4rem 0;
   background-color: var(--background-dark);
-
+  
   .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(calc(33.333% - 2rem), 1fr));
+    gap: 2rem;
+    width: 100%;
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0 2rem;
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 2.5rem;
-
+    padding: 2rem;
+    
+    // Responsive Anpassungen
+    @media (max-width: 1024px) {
+      grid-template-columns: repeat(auto-fill, minmax(calc(325px - 1.5rem), 1fr));
+    }
+    
     @media (max-width: 768px) {
       grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
     }
+    
+    @media (max-width: 640px) {
+      grid-template-columns: repeat(auto-fill, minmax(100%, 1fr));
+    }
   }
-
+  
   .no-results {
     grid-column: 1 / -1;
     text-align: center;
     padding: 4rem 0;
-
+    
     h3 {
       color: var(--text-light);
       margin-bottom: 1rem;
       font-size: 1.5rem;
     }
-
+    
     p {
       color: var(--text-light-muted);
     }

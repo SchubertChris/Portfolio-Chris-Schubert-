@@ -19,7 +19,7 @@ const ProjectsSection: React.FC<ProjectsSectionProps> = ({ isVisible }) => {
                         title="Portfolio Website"
                         description="Eine moderne Portfolio-Website mit React, TypeScript und SCSS."
                         tags={["React", "TypeScript", "SCSS"]}
-                        imageUrl="/project-1.jpg"
+                        imageUrl="/Placeholder.webp"
                         tilt={15} // Stärkere Neigung nach rechts um Y-Achse
                     />
                     <ProjectCard
@@ -27,7 +27,7 @@ const ProjectsSection: React.FC<ProjectsSectionProps> = ({ isVisible }) => {
                         title="Dashboard App"
                         description="Ein interaktives Dashboard mit Datenvisualisierung und benutzerdefinierten Charts."
                         tags={["React", "D3.js", "API"]}
-                        imageUrl="/project-2.jpg"
+                        imageUrl="/Placeholder.webp"
                         tilt={0} // Keine Neigung (gerade)
                     />
                     <ProjectCard
@@ -35,7 +35,7 @@ const ProjectsSection: React.FC<ProjectsSectionProps> = ({ isVisible }) => {
                         title="E-Commerce Platform"
                         description="Eine vollständige E-Commerce-Lösung mit Warenkorb und Zahlungsabwicklung."
                         tags={["React", "Node.js", "MongoDB"]}
-                        imageUrl="/project-3.jpg"
+                        imageUrl="/Placeholder.webp"
                         tilt={-15} // Stärkere Neigung nach links um Y-Achse
                     />
                 </div>
