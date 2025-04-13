@@ -4,8 +4,12 @@ import './ContactInfoSection.scss'; // Importiere die CSS-Datei für das Styling
 
 const ContactInfoSection: React.FC = () => {
   // Hilfsfunktion zum Handhaben der Klicks auf die Kontaktkarten
-  const handleCardClick = (url: string) => {
-    window.open(url, '_blank', 'noopener noreferrer');
+  const handleCardClick = (url: string, newTab: boolean = false) => {
+    if (newTab) {
+      window.open(url, '_blank', 'noopener noreferrer');
+    } else {
+      window.location.href = url;
+    }
   };
 
   return (
@@ -41,7 +45,7 @@ const ContactInfoSection: React.FC = () => {
             className="contact-card" 
             data-reveal="up" 
             data-reveal-delay="400"
-            onClick={() => handleCardClick('https://www.google.com/maps?q=Potsdam,+Deutschland')}
+            onClick={() => handleCardClick('https://www.google.com/maps?q=Potsdam,+Deutschland', true)}
           >
             <div className="icon">
               <FaMapMarkerAlt />
