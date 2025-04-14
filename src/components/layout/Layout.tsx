@@ -1,7 +1,7 @@
 import React, { lazy, Suspense, useEffect } from 'react';
 import { Routes, Route, useLocation } from 'react-router-dom';
 import Navbar from './Navbar';
-import Footer from './Footer';
+import Footer from './Footer'; // Footer direkt importieren, aber mit angepasstem Timing
 import '../../styles/layout/Layout.scss';
 import ScrollToTopOnRouteChange from '../ui/ScrollToTopOnRouteChange';
 import CookieBanner from '../shared/CookieBanner';
@@ -12,6 +12,11 @@ const Loader = () => (
   <div className="page-loader-container">
     <div className="loader">Lädt...</div>
   </div>
+);
+
+// Footer-Platzhalter für bessere CLS
+const FooterPlaceholder = () => (
+  <div className="footer-placeholder" aria-hidden="true" />
 );
 
 // Lazy loaded Komponenten mit Präfetching-Hinweis
@@ -62,6 +67,9 @@ const Layout: React.FC = () => {
           </Routes>
         </Suspense>
       </main>
+      {/* Hier ersten einen unsichtbaren Platzhalter einfügen, der den Platz für den Footer reserviert */}
+      <FooterPlaceholder />
+      {/* Dann den eigentlichen Footer */}
       <Footer />
       <CookieBanner />
     </div>

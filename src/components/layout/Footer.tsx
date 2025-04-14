@@ -1,24 +1,38 @@
-import React, { memo } from 'react';
+import React, { memo, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { FaGithub, FaLinkedin, FaInstagram, FaEnvelope, FaArrowUp, FaMapMarkerAlt } from 'react-icons/fa';
 import '../../styles/layout/Footer.scss';
 
 const Footer: React.FC = () => {
+  const footerRef = useRef<HTMLElement>(null);
+  
+  // Optimierung für Mounting-Verhalten
+  useEffect(() => {
+    if (footerRef.current) {
+      // Den Footer beim Mounting speziell behandeln
+      requestAnimationFrame(() => {
+        if (footerRef.current) {
+          footerRef.current.dataset.loaded = 'true';
+        }
+      });
+    }
+  }, []);
+  
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
       behavior: 'smooth'
     });
   };
-  
+ 
   return (
-    <footer className="footer">
+    <footer className="footer" ref={footerRef} data-loaded="false">
       <div className="footer-grid">
         <div className="footer-section">
           <h3>Chris Schubert</h3>
           <p>Frontend-Entwickler mit Leidenschaft für moderne Webtechnologien und benutzerfreundliche Interfaces.</p>
         </div>
-        
+       
         <div className="footer-section">
           <h3>Schnellzugriff</h3>
           <ul className="footer-links">
@@ -29,7 +43,7 @@ const Footer: React.FC = () => {
             <li><Link to="/rechtliches">Rechtliches</Link></li>
           </ul>
         </div>
-        
+       
         <div className="footer-section">
           <h3>Kontakt</h3>
             <p>
@@ -43,7 +57,7 @@ const Footer: React.FC = () => {
             </a>
             </p>
         </div>
-        
+       
         <div className="footer-section">
           <h3>Social Media</h3>
           <div className="social-links">
@@ -59,7 +73,7 @@ const Footer: React.FC = () => {
           </div>
         </div>
       </div>
-      
+     
       <div className="footer-bottom">
         <p>&copy; Chris Schubert</p>
         <button className="scroll-top-button" onClick={scrollToTop} aria-label="Zum Seitenanfang scrollen">
