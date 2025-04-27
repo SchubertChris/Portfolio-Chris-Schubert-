@@ -27,7 +27,7 @@ const ProjectsSection: React.FC<ProjectsSectionProps> = ({ isVisible }) => {
                         title="Dashboard App"
                         description="Ein interaktives Dashboard mit Datenvisualisierung und benutzerdefinierten Charts."
                         tags={["React", "D3.js", "API"]}
-                        imageUrl="/Placeholder.webp"
+                        imageUrl="/Dashboard-Login.webp"
                         tilt={0} // Keine Neigung (gerade)
                     />
                     <ProjectCard

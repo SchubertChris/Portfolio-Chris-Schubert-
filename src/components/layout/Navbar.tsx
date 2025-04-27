@@ -2,6 +2,7 @@ import React, { useEffect, useState, useCallback } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { FaHome, FaProjectDiagram, FaUser, FaEnvelope, FaBars, FaTimes } from 'react-icons/fa';
 import NeonButtonMitTooltip from '../ui/NeonButtonMitTooltip';
+import ThemeToggle from '../ui/ThemeToggle';
 import '../../styles/layout/Navbar.scss';
 
 const Navbar: React.FC = () => {
@@ -85,51 +86,61 @@ const Navbar: React.FC = () => {
         
         {/* Hamburger Button nur für mobile */}
         {isMobile && (
-          <button className="hamburger-button" onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)} aria-label="Menü öffnen">
-            {isMobileMenuOpen ? <FaTimes /> : <FaBars />}
-          </button>
+          <div className="mobile-navbar-actions">
+            <ThemeToggle className="mobile-theme-toggle" />
+            <button 
+              className="hamburger-button" 
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)} 
+              aria-label="Menü öffnen"
+            >
+              {isMobileMenuOpen ? <FaTimes /> : <FaBars />}
+            </button>
+          </div>
         )}
 
         {/* Desktop Navigation - nur rendern wenn nicht mobile */}
         {!isMobile && (
-          <ul className="nav-menu">
-            <li className={currentPath === '/' ? 'active' : ''}>
-              <NeonButtonMitTooltip 
-                icon={<FaHome />} 
-                color="blue" 
-                tooltipText="Startseite" 
-                tooltipPosition="bottom" 
-                onClick={() => handleNavigation('/')} 
-              />
-            </li>
-            <li className={currentPath === '/projects' ? 'active' : ''}>
-              <NeonButtonMitTooltip 
-                icon={<FaProjectDiagram />} 
-                color="green" 
-                tooltipText="Projekte" 
-                tooltipPosition="bottom" 
-                onClick={() => handleNavigation('/projects')} 
-              />
-            </li>
-            <li className={currentPath === '/about' ? 'active' : ''}>
-              <NeonButtonMitTooltip 
-                icon={<FaUser />} 
-                color="purple" 
-                tooltipText="Über mich" 
-                tooltipPosition="bottom" 
-                onClick={() => handleNavigation('/about')} 
-              />
-            </li>
-            <li className={currentPath === '/contact' ? 'active' : ''}>
-              <NeonButtonMitTooltip 
-                icon={<FaEnvelope />} 
-                color="red" 
-                tooltipText="Kontakt" 
-                tooltipPosition="bottom" 
-                onClick={() => handleNavigation('/contact')} 
-              />
-            </li>
-          </ul>
+          <div className="desktop-nav-container">
+            <ul className="nav-menu">
+              <li className={currentPath === '/' ? 'active' : ''}>
+                <NeonButtonMitTooltip 
+                  icon={<FaHome />} 
+                  color="blue" 
+                  tooltipText="Startseite" 
+                  tooltipPosition="bottom" 
+                  onClick={() => handleNavigation('/')} 
+                />
+              </li>
+              <li className={currentPath === '/projects' ? 'active' : ''}>
+                <NeonButtonMitTooltip 
+                  icon={<FaProjectDiagram />} 
+                  color="green" 
+                  tooltipText="Projekte" 
+                  tooltipPosition="bottom" 
+                  onClick={() => handleNavigation('/projects')} 
+                />
+              </li>
+              <li className={currentPath === '/about' ? 'active' : ''}>
+                <NeonButtonMitTooltip 
+                  icon={<FaUser />} 
+                  color="purple" 
+                  tooltipText="Über mich" 
+                  tooltipPosition="bottom" 
+                  onClick={() => handleNavigation('/about')} 
+                />
+              </li>
+              <li className={currentPath === '/contact' ? 'active' : ''}>
+                <NeonButtonMitTooltip 
+                  icon={<FaEnvelope />} 
+                  color="red" 
+                  tooltipText="Kontakt" 
+                  tooltipPosition="bottom" 
+                  onClick={() => handleNavigation('/contact')} 
+                />
+              </li>
+            </ul>
+            <ThemeToggle className="desktop-theme-toggle" />
+          </div>
         )}
 
         {/* Mobile Navigation - nur rendern wenn mobile */}
@@ -163,6 +174,11 @@ const Navbar: React.FC = () => {
                   </button>
                 </li>
               </ul>
+              
+              <div className="theme-toggle-container">
+                <p>Design-Modus</p>
+                <ThemeToggle className="menu-theme-toggle" />
+              </div>
             </div>
           </div>
         )}

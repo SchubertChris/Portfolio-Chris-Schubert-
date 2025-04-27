@@ -1,25 +1,34 @@
 // src/components/home/HeroSection.scss
 
-:root {
-  // CSS Variablen für bessere Performance und Wartbarkeit
-  --hero-primary-color: #c8a253;
-  --hero-primary-color-dark: #b0904a;
-  --hero-primary-color-light: #d6b45d;
-  --hero-background-dark: #000;
-  --hero-text-light: #f4f4f4;
-  --hero-transition-speed: 0.3s;
-}
-
 .hero-section {
   position: relative;
-  height: 100vh;
-  width: 100%;
+  height: 92vh;
+  width: 95%;
   display: flex;
   align-items: center;
   justify-content: center;
   user-select: none;
   overflow: hidden;
-  // will-change entfernt
+  transition: background-color var(--transition-slow) ease;
+  margin: 0 auto;
+  border-radius: 20px;
+  padding-top: 10rem;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    background: radial-gradient(
+      circle,
+      transparent -10%,
+      rgba(255, 255, 255, 0.1) 99%
+    );
+    z-index: 1;
+  }
 
   .hero-content {
     position: relative;
@@ -27,16 +36,15 @@
     z-index: 2;
     max-width: 1000px;
     padding: 0 2rem;
-    // will-change entfernt
 
     .animated-title {
       font-size: clamp(2.5rem, 5vw, 3.5rem);
       margin-bottom: 1.5rem;
       background: linear-gradient(
         to right,
-        var(--hero-primary-color),
-        var(--hero-primary-color-dark),
-        var(--hero-primary-color-light)
+        var(--primary-light),
+        var(--primary),
+        var(--primary-dark)
       );
       -webkit-background-clip: text;
       background-clip: text;
@@ -52,10 +60,11 @@
 
       .typewriter {
         font-size: 1.5rem;
-        color: var(--hero-text-light);
+        color: white;
         font-family: "Courier New", monospace;
         position: relative;
         display: inline-block;
+        transition: color var(--transition-slow) ease;
 
         &::after {
           content: "|";
@@ -85,17 +94,25 @@
         border-radius: 8px;
         font-weight: 600;
         cursor: pointer;
-        transition: all var(--hero-transition-speed) ease;
+        transition: all var(--transition-fast) ease;
 
         &.primary-button {
-          background-color: var(--hero-primary-color);
-          color: var(--hero-background-dark);
+          background-color: var(--primary);
+          color: var(--background-dark);
           border: none;
-          box-shadow: 0 0 15px rgba(200, 162, 83, 0.5);
+          box-shadow: 0 0 15px var(--primary-glow);
+
+          html[data-theme="light"] & {
+            box-shadow: 0 0 12px rgba(200, 162, 83, 0.4);
+          }
 
           &:hover {
             transform: translateY(-3px);
-            box-shadow: 0 0 25px rgba(200, 162, 83, 0.7);
+            box-shadow: 0 0 25px var(--primary-glow);
+            
+            html[data-theme="light"] & {
+              box-shadow: 0 0 20px rgba(200, 162, 83, 0.6);
+            }
           }
 
           &:active {
@@ -105,8 +122,11 @@
 
         &.secondary-button {
           background-color: transparent;
-          color: var(--hero-text-light);
-          border: 2px solid var(--hero-primary-color);
+          color: white;
+          border: 2px solid var(--primary);
+          transition: all var(--transition-fast) ease, 
+                     background-color var(--transition-slow) ease,
+                     color var(--transition-slow) ease;
 
           &:hover {
             background-color: rgba(200, 162, 83, 0.1);
@@ -130,8 +150,9 @@
 
       .social-icon {
         font-size: 1.5rem;
-        color: var(--hero-text-light);
-        transition: all var(--hero-transition-speed) ease;
+        color: white;
+        transition: all var(--transition-fast) ease,
+                    color var(--transition-slow) ease;
         position: relative;
 
         &::before {
@@ -148,7 +169,7 @@
         }
 
         &:hover {
-          color: var(--hero-primary-color);
+          color: var(--primary);
           transform: translateY(-3px);
 
           &::before {
@@ -163,10 +184,11 @@
       bottom: -90px;
       left: 50%;
       transform: translateX(-50%);
-      color: var(--hero-text-light);
+      color: white;
       font-size: 1.5rem;
       opacity: 0;
       animation: fadeIn 1s forwards 2.5s;
+      transition: color var(--transition-slow) ease;
 
       .bounce {
         animation: bounce 2s infinite;
@@ -181,7 +203,8 @@
     width: 100%;
     height: 100%;
     z-index: -1;
-    background-color: var(--hero-background-dark);
+    background-color: black;
+    transition: background-color var(--transition-slow) ease;
 
     .gradient-overlay {
       position: absolute;
@@ -192,6 +215,15 @@
         rgba(200, 162, 83, 0.2) 0%,
         rgba(0, 0, 0, 0.8) 70%
       );
+      transition: background var(--transition-slow) ease;
+      
+      html[data-theme="light"] & {
+        background: radial-gradient(
+          circle at center,
+          rgba(0, 0, 0, 0.3) 0%,
+          rgba(0, 0, 0, 0.8) 70%
+        );
+      }
     }
 
     .grid-overlay {
@@ -205,6 +237,15 @@
         linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
       background-size: 30px 30px;
       opacity: 0.3;
+      transition: background-image var(--transition-slow) ease;
+      
+      html[data-theme="light"] & {
+        background-image: linear-gradient(
+            rgba(0, 0, 0, 0.05) 1px,
+            transparent 1px
+          ),
+          linear-gradient(90deg, rgba(0, 0, 0, 0.05) 1px, transparent 1px);
+      }
     }
   }
 }

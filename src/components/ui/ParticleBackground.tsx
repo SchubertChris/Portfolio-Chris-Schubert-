@@ -1,5 +1,5 @@
-// src/components/ParticleBackground.tsx
-import React, { useEffect, useRef } from 'react';
+// src/components/ui/ParticleBackground.tsx
+import React, { useEffect, useRef, useState } from 'react';
 import './ParticleBackground.scss'; // Importiere die CSS-Datei für das Styling
 
 interface Particle {
@@ -16,6 +16,32 @@ const ParticleBackground: React.FC = () => {
     const particles = useRef<Particle[]>([]);
     const mousePosition = useRef({ x: 0, y: 0 });
     const animationFrameId = useRef<number>(0);
+    const [isDarkMode, setIsDarkMode] = useState<boolean>(
+        document.documentElement.getAttribute('data-theme') !== 'light'
+    );
+
+    // Aktualisiere Dark Mode Status, wenn sich das Theme ändert
+    useEffect(() => {
+        const checkTheme = () => {
+            setIsDarkMode(document.documentElement.getAttribute('data-theme') !== 'light');
+        };
+
+        // Initial prüfen
+        checkTheme();
+
+        // MutationObserver zur Überwachung des data-theme Attributs
+        const observer = new MutationObserver((mutations) => {
+            mutations.forEach((mutation) => {
+                if (mutation.attributeName === 'data-theme') {
+                    checkTheme();
+                }
+            });
+        });
+
+        observer.observe(document.documentElement, { attributes: true });
+
+        return () => observer.disconnect();
+    }, []);
 
     // Initialisiere den Hintergrund
     useEffect(() => {
@@ -40,13 +66,22 @@ const ParticleBackground: React.FC = () => {
             for (let i = 0; i < particleCount; i++) {
                 const size = Math.random() * 2 + 1;
 
-                // Goldene Farbpalette für Partikel
-                const colors = [
+                // Farbpalette je nach Theme
+                const darkModeColors = [
                     'rgba(200, 162, 83, 0.8)',  // Gold (Primärfarbe)
                     'rgba(174, 140, 71, 0.6)',  // Dunkleres Gold
                     'rgba(226, 184, 94, 0.7)',  // Helleres Gold
                     'rgba(255, 255, 255, 0.7)'  // Weiß für zusätzlichen Kontrast
                 ];
+                
+                const lightModeColors = [
+                    'rgba(200, 162, 83, 0.8)',  // Gold (Primärfarbe)
+                    'rgba(174, 140, 71, 0.5)',  // Dunkleres Gold (etwas transparenter)
+                    'rgba(226, 184, 94, 0.6)',  // Helleres Gold
+                    'rgba(33, 33, 33, 0.2)'     // Schwarz für Kontrast im Light Mode
+                ];
+
+                const colors = isDarkMode ? darkModeColors : lightModeColors;
 
                 particles.current.push({
                     x: Math.random() * canvas.width,
@@ -115,6 +150,11 @@ const ParticleBackground: React.FC = () => {
         const connectParticles = (ctx: CanvasRenderingContext2D) => {
             const maxDistance = 150;
 
+            // Line-Farbe je nach Theme
+            const baseColor = isDarkMode ? 
+                'rgba(200, 162, 83, ' : 
+                'rgba(200, 162, 83, ';
+
             for (let i = 0; i < particles.current.length; i++) {
                 for (let j = i + 1; j < particles.current.length; j++) {
                     const dx = particles.current[i].x - particles.current[j].x;
@@ -126,7 +166,7 @@ const ParticleBackground: React.FC = () => {
                         const opacity = 1 - (distance / maxDistance);
 
                         ctx.beginPath();
-                        ctx.strokeStyle = `rgba(200, 162, 83, ${opacity * 0.5})`;
+                        ctx.strokeStyle = `${baseColor}${opacity * 0.5})`;
                         ctx.lineWidth = 0.5;
                         ctx.moveTo(particles.current[i].x, particles.current[i].y);
                         ctx.lineTo(particles.current[j].x, particles.current[j].y);
@@ -148,7 +188,7 @@ const ParticleBackground: React.FC = () => {
             window.removeEventListener('mousemove', handleMouseMove);
             cancelAnimationFrame(animationFrameId.current);
         };
-    }, []);
+    }, [isDarkMode]); // Neu rendern, wenn sich der Dark Mode ändert
 
     return (
         <canvas ref={canvasRef} className="particle-canvas"></canvas>

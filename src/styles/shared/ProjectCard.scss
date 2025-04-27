@@ -6,9 +6,16 @@
     overflow: hidden;
     height: 100%;
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition: transform 0.3s ease, 
+                box-shadow 0.3s ease, 
+                background-color var(--transition-slow) ease;
     transform-style: preserve-3d;
     will-change: transform;
+    
+    // Light Mode Anpassungen
+    html[data-theme="light"] & {
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    }
 
     // Home-Seite Klassen
     .card-image {
@@ -35,6 +42,11 @@
             align-items: center;
             opacity: 0;
             transition: opacity 0.3s ease;
+            
+            // Light Mode Anpassungen
+            html[data-theme="light"] & {
+                background: rgba(0, 0, 0, 0.5);
+            }
         }
     }
 
@@ -52,6 +64,7 @@
             color: var(--text-light-muted);
             margin-bottom: 1.2rem;
             line-height: 1.5;
+            transition: color var(--transition-slow) ease;
         }
 
         .card-tags {
@@ -86,6 +99,11 @@
             align-items: center;
             opacity: 0;
             transition: opacity 0.3s ease;
+            
+            // Light Mode Anpassungen
+            html[data-theme="light"] & {
+                background: rgba(0, 0, 0, 0.5);
+            }
         }
     }
 
@@ -103,6 +121,7 @@
             color: var(--text-light-muted);
             margin-bottom: 1.2rem;
             line-height: 1.5;
+            transition: color var(--transition-slow) ease;
         }
 
         .project-tech {
@@ -113,13 +132,21 @@
     }
 
     // Gemeinsame Styles für Tags
-    .tech-tag {
+    .tech-tag, .tag {
         font-size: 0.8rem;
         padding: 0.3rem 0.8rem;
         background-color: var(--background-dark-accent);
         color: var(--text-light);
         border-radius: 30px;
-        transition: all 0.2s ease;
+        transition: all 0.2s ease, 
+                   background-color var(--transition-slow) ease,
+                   color var(--transition-slow) ease;
+
+        // Light Mode Anpassungen
+        html[data-theme="light"] & {
+            background-color: rgba(0, 0, 0, 0.05);
+            color: var(--text-light);
+        }
 
         &:hover {
             background-color: rgba(200, 162, 83, 0.2);
@@ -128,12 +155,23 @@
         &.more {
             background-color: rgba(71, 200, 255, 0.2);
             color: var(--blue);
+            
+            // Light Mode Anpassungen
+            html[data-theme="light"] & {
+                background-color: rgba(44, 202, 255, 0.1);
+                color: var(--blue-dark);
+            }
         }
     }
 
     // Hover-Effekte
     &:hover {
         box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+        
+        // Light Mode Anpassungen
+        html[data-theme="light"] & {
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
 
         // Für Home-Seite
         .card-image {
@@ -160,7 +198,7 @@
 }
 
 // Buttons innerhalb der Overlays
-.view-details-btn {
+.view-details-btn, .view-project {
     padding: 0.7rem 1.5rem;
     background-color: var(--primary);
     color: var(--background-dark);
@@ -170,9 +208,20 @@
     cursor: pointer;
     transition: all 0.3s ease;
     box-shadow: 0 0 15px var(--primary-glow);
+    
+    // Light Mode Anpassungen
+    html[data-theme="light"] & {
+        box-shadow: 0 0 10px rgba(200, 162, 83, 0.3);
+    }
 
     &:hover {
         background-color: var(--primary-light);
         transform: scale(1.05);
+        
+        // Light Mode Anpassungen
+        html[data-theme="light"] & {
+            background-color: var(--primary-light);
+            box-shadow: 0 0 15px rgba(200, 162, 83, 0.4);
+        }
     }
 }

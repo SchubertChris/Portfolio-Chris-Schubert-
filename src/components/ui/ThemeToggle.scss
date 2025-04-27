@@ -1,0 +1,98 @@
+// src/components/ui/ThemeToggle.scss
+
+.toggle-switch {
+  position: relative;
+  width: 60px;
+  height: 30px;
+}
+
+.switch-label {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 25px;
+  cursor: pointer;
+  border: 2px solid var(--primary);
+  transition: all var(--transition-fast) ease;
+}
+
+.checkbox {
+  position: absolute;
+  display: none;
+}
+
+.slider {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 25px;
+  transition: all var(--transition-fast) ease;
+}
+
+.slider::before {
+  content: "";
+  position: absolute;
+  top: 3px;
+  left: 4px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  box-shadow: inset 7px -2px 0px 0px var(--text-light);
+  transition: all var(--transition-fast) ease;
+}
+
+.checkbox:checked ~ .slider::before {
+  transform: translateX(30px);
+  background-color: var(--primary);
+  box-shadow: none;
+}
+
+// Animation bei Hover
+.switch-label:hover {
+  box-shadow: 0 0 10px var(--primary-glow);
+  background-color: white;
+}
+
+// Fokus-Stil für Barrierefreiheit
+.checkbox:focus-visible ~ .slider {
+  box-shadow: 0 0 0 2px var(--primary);
+}
+
+// Mobile-Anpassungen
+@media (max-width: 768px) {
+  .toggle-switch {
+    width: 50px;
+    height: 25px;
+  }
+  
+  .slider::before {
+    top: 2px;
+    left: 2px;
+    width: 17px;
+    height: 17px;
+  }
+  
+  .checkbox:checked ~ .slider::before {
+    transform: translateX(25px);
+  }
+}
+
+// Spezielle Stile für den Toggle in der Navbar
+.navbar .toggle-switch {
+  margin-left: 1rem;
+}
+
+// Spezielle Stile für den Toggle im Mobile-Menü
+.mobile-menu .toggle-switch {
+  width: 55px;
+  height: 28px;
+  margin: 1.5rem auto;
+}
+
+.mobile-menu .toggle-switch .slider::before {
+  transform: translateX(0);
+}
+
+.mobile-menu .toggle-switch .checkbox:checked ~ .slider::before {
+  transform: translateX(27px);
+}

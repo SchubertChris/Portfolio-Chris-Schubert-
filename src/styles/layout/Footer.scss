@@ -5,14 +5,10 @@
   min-height: var(--footer-height, 300px);
   position: relative;
   flex-shrink: 0;
-  
-  // Diese beiden Eigenschaften entfernen oder anpassen:
-  /* content-visibility: auto; */
-  /* contain-intrinsic-size: 0 300px; */
-  
-  // Stattdessen verwenden wir:
   contain: style;
   will-change: transform; // Optimiert Rendering
+  transition: background-color var(--transition-slow) ease,
+              color var(--transition-slow) ease;
  
   &::before {
     content: "";
@@ -86,6 +82,8 @@
       display: flex;
       align-items: center;
       justify-content: flex-start;
+      color: var(--text-light);
+      transition: color var(--transition-slow) ease;
      
       .footer-icon {
         margin-right: 0.5rem;
@@ -107,7 +105,7 @@
         color: var(--text-light);
         text-decoration: none;
         transition: color 0.3s ease,
-          transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+                   transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
         display: inline-block;
        
         &:hover {
@@ -144,12 +142,19 @@
     max-width: 1200px;
     margin: 0 auto;
     min-height: 60px;
+    
+    // Light Mode Anpassung
+    html[data-theme="light"] & {
+      border-top: 1px solid rgba(0, 0, 0, 0.1);
+    }
    
     p {
       font-size: 0.9rem;
       display: flex;
       align-items: center;
       margin: 0;
+      color: var(--text-light);
+      transition: color var(--transition-slow) ease;
     }
    
     .scroll-top-button {
@@ -168,9 +173,14 @@
      
       &:hover {
         background-color: var(--primary);
-        color: var(--background-dark);
+        color: white;
         transform: translateY(-3px);
         box-shadow: 0 0 15px var(--primary-glow);
+        
+        // Light Mode Anpassung
+        html[data-theme="light"] & {
+          box-shadow: 0 0 12px rgba(200, 162, 83, 0.4);
+        }
       }
     }
   }

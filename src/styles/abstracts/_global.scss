@@ -1,4 +1,4 @@
-// src/styles/global.scss
+// src/styles/abstracts/_global.scss
 
 // Globale Reset-Styles und Grundeinstellungen
 * {
@@ -18,6 +18,8 @@ body {
   line-height: 1.6;
   font-size: var(--font-size-base);
   overflow-x: hidden;
+  transition: background-color var(--transition-slow) ease, 
+              color var(--transition-slow) ease;
 }
 
 a {
@@ -27,6 +29,14 @@ a {
   
   &:hover {
     color: var(--blue-glow);
+  }
+  
+  html[data-theme="light"] & {
+    color: var(--blue-dark, #0077cc);
+    
+    &:hover {
+      color: var(--blue);
+    }
   }
 }
 
@@ -123,4 +133,46 @@ img:not([src]) {
   &:hover {
     background: var(--primary-dark);
   }
+}
+
+// Light Mode Scrollbar Anpassungen
+html[data-theme="light"] {
+  ::-webkit-scrollbar-track {
+    background: var(--background-dark-lighter);
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: var(--background-dark-accent);
+    
+    &:hover {
+      background: var(--primary-dark);
+    }
+  }
+}
+
+// Hervorhebungen von Text
+::selection {
+  background-color: var(--primary);
+  color: var(--background-dark);
+}
+
+// Übergänge für Theme-Wechsel
+.section-title,
+.animated-title,
+.card,
+.project-card,
+.contact-form,
+button,
+.neon-button,
+.timeline-content,
+.hero-section,
+.about-section,
+.skills-section,
+.projects-section,
+.contact-section,
+.footer {
+  transition: background-color var(--transition-slow) ease,
+              color var(--transition-slow) ease,
+              border-color var(--transition-slow) ease,
+              box-shadow var(--transition-slow) ease;
 }

@@ -88,7 +88,7 @@
   }
 }
 
-// Neon und Glow Effekte
+// Neon und Glow Effekte - mit Dark/Light Mode Varianten
 @keyframes neonPulse {
   from {
     border-color: var(--primary);
@@ -100,12 +100,36 @@
   }
 }
 
+html[data-theme="light"] {
+  @keyframes neonPulse {
+    from {
+      border-color: var(--primary);
+      box-shadow: 0 0 8px rgba(200, 162, 83, 0.3);
+    }
+    to {
+      border-color: var(--primary-light);
+      box-shadow: 0 0 15px rgba(200, 162, 83, 0.4), 0 0 30px rgba(200, 162, 83, 0.3);
+    }
+  }
+}
+
 @keyframes textGlow {
   0%, 100% {
     text-shadow: 0 0 10px var(--primary-glow);
   }
   50% {
     text-shadow: 0 0 20px var(--primary-glow), 0 0 30px var(--primary-glow);
+  }
+}
+
+html[data-theme="light"] {
+  @keyframes textGlow {
+    0%, 100% {
+      text-shadow: 0 0 5px rgba(200, 162, 83, 0.3);
+    }
+    50% {
+      text-shadow: 0 0 10px rgba(200, 162, 83, 0.5), 0 0 15px rgba(200, 162, 83, 0.3);
+    }
   }
 }
 
@@ -190,6 +214,16 @@
   }
 }
 
+// Theme Transition Animation
+@keyframes themeTransition {
+  0% {
+    opacity: 0.3;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
 // Scroll-Reveal Klassen
 [data-reveal] {
   opacity: 0;
@@ -234,4 +268,27 @@
     opacity: 1;
     transform: none !important;
   }
+}
+
+// Übergangsanimationen für Theme-Wechsel
+body,
+.section-container,
+.hero-section,
+.about-section,
+.skills-section,
+.projects-section,
+.contact-section,
+.footer,
+.navbar,
+.card,
+.particle-canvas,
+.timeline-item,
+.project-card,
+.contact-form,
+.input,
+.textarea,
+.button {
+  transition: background-color var(--transition-slow) ease,
+              color var(--transition-slow) ease,
+              border-color var(--transition-slow) ease;
 }

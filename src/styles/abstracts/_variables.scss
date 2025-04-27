@@ -1,20 +1,25 @@
-// src/styles/variables.scss
+// src/styles/abstracts/_variables.scss
 @use "sass:color";
-// Analoge Farbpalette basierend auf #c8a253 (Gold)
+
+// Basis-Farbpalette
 $primary: #c8a253;
 $primary-dark: color.adjust($primary, $lightness: -15%); // Dunkleres Gold
 $primary-light: color.adjust($primary, $lightness: 15%); // Helleres Gold
+
 // Analoge Farben (30° Abstand auf dem Farbrad)
 $primary-analog1: color.adjust($primary, $hue: -30); // Orange-Gold
 $primary-analog2: color.adjust($primary, $hue: 30); // Gelblich-Gold
+
 // Glow-Varianten
 $primary-glow: rgba($primary, 0.8);
 $primary-dark-glow: rgba($primary-dark, 0.8);
 $primary-light-glow: rgba($primary-light, 0.8);
 $primary-analog1-glow: rgba($primary-analog1, 0.8);
 $primary-analog2-glow: rgba($primary-analog2, 0.8);
+
 // Akzentfarben für Neon-Effekte
 $blue: rgb(44, 202, 255);
+$blue-dark: darken($blue, 20%);
 $blue-glow: rgba(71, 200, 255, 0.8);
 $yellow: rgb(255, 234, 0);
 $yellow-glow: rgba(244, 191, 17, 0.6);
@@ -23,12 +28,36 @@ $red-glow: rgba(125, 1, 1, 0.8);
 $green: rgb(0, 255, 0);
 $green-glow: rgba(0, 125, 1, 0.8);
 $purple: rgb(186, 85, 211);
-// Dunkles Theme
-$background-dark: #121212;
-$background-dark-lighter: #1e1e1e;
-$background-dark-accent: #2d2d2d;
-$text-light: #ffffff;
-$text-light-muted: rgba(255, 255, 255, 0.7);
+
+// Dark Theme Farben
+$dark-background: #121212;
+$dark-background-rgb: "18, 18, 18";
+$dark-background-lighter: #1e1e1e;
+$dark-background-lighter-rgb: "30, 30, 30";
+$dark-background-accent: #2d2d2d;
+$dark-background-accent-rgb: "45, 45, 45";
+$dark-text: #ffffff;
+$dark-text-rgb: "255, 255, 255";
+$dark-text-muted: rgba(255, 255, 255, 0.7);
+$dark-text-muted-rgb: "255, 255, 255";
+
+// Light Theme Farben mit verbessertem Kontrast
+$light-background: #b9b9b9; // Standard Hellgrau für Light Mode
+$light-background-rgb: "240, 240, 240";
+$light-background-lighter: #ffffff;
+$light-background-lighter-rgb: "255, 255, 255";
+$light-background-accent: #e0e0e0;
+$light-background-accent-rgb: "224, 224, 224";
+$light-text: #2c2c2c;             // Dunkleres Schwarz für besseren Kontrast
+$light-text-rgb: "44, 44, 44";
+$light-text-muted: rgba(44, 44, 44, 0.7);
+$light-text-muted-rgb: "44, 44, 44";
+
+// Verbesserte Gold-Farben für Light Mode
+$light-primary: #b08528;          // Dunkleres Gold für Light Mode
+$light-primary-dark: darken($light-primary, 10%);
+$light-primary-glow: rgba($light-primary, 0.8);
+
 // Typografie
 $font-family-primary: 'Roboto', sans-serif;
 $font-family-secondary: 'Montserrat', sans-serif;
@@ -41,41 +70,52 @@ $font-size-lg: 1.25rem; // 20px
 $font-size-xl: 1.5rem; // 24px
 $font-size-2xl: 1.875rem; // 30px
 $font-size-3xl: 2.25rem; // 36px
+
 // Komponentengrößen
 $card-width: 300px;
 $card-height: 400px;
 $button-width: 120px;
-$button-height: 50px;
+$button-height: 35px;
 $nav-item-width: 120px;
 $nav-item-height: 45px;
+
 // Animationszeiten
 $transition-fast: 0.3s;
 $transition-slow: 0.5s;
 $cubic-bezier: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+
 // Breakpoints
 $breakpoint-sm: 576px;
 $breakpoint-md: 768px;
 $breakpoint-lg: 992px;
 $breakpoint-xl: 1200px;
+
 // Layout-Höhen für konsistentes Layout und Vermeidung von Shifts
-$navbar-height: 120px; // Angepasst auf 60px für Konsistenz
-$footer-height: 300px; // Angepasst für die tatsächliche Footer-Höhe
+$navbar-height: 100px;
+$footer-height: 300px;
 
 // CSS-Variablen für Verwendung in HTML/JS
 :root {
-  // Farben
+  // Theme Mode
+  --is-dark-mode: 1;
+
+  // Farben (Basis-Farben bleiben gleich in beiden Modi)
   --primary: #{$primary};
   --primary-dark: #{$primary-dark};
   --primary-light: #{$primary-light};
   --primary-analog1: #{$primary-analog1};
   --primary-analog2: #{$primary-analog2};
+  
   // Glow-Varianten
   --primary-glow: #{$primary-glow};
   --primary-dark-glow: #{$primary-dark-glow};
   --primary-light-glow: #{$primary-light-glow};
   --primary-analog1-glow: #{$primary-analog1-glow};
   --primary-analog2-glow: #{$primary-analog2-glow};
+  
+  // Akzentfarben
   --blue: #{$blue};
+  --blue-dark: #{$blue-dark};
   --blue-glow: #{$blue-glow};
   --yellow: #{$yellow};
   --yellow-glow: #{$yellow-glow};
@@ -84,15 +124,32 @@ $footer-height: 300px; // Angepasst für die tatsächliche Footer-Höhe
   --green: #{$green};
   --green-glow: #{$green-glow};
   --purple: #{$purple};
-  --background-dark: #{$background-dark};
-  --background-dark-lighter: #{$background-dark-lighter};
-  --background-dark-accent: #{$background-dark-accent};
-  --text-light: #{$text-light};
-  --text-light-muted: #{$text-light-muted};
+  
+  // Dark Mode Theme Farben (Standardeinstellung)
+  --background-dark: #{$dark-background};
+  --background-dark-rgb: #{$dark-background-rgb};
+  --background-dark-lighter: #{$dark-background-lighter};
+  --background-dark-lighter-rgb: #{$dark-background-lighter-rgb};
+  --background-dark-accent: #{$dark-background-accent};
+  --background-dark-accent-rgb: #{$dark-background-accent-rgb};
+  --text-light: #{$dark-text};
+  --text-light-rgb: #{$dark-text-rgb};
+  --text-light-muted: #{$dark-text-muted};
+  --text-light-muted-rgb: #{$dark-text-muted-rgb};
+  
   // Typografie
   --font-family-primary: #{$font-family-primary};
   --font-family-secondary: #{$font-family-secondary};
   --font-family-code: #{$font-family-code};
+  --font-size-xs: #{$font-size-xs};
+  --font-size-sm: #{$font-size-sm};
+  --font-size-base: #{$font-size-base};
+  --font-size-md: #{$font-size-md};
+  --font-size-lg: #{$font-size-lg};
+  --font-size-xl: #{$font-size-xl};
+  --font-size-2xl: #{$font-size-2xl};
+  --font-size-3xl: #{$font-size-3xl};
+  
   // Komponenten
   --card-width: #{$card-width};
   --card-height: #{$card-height};
@@ -100,11 +157,47 @@ $footer-height: 300px; // Angepasst für die tatsächliche Footer-Höhe
   --button-height: #{$button-height};
   --nav-item-width: #{$nav-item-width};
   --nav-item-height: #{$nav-item-height};
+  
   // Animation
   --transition-fast: #{$transition-fast};
   --transition-slow: #{$transition-slow};
   --cubic-bezier: #{$cubic-bezier};
+  
   // Konsistente Höhenwerte ohne !important
   --navbar-height: #{$navbar-height};
   --footer-height: #{$footer-height};
+  
+  // Schatten
+  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.1);
+  --shadow-md: 0 4px 8px rgba(0, 0, 0, 0.12);
+  --shadow-lg: 0 8px 16px rgba(0, 0, 0, 0.15);
+  --shadow-xl: 0 16px 32px rgba(0, 0, 0, 0.2);
+}
+
+// Light Mode Styles mit verbessertem Kontrast
+html[data-theme="light"] {
+  --is-dark-mode: 0;
+  
+  // Light Mode Theme Farben
+  --background-dark: #{$light-background};
+  --background-dark-rgb: #{$light-background-rgb};
+  --background-dark-lighter: #{$light-background-lighter};
+  --background-dark-lighter-rgb: #{$light-background-lighter-rgb};
+  --background-dark-accent: #{$light-background-accent};
+  --background-dark-accent-rgb: #{$light-background-accent-rgb};
+  --text-light: #{$light-text};
+  --text-light-rgb: #{$light-text-rgb};
+  --text-light-muted: #{$light-text-muted};
+  --text-light-muted-rgb: #{$light-text-muted-rgb};
+  
+  // Angepasste Gold-Farben für besseren Kontrast im Light Mode
+  --primary: #{$light-primary};
+  --primary-dark: #{$light-primary-dark};
+  --primary-glow: #{$light-primary-glow};
+  
+  // Schatten im Light Mode sind weicher
+  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 8px rgba(0, 0, 0, 0.08);
+  --shadow-lg: 0 8px 16px rgba(0, 0, 0, 0.1);
+  --shadow-xl: 0 16px 32px rgba(0, 0, 0, 0.15);
 }

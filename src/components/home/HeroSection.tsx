@@ -28,7 +28,7 @@ const HeroSection: React.FC = () => {
 
     useEffect(() => {
         let index = 0;
-        const typingSpeed = 100;
+        const typingSpeed = 150;
         
         const typingInterval = setInterval(() => {
             if (index < fullText.length) {
