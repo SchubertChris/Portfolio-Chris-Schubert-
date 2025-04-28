@@ -42,7 +42,7 @@ const Rechtliches: React.FC = () => {
               className={`tab-button ${activeTab === 'datenschutz' ? 'active' : ''}`}
               onClick={() => setActiveTab('datenschutz')}
             >
-              Datenschutzerklärung
+              Datenschutz
             </button>
             <button 
               className={`tab-button ${activeTab === 'cookies' ? 'active' : ''}`}
@@ -87,7 +87,7 @@ const Rechtliches: React.FC = () => {
             
             {activeTab === 'datenschutz' && (
               <div className="datenschutz-content">
-                <h2>Datenschutzerklärung</h2>
+                <h2>Datenschutz</h2>
                 <div className="legal-section">
                   <h3>1. Datenschutz auf einen Blick</h3>
                   
